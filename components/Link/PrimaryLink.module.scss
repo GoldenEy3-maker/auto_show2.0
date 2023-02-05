@@ -1,0 +1,11 @@
+.primaryLink {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 100px;
+
+  padding: 0.7rem 1.5rem;
+
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,34 @@
+$fs-default: 16;
+
+@function px-clamp(
+  $minValue,
+  $maxValue,
+  $minViewport: 320,
+  $maxViewport: 1920
+) {
+  @return clamp(
+    #{$minValue / $fs-default}rem,
+    #{(100 * ($maxValue - $minValue)) / ($maxViewport - $minViewport)}vw + #{(
+        $minViewport * $maxValue - $maxViewport * $minValue
+      ) / ($minViewport - $maxViewport) / $fs-default}rem,
+    #{$maxValue / $fs-default}rem
+  );
+}
+
+@function rem-clamp(
+  $minValue,
+  $maxValue,
+  $minViewport: 320,
+  $maxViewport: 1920
+) {
+  @return clamp(
+    #{$minValue}rem,
+    #{(100 * (($maxValue * $fs-default) - ($minValue * $fs-default))) / (
+        $maxViewport - $minViewport
+      )}vw + #{(
+        $minViewport * ($maxValue * $fs-default) - $maxViewport *
+          ($minValue * $fs-default)
+      ) / ($minViewport - $maxViewport) / $fs-default}rem,
+    #{$maxValue}rem
+  );
+}

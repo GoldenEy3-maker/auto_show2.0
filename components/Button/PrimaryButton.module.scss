@@ -1,0 +1,19 @@
+.primaryButton {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 100px;
+
+  padding: 1rem;
+
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+
+  transition: background-color 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryButton:hover {
+    background-color: hsla(var(--hsl-primary-purple-highlight));
+  }
+}

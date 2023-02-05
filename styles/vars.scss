@@ -1,0 +1,27 @@
+:root {
+  --hsl-base-default: 0, 0%;
+  --hsl-base-primary-purple: 282, 69%;
+  --hsl-base-primary-red: 0, 70%;
+
+  --hsl-white: var(--hsl-base-default), 100%;
+  --hsl-black: var(--hsl-base-default), 0%;
+  --hsl-primary-dark: var(--hsl-base-default), 13%;
+  --hsl-secondary-dark: var(--hsl-base-default), 7%;
+  --hsl-primary-purple: var(--hsl-base-primary-purple), 70%;
+  --hsl-primary-purple-highlight: var(--hsl-primary-purple), .2;
+  --hsl-primary-red: var(--hsl-base-primary-red), 50%;
+  --hsl-primary-red-highlight: var(--hsl-primary-red), .2;
+
+  --bf-primary-blur: 5px;
+
+  --wh-container: 1400px;
+  --pg-container: 1rem;
+
+  --fs-default: 16px;
+  --ff-default: 'Montserrat', sans-serif;
+  --lh-default: 1.5;
+
+  font-family: var(--ff-default);
+  font-size: var(--fs-default);
+  line-height: var(--lh-default);
+}
