@@ -57,7 +57,7 @@ export default function Sidebar() {
           </li>
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.CatalogPage}
               className={sidebarNavListItemLink}
               title='Каталог'
             >
@@ -70,7 +70,7 @@ export default function Sidebar() {
 
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.SupportPage}
               className={sidebarNavListItemLink}
               title='Техническая поддержка'
             >
@@ -85,7 +85,7 @@ export default function Sidebar() {
           <span className={sidebarNavListSeparater} />
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.ProfilePage}
               className={sidebarNavListItemLink}
               title='Профиль'
             >
@@ -97,7 +97,7 @@ export default function Sidebar() {
           </li>
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.CartPage}
               className={sidebarNavListItemLink}
               title='Корзина'
             >
@@ -109,7 +109,7 @@ export default function Sidebar() {
           </li>
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.FavoritesPage}
               className={sidebarNavListItemLink}
               title='Избранное'
             >
@@ -121,7 +121,7 @@ export default function Sidebar() {
           </li>
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.NotifyPage}
               className={sidebarNavListItemLink}
               title='Уведомления'
             >
@@ -133,7 +133,7 @@ export default function Sidebar() {
           </li>
           <li className={sidebarNavListItem}>
             <PrimaryLink
-              href='/'
+              href={ERouterPaths.SettingsPage}
               className={sidebarNavListItemLink}
               title='Настройки'
             >

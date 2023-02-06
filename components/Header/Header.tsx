@@ -1,5 +1,3 @@
-'use client'
-
 import { useSidebarContext } from '@/context/SidebarContext'
 import useRefCallback from '@/hooks/refCallback'
 import { ERouterPaths } from '@/typescript/enums'

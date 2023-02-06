@@ -22,6 +22,8 @@ body {
 }
 
 body {
+  overflow-x: hidden;
+  
   min-height: 100vh;
 
   color: hsl(var(--hsl-white));
