@@ -1,11 +1,13 @@
-import { Montserrat } from '@next/font/google'
 import type { ReactNode } from 'react'
 
+import { Montserrat } from '@next/font/google'
+
+import { SidebarContextProvider } from '@/context/SidebarContext'
+
 import Footer from '@/components/Footer/Footer'
+import Header from '@/components/Header/Header'
 import Sidebar from '@/components/Sidebar/Sidebar'
 
-import Header from '@/components/Header/Header'
-import { SidebarContextProvider } from '@/context/SidebarContext'
 import '@/styles/globals.scss'
 
 const montserrat = Montserrat({ subsets: ['cyrillic', 'latin'] })
@@ -28,7 +30,7 @@ export default function RootLayout({ children }: IRootLayoutProps) {
             <Header />
             <div className='page-content'>
               <Sidebar />
-              {children}
+              <div className='page-content__wrapper _container'>{children}</div>
             </div>
             <Footer />
           </SidebarContextProvider>

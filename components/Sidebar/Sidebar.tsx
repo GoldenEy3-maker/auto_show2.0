@@ -6,6 +6,7 @@ import PrimaryLink from '../Link/PrimaryLink'
 
 import { setDynamicCls, setStaticCls } from '@/lib/setCls'
 
+import { AiOutlinePoweroff } from 'react-icons/ai'
 import { BiHomeAlt, BiSupport } from 'react-icons/bi'
 import { BsCart2 } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
@@ -72,13 +73,13 @@ export default function Sidebar() {
             <PrimaryLink
               href={ERouterPaths.SupportPage}
               className={sidebarNavListItemLink}
-              title='Техническая поддержка'
+              title='Поддержка'
             >
               <span className={sidebarNavListItemLinkIcon}>
                 <BiSupport />
               </span>
               <p className={sidebarNavListItemLinkText}>
-                Техническая поддержка
+                Поддержка
               </p>
             </PrimaryLink>
           </li>
@@ -153,7 +154,7 @@ export default function Sidebar() {
               title='Выход'
             >
               <span className={sidebarNavListItemLinkIcon}>
-                <RxExit />
+                <AiOutlinePoweroff />
               </span>
               <p className={sidebarNavListItemLinkText}>Выход</p>
             </PrimaryLink>

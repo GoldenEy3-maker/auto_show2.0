@@ -1,6 +1,6 @@
 export const enum ERouterPaths {
   HomePage = '/',
-  CatalogPage = '/cart',
+  CatalogPage = '/catalog',
   SupportPage = '/support',
   ProfilePage = '/profile',
   CartPage = '/cart',
