@@ -1,0 +1,17 @@
+.headerSearchForm {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  &Input {
+    border-radius: 100px 0 0 100px;
+  }
+
+  & > button {
+    padding-block: calc(0.8rem + 2px);
+
+    background-color: hsla(var(--hsla-primary-purple-highlight));
+
+    border-radius: 0 100px 100px 0;
+  }
+}

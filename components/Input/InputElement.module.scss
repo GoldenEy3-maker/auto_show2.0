@@ -1,0 +1,48 @@
+.inputElement {
+  display: flex;
+  align-items: center;
+
+  border: 2px solid hsl(var(--hsl-primary-purple), 0.3);
+  border-radius: 100px;
+
+  overflow: hidden;
+
+  flex: 1;
+  max-width: 450px;
+
+  transition: border-color 200ms ease;
+
+  &LeadingIcon {
+    position: relative;
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+    padding: 0.8rem;
+
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input {
+    flex: 1;
+
+    padding: calc(0.8rem - 4px) 0.3rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &TrailingIcon {
+    border-radius: 0;
+
+    flex-shrink: 0;
+
+    padding: 0.8rem;
+  }
+
+  &:focus-within {
+    border-color: hsl(var(--hsl-primary-purple));
+  }
+}

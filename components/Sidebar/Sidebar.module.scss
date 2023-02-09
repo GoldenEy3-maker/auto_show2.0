@@ -49,11 +49,7 @@
 
           color: inherit;
 
-          transition: background-color 200ms ease;
 
-          &._redRipples [data-ripples-element] {
-            background-color: hsl(var(--hsl-primary-red));
-          }
 
           &Icon {
             flex-shrink: 0;
@@ -79,16 +75,6 @@
           }
         }
       }
-    }
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .sidebarNavListItemLink:hover {
-    background-color: hsla(var(--hsl-primary-purple-highlight));
-
-    &._redRipples {
-      background-color: hsla(var(--hsl-primary-red-highlight));
     }
   }
 }

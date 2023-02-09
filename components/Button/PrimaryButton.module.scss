@@ -13,7 +13,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .primaryButton:hover {
-    background-color: hsla(var(--hsl-primary-purple-highlight));
+  .primaryButton._isHovering:hover {
+    background-color: hsla(var(--hsla-primary-purple-highlight));
   }
 }

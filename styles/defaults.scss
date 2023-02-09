@@ -23,7 +23,7 @@ body {
 
 body {
   overflow-x: hidden;
-  
+
   min-height: 100vh;
 
   color: hsl(var(--hsl-white));
@@ -102,6 +102,8 @@ h6 {
 }
 
 input::-ms-clear {
+  width: 0;
+  height: 0;
   display: none;
 }
 

@@ -1,13 +1,17 @@
 import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
-import { setStaticCls } from '@/lib/setCls'
+import { setDynamicCls, setStaticCls } from '@/lib/setCls'
 import Link, { LinkProps } from 'next/link'
 import { HTMLProps, ReactNode, RefAttributes } from 'react'
 import styles from './PrimaryLink.module.scss'
 
-const { primaryLink } = styles
+const { primaryLink, _dangerType, _isHovering } = styles
+
+type TPrimaryLinkStyleType = 'normal' | 'danger'
 
 type TPrimaryLinkProps = {
   children: ReactNode
+  styleType?: TPrimaryLinkStyleType
+  isHovering?: boolean
 } & LinkProps &
   RefAttributes<HTMLAnchorElement> &
   HTMLProps<HTMLAnchorElement>
@@ -15,13 +19,19 @@ type TPrimaryLinkProps = {
 export default function PrimaryLink({
   className,
   children,
+  styleType,
+  isHovering = true,
   ...attr
 }: TPrimaryLinkProps) {
   const ripplesPointerClickHandler = useRipplesHighlight()
 
   return (
     <Link
-      className={setStaticCls(primaryLink, className)}
+      className={setDynamicCls({
+        stClasses: [primaryLink, className],
+        dnClasses: [[_dangerType], [_isHovering]],
+        conditions: [styleType === 'danger', !!isHovering],
+      })}
       onPointerDown={ripplesPointerClickHandler}
       {...attr}
     >

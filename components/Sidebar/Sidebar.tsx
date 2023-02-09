@@ -1,10 +1,8 @@
-'use client'
-
 import { ERouterPaths } from '@/typescript/enums'
 
 import PrimaryLink from '../Link/PrimaryLink'
 
-import { setDynamicCls, setStaticCls } from '@/lib/setCls'
+import { setDynamicCls } from '@/lib/setCls'
 
 import { AiOutlinePoweroff } from 'react-icons/ai'
 import { BiHomeAlt, BiSupport } from 'react-icons/bi'
@@ -12,7 +10,6 @@ import { BsCart2 } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
 import { GrCatalogOption } from 'react-icons/gr'
 import { MdFavoriteBorder, MdNotificationsNone } from 'react-icons/md'
-import { RxExit } from 'react-icons/rx'
 import { SlSettings } from 'react-icons/sl'
 
 import { useSidebarContext } from '@/context/SidebarContext'
@@ -27,7 +24,6 @@ const {
   sidebarNavList,
   sidebarNavListSeparater,
   sidebarNavListItemLinkText,
-  _redRipples,
   _collapsed,
 } = styles
 
@@ -78,9 +74,7 @@ export default function Sidebar() {
               <span className={sidebarNavListItemLinkIcon}>
                 <BiSupport />
               </span>
-              <p className={sidebarNavListItemLinkText}>
-                Поддержка
-              </p>
+              <p className={sidebarNavListItemLinkText}>Поддержка</p>
             </PrimaryLink>
           </li>
           <span className={sidebarNavListSeparater} />
@@ -150,7 +144,8 @@ export default function Sidebar() {
           <li className={sidebarNavListItem}>
             <PrimaryLink
               href='/'
-              className={setStaticCls(sidebarNavListItemLink, _redRipples)}
+              styleType='danger'
+              className={sidebarNavListItemLink}
               title='Выход'
             >
               <span className={sidebarNavListItemLinkIcon}>

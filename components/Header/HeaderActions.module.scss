@@ -1,0 +1,18 @@
+.headerActions {
+  flex: 1;
+  &List {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 0.5rem;
+  }
+
+  &Item {
+    flex-shrink: 0;
+    &Icon {
+      padding: 0.8rem;
+      font-size: 1.5rem;
+    }
+  }
+}

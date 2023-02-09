@@ -8,4 +8,19 @@
 
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
+
+  transition: background-color 200ms ease;
+
+  &._dangerType [data-ripples-element] {
+    background-color: hsl(var(--hsl-primary-red));
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryLink._isHovering:hover {
+    background-color: hsla(var(--hsla-primary-purple-highlight));
+    &._dangerType {
+      background-color: hsla(var(--hsla-primary-red-highlight));
+    }
+  }
 }
