@@ -1,0 +1,10 @@
+.headerActionsItem {
+  position: relative;
+
+  flex-shrink: 0;
+
+  &Icon {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+  }
+}

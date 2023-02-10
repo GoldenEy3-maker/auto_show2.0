@@ -43,7 +43,7 @@
 
   transform: translate(-50%, -50%);
 
-  animation: ripples 1000ms ease infinite;
+  animation: ripples ease infinite;
 }
 
 @keyframes ripples {

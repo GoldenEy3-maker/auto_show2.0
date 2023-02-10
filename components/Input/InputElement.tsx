@@ -29,7 +29,7 @@ export default function InputElement({
   setValue,
   ...attr
 }: IInputElementProps) {
-  const ripplesPointerDownHandler = useRipplesHighlight()
+  const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
 
   function resetValueHandler() {
     setValue('')
@@ -40,7 +40,7 @@ export default function InputElement({
       {leadingIcon ? (
         <label
           htmlFor={attr.id}
-          onPointerDown={ripplesPointerDownHandler}
+          onPointerDown={handleRipplesEffectPointerDownEvent}
           title='Фокус на поле ввода'
           className={inputElementLeadingIcon}
         >

@@ -6,14 +6,28 @@
 
   padding: 1rem;
 
+  color: inherit;
+
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
 
   transition: background-color 200ms ease;
+
+  &._isBackgroundColor {
+    background-color: hsla(var(--hsl-primary-purple), 0.15);
+
+    &._grayType {
+      background-color: hsla(var(--hsl-white), .1);
+    }
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .primaryButton._isHovering:hover {
     background-color: hsla(var(--hsla-primary-purple-highlight));
+
+    &._grayType {
+      background-color: hsla(var(--hsla-white-highlight));
+    }
   }
 }

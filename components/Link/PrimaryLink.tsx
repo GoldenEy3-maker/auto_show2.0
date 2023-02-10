@@ -19,11 +19,11 @@ type TPrimaryLinkProps = {
 export default function PrimaryLink({
   className,
   children,
-  styleType,
+  styleType = 'normal',
   isHovering = true,
   ...attr
 }: TPrimaryLinkProps) {
-  const ripplesPointerClickHandler = useRipplesHighlight()
+  const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
 
   return (
     <Link
@@ -32,7 +32,7 @@ export default function PrimaryLink({
         dnClasses: [[_dangerType], [_isHovering]],
         conditions: [styleType === 'danger', !!isHovering],
       })}
-      onPointerDown={ripplesPointerClickHandler}
+      onPointerDown={handleRipplesEffectPointerDownEvent}
       {...attr}
     >
       {children}

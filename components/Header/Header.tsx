@@ -1,7 +1,7 @@
 import useRefCallback from '@/hooks/refCallback'
 
+import HeaderActions from './Actions/HeaderActions'
 import styles from './Header.module.scss'
-import HeaderActions from './HeaderActions'
 import HeaderMenu from './HeaderMenu'
 import HeaderSearchForm from './HeaderSearchForm'
 

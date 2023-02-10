@@ -36,7 +36,12 @@ export default function HeaderSearchForm() {
         setValue={setSearchValue}
         onChange={changeSearchHandler}
       />
-      <PrimaryButton title='Поиск' type='submit'>
+      <PrimaryButton
+        title='Поиск'
+        type='submit'
+        styleType='gray'
+        isBackgroundColor={true}
+      >
         <FiSearch />
       </PrimaryButton>
     </form>

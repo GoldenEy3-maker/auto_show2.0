@@ -4,6 +4,7 @@
   --hsl-base-primary-red: 0, 70%;
 
   --hsl-white: var(--hsl-base-default), 100%;
+  --hsla-white-highlight: var(--hsl-white), .2;
   --hsl-black: var(--hsl-base-default), 0%;
   --hsl-primary-dark: var(--hsl-base-default), 13%;
   --hsl-secondary-dark: var(--hsl-base-default), 7%;
@@ -14,7 +15,7 @@
 
   --bf-primary-blur: 5px;
 
-  --bri-primary: 14px;
+  --bri-primary: 6px;
 
   --wh-container: 1400px;
   --pg-container: 1rem;

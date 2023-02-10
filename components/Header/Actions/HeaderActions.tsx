@@ -1,8 +1,9 @@
 import { BsCart2 } from 'react-icons/bs'
-import { CgProfile } from 'react-icons/cg'
 import { MdFavoriteBorder, MdNotificationsNone } from 'react-icons/md'
-import PrimaryButton from '../Button/PrimaryButton'
+
+import PrimaryButton from '../../Button/PrimaryButton'
 import styles from './HeaderActions.module.scss'
+import HeaderActionsProfile from './HeaderActionsProfile'
 
 const {
   headerActions,
@@ -16,25 +17,33 @@ export default function HeaderActions() {
     <div className={headerActions}>
       <ul className={headerActionsList}>
         <li className={headerActionsItem}>
-          <PrimaryButton type='button' className={headerActionsItemIcon} title='Избранное'>
+          <PrimaryButton
+            type='button'
+            className={headerActionsItemIcon}
+            title='Избранное'
+          >
             <MdFavoriteBorder />
           </PrimaryButton>
         </li>
         <li className={headerActionsItem}>
-          <PrimaryButton type='button' className={headerActionsItemIcon} title='Корзина'>
+          <PrimaryButton
+            type='button'
+            className={headerActionsItemIcon}
+            title='Корзина'
+          >
             <BsCart2 />
           </PrimaryButton>
         </li>
         <li className={headerActionsItem}>
-          <PrimaryButton type='button' className={headerActionsItemIcon} title='Уведомления'>
+          <PrimaryButton
+            type='button'
+            className={headerActionsItemIcon}
+            title='Уведомления'
+          >
             <MdNotificationsNone />
           </PrimaryButton>
         </li>
-        <li className={headerActionsItem}>
-          <PrimaryButton type='button' className={headerActionsItemIcon} title='Профиль'>
-            <CgProfile />
-          </PrimaryButton>
-        </li>
+        <HeaderActionsProfile />
       </ul>
     </div>
   )
