@@ -1,13 +1,13 @@
 import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryLink from '@/components/Link/PrimaryLink'
 import { ERouterPaths } from '@/typescript/enums'
-import Link from 'next/link'
+import Image from 'next/image'
 import { useRef } from 'react'
 import { AiOutlinePoweroff } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
-import { GrSolaris } from 'react-icons/gr'
+import { FaRegAddressBook } from 'react-icons/fa'
+import { GrLanguage, GrSolaris } from 'react-icons/gr'
 import { SlSettings } from 'react-icons/sl'
-import { WiSolarEclipse } from 'react-icons/wi'
 import HeaderActionsItem from './HeaderActionsItem'
 
 import styles from './HeaderActionsProfile.module.scss'
@@ -38,7 +38,8 @@ export default function HeaderActionsProfile() {
             href={ERouterPaths.ProfilePage}
             className={headerActionsProfileAvatar}
           >
-            <div></div>
+            <Image src="https://via.placeholder.com/100" alt="placeholder" width={100} height={100}/>
+            {/* <div></div> */}
           </PrimaryLink>
           <div className={headerActionsProfileInfo}>
             <p className={headerActionsProfileInfoName}>
@@ -53,6 +54,46 @@ export default function HeaderActionsProfile() {
         <span className={headerActionsProfile__separator}></span>
         <ul className={headerActionsProfileList}>
           <li className={headerActionsProfileItem}>
+            <PrimaryButton
+              className={headerActionsProfileItemLink}
+              title='Сменить тему'
+            >
+              <span className={headerActionsProfileItemLinkIcon}>
+                <GrSolaris />
+              </span>
+              <p>
+                Сменить тему: <span>Темная</span>
+              </p>
+            </PrimaryButton>
+          </li>
+          <li className={headerActionsProfileItem}>
+            <PrimaryButton
+              className={headerActionsProfileItemLink}
+              title='Выбрать язык'
+            >
+              <span className={headerActionsProfileItemLinkIcon}>
+                <GrLanguage />
+              </span>
+              <p>
+                Выбрать язык: <span>Русский язык</span>
+              </p>
+            </PrimaryButton>
+          </li>
+          <li className={headerActionsProfileItem}>
+            <PrimaryButton
+              className={headerActionsProfileItemLink}
+              title='Указать город'
+            >
+              <span className={headerActionsProfileItemLinkIcon}>
+                <FaRegAddressBook />
+              </span>
+              <p>
+                Указать город: <span>Барнаул</span>
+              </p>
+            </PrimaryButton>
+          </li>
+          <span className={headerActionsProfile__separator}></span>
+          <li className={headerActionsProfileItem}>
             <PrimaryLink
               href={ERouterPaths.SettingsPage}
               className={headerActionsProfileItemLink}
@@ -63,17 +104,6 @@ export default function HeaderActionsProfile() {
               </span>
               <p>Настройки</p>
             </PrimaryLink>
-          </li>
-          <li className={headerActionsProfileItem}>
-            <PrimaryButton
-              className={headerActionsProfileItemLink}
-              title='Сменить тему'
-            >
-              <span className={headerActionsProfileItemLinkIcon}>
-                <GrSolaris />
-              </span>
-              <p>Сменить тему</p>
-            </PrimaryButton>
           </li>
           <span className={headerActionsProfile__separator}></span>
           <li className={headerActionsProfileItem}>

@@ -9,7 +9,8 @@
   width: max-content;
   max-width: 400px;
 
-  padding-block: 0.5rem;
+  max-height: calc(100vh - 0.8rem - 4rem);
+  overflow: auto;
 
   background-color: hsla(var(--hsl-primary-dark), 0.8);
   backdrop-filter: blur(var(--bf-primary-blur));
@@ -28,22 +29,30 @@
   }
 
   &__wrapper {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
     display: flex;
+    // flex-direction: column;
     align-items: center;
 
     gap: 0.5rem;
 
-    padding-inline: 1rem;
+    padding: 1rem 0.5rem;
+
+    background-color: hsl(var(--hsl-primary-dark));
   }
 
   &Avatar {
-    border-radius: 50%;
+    max-width: fit-content;
+    margin: auto;
+
+    border-radius: 100px;
     padding: 0.5rem;
 
-    div {
-      width: 100px;
-      height: 100px;
-
+    img {
       border-radius: 50%;
 
       background-color: hsla(var(--hsla-white-highlight));
@@ -56,7 +65,7 @@
     gap: 0.2rem;
 
     font-size: 0.875rem;
-    color: hsla(var(--hsl-white), .7);
+    color: hsla(var(--hsl-white), 0.7);
 
     &Name {
       font-size: 1rem;
@@ -77,13 +86,14 @@
   }
 
   &List {
-    // padding-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   &Item {
     &Link {
       display: flex;
       align-items: center;
+      gap: 1rem;
 
       width: 100%;
 
@@ -91,10 +101,14 @@
 
       border-radius: 0;
 
-      gap: 1rem;
-
       &Icon {
         flex-shrink: 0;
+      }
+
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
