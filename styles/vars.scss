@@ -1,21 +1,27 @@
 :root {
   --hsl-base-default: 0, 0%;
   --hsl-base-primary-purple: 282, 69%;
-  --hsl-base-primary-red: 0, 70%;
+  --hsl-base-primary-red: 0, 80%;
+  --hsl-base-secondary-red: 0, 70%;
 
   --hsl-white: var(--hsl-base-default), 100%;
-  --hsla-white-highlight: var(--hsl-white), .2;
+  --hsla-white-highlight: var(--hsl-white), 0.2;
   --hsl-black: var(--hsl-base-default), 0%;
   --hsl-primary-dark: var(--hsl-base-default), 13%;
   --hsl-secondary-dark: var(--hsl-base-default), 7%;
   --hsl-primary-purple: var(--hsl-base-primary-purple), 60%;
-  --hsla-primary-purple-highlight: var(--hsl-primary-purple), .2;
-  --hsl-primary-red: var(--hsl-base-primary-red), 50%;
-  --hsla-primary-red-highlight: var(--hsl-primary-red), .2;
+  --hsla-primary-purple-highlight: var(--hsl-primary-purple), 0.2;
+  --hsl-primary-red: var(--hsl-base-primary-red), 60%;
+  --hsl-secondary-red: var(--hsl-base-secondary-red), 50%;
+  --hsla-secondary-red-highlight: var(--hsl-secondary-red), 0.2;
 
   --bf-primary-blur: 5px;
 
   --bri-primary: 6px;
+
+  --bxs-primary: 0 10px 20px;
+  --bxs-primary-hsl: var(--hsl-black);
+  --bxs-primary-hsla: var(--bxs-primary-hsl), .25;
 
   --wh-container: 1400px;
   --pg-container: 1rem;

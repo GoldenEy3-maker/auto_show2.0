@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <MainLayout title='Next 12 - Home Page'>
       <main className='homePage'>
-       <h1>Home Page</h1>
+        <h1>Home Page</h1>
       </main>
     </MainLayout>
   )

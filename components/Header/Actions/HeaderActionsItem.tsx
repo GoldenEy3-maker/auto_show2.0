@@ -1,55 +1,32 @@
-import type { ReactNode, RefObject } from 'react'
+import type { MouseEventHandler, ReactNode } from 'react'
 import { useEffect, useRef } from 'react'
 
 import PrimaryButton from '@/components/Button/PrimaryButton'
 
-import { CgProfile } from 'react-icons/cg'
-
-import styles from './HeaderActionsItem.module.scss'
+import styles from './HeaderActions.module.scss'
 
 const { headerActionsItem, headerActionsItemIcon } = styles
 
 interface IHeaderActionsItemProps {
   children: ReactNode
   icon: ReactNode
-  menuRef: RefObject<HTMLDivElement>
   title: string
+  onClickHandler: MouseEventHandler
 }
 
 export default function HeaderActionsItem({
   children,
-  menuRef,
   icon,
-  title
+  title,
+  onClickHandler,
 }: IHeaderActionsItemProps) {
-  function toggleMenu() {
-    if (menuRef.current)
-      menuRef.current['ariaHidden'] =
-        menuRef.current['ariaHidden'] === 'false' ? 'true' : 'false'
-  }
-
-  useEffect(() => {
-    function handleDocumentClick(event: MouseEvent) {
-      if (
-        !(event.target as HTMLLIElement).closest('.' + headerActionsItem) &&
-        menuRef.current
-      ) {
-        menuRef.current['ariaHidden'] = 'false'
-      }
-    }
-
-    document.addEventListener('click', handleDocumentClick)
-
-    return () => document.removeEventListener('click', handleDocumentClick)
-  }, [menuRef])
-
   return (
     <li className={headerActionsItem}>
       <PrimaryButton
         type='button'
         className={headerActionsItemIcon}
         title={title}
-        onClick={toggleMenu}
+        onClick={onClickHandler}
       >
         {icon}
       </PrimaryButton>

@@ -1,49 +1,82 @@
-import { BsCart2 } from 'react-icons/bs'
-import { MdFavoriteBorder, MdNotificationsNone } from 'react-icons/md'
+import { useEffect, useState } from 'react'
 
-import PrimaryButton from '../../Button/PrimaryButton'
-import styles from './HeaderActions.module.scss'
+import HeaderActionsNotify from './HeaderActionsNotify'
 import HeaderActionsProfile from './HeaderActionsProfile'
 
-const {
-  headerActions,
-  headerActionsList,
-  headerActionsItem,
-  headerActionsItemIcon,
-} = styles
+import styles from './HeaderActions.module.scss'
+import HeaderActionsCart from './HeaderActionsCart'
+import HeaderActionsFavorite from './HeaderActionsFavorite'
+
+const { headerActions, headerActionsList, headerActionsItem } = styles
+
+type TActionsMenuName = 'profile' | 'notify' | 'cart' | 'favorite'
+
+type TActionsMenuState = {
+  [k in TActionsMenuName]: boolean
+}
+
+export interface IActionsMenuProps {
+  state: boolean
+  toggleStateHandler: (stateName: TActionsMenuName) => void
+}
 
 export default function HeaderActions() {
+  const [actionsMenuState, setActionsMenuState] = useState<TActionsMenuState>({
+    profile: false,
+    notify: false,
+    cart: false,
+    favorite: false,
+  })
+
+  function closeAllMenus(exceptionName?: TActionsMenuName) {
+    setActionsMenuState((prev) => {
+      let state = prev
+
+      Object.keys(state).forEach((key) => {
+        if (key !== exceptionName) state[key as TActionsMenuName] = false
+      })
+
+      return { ...state }
+    })
+  }
+
+  function toggleStateHandler(stateName: TActionsMenuName) {
+    closeAllMenus(stateName)
+
+    setActionsMenuState((prev) => ({ ...prev, [stateName]: !prev[stateName] }))
+  }
+
+  useEffect(() => {
+    function handleDocumentClick(event: MouseEvent) {
+      if (!(event.target as HTMLLIElement).closest('.' + headerActionsItem)) {
+        closeAllMenus()
+      }
+    }
+
+    document.addEventListener('click', handleDocumentClick)
+
+    return () => document.removeEventListener('click', handleDocumentClick)
+  }, [])
+
   return (
     <div className={headerActions}>
       <ul className={headerActionsList}>
-        <li className={headerActionsItem}>
-          <PrimaryButton
-            type='button'
-            className={headerActionsItemIcon}
-            title='Избранное'
-          >
-            <MdFavoriteBorder />
-          </PrimaryButton>
-        </li>
-        <li className={headerActionsItem}>
-          <PrimaryButton
-            type='button'
-            className={headerActionsItemIcon}
-            title='Корзина'
-          >
-            <BsCart2 />
-          </PrimaryButton>
-        </li>
-        <li className={headerActionsItem}>
-          <PrimaryButton
-            type='button'
-            className={headerActionsItemIcon}
-            title='Уведомления'
-          >
-            <MdNotificationsNone />
-          </PrimaryButton>
-        </li>
-        <HeaderActionsProfile />
+        <HeaderActionsFavorite
+          state={actionsMenuState.favorite}
+          toggleStateHandler={toggleStateHandler}
+        />
+        <HeaderActionsCart
+          state={actionsMenuState.cart}
+          toggleStateHandler={toggleStateHandler}
+        />
+        <HeaderActionsNotify
+          state={actionsMenuState.notify}
+          toggleStateHandler={toggleStateHandler}
+        />
+        <HeaderActionsProfile
+          state={actionsMenuState.profile}
+          toggleStateHandler={toggleStateHandler}
+        />
       </ul>
     </div>
   )

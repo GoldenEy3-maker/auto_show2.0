@@ -8,7 +8,7 @@
   max-width: 250px;
   height: calc(100vh - var(--hg-header));
 
-  padding: 0.5rem;
+  padding-inline: 0.5rem;
 
   background-color: hsl(var(--hsl-primary-dark));
 
@@ -28,6 +28,8 @@
       flex-direction: column;
 
       gap: 0.5rem;
+
+      padding-block: 0.5rem;
 
       &Separater {
         display: block;

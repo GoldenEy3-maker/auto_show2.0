@@ -1,75 +1,35 @@
 .headerActionsProfile {
-  position: absolute;
-  top: calc(100% + 0.8rem);
-  right: 0;
-
-  opacity: 0;
-  visibility: hidden;
-
-  width: max-content;
-  max-width: 400px;
-
-  max-height: calc(100vh - 0.8rem - 4rem);
-  overflow: auto;
-
-  background-color: hsla(var(--hsl-primary-dark), 0.8);
-  backdrop-filter: blur(var(--bf-primary-blur));
-
-  border-radius: var(--bri-primary);
-
-  transform: scale(0.8);
-  transform-origin: right top;
-
-  transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease;
-
-  &[aria-hidden='true'] {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-  }
-
-  &__wrapper {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1;
-
-    display: flex;
-    // flex-direction: column;
-    align-items: center;
-
+  &Header {
     gap: 0.5rem;
 
     padding: 1rem 0.5rem;
 
-    background-color: hsl(var(--hsl-primary-dark));
-  }
+    &Avatar {
+      max-width: fit-content;
+      margin: auto;
 
-  &Avatar {
-    max-width: fit-content;
-    margin: auto;
+      border-radius: 100px;
+      padding: 0.5rem;
 
-    border-radius: 100px;
-    padding: 0.5rem;
+      img {
+        border-radius: 50%;
 
-    img {
-      border-radius: 50%;
-
-      background-color: hsla(var(--hsla-white-highlight));
+        background-color: hsla(var(--hsla-white-highlight));
+      }
     }
-  }
 
-  &Info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+    &Info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
 
-    font-size: 0.875rem;
-    color: hsla(var(--hsl-white), 0.7);
+      font-size: 0.875rem;
+      color: hsla(var(--hsl-white), 0.7);
 
-    &Name {
-      font-size: 1rem;
-      color: hsl(var(--hsl-white));
+      &Name {
+        font-size: 1rem;
+        color: hsl(var(--hsl-white));
+      }
     }
   }
 
