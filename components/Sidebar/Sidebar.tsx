@@ -2,7 +2,7 @@ import { ERouterPaths } from '@/typescript/enums'
 
 import PrimaryLink from '../Link/PrimaryLink'
 
-import { setDynamicCls } from '@/lib/setCls'
+import { setDynamicCls } from '@/utils/setCls'
 
 import { AiOutlinePoweroff } from 'react-icons/ai'
 import { BiHomeAlt, BiSupport } from 'react-icons/bi'

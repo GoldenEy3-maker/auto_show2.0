@@ -7,7 +7,7 @@ import Sidebar from '@/components/Sidebar/Sidebar'
 
 import { SidebarContextProvider } from '@/context/SidebarContext'
 
-import { setStaticCls } from '@/lib/setCls'
+import { setStaticCls } from '@/utils/setCls'
 
 import '@/styles/globals.scss'
 

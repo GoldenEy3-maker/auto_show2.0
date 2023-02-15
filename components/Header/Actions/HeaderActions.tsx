@@ -1,82 +1,86 @@
 import { useEffect, useState } from 'react'
 
-import HeaderActionsNotify from './HeaderActionsNotify'
-import HeaderActionsProfile from './HeaderActionsProfile'
+import HeaderActionsNotify from './Notify/HeaderActionsNotify'
+import HeaderActionsProfile from './Profile/HeaderActionsProfile'
 
+import { HeaderActionsProfileContextProvider } from '@/context/HeaderActionsProfileContext'
+import HeaderActionsCart from './Cart/HeaderActionsCart'
+import HeaderActionsFavorite from './Favorite/HeaderActionsFavorite'
 import styles from './HeaderActions.module.scss'
-import HeaderActionsCart from './HeaderActionsCart'
-import HeaderActionsFavorite from './HeaderActionsFavorite'
 
-const { headerActions, headerActionsList, headerActionsItem } = styles
+type HeaderActionsMenuName = 'profile' | 'notify' | 'cart' | 'favorite'
 
-type TActionsMenuName = 'profile' | 'notify' | 'cart' | 'favorite'
-
-type TActionsMenuState = {
-  [k in TActionsMenuName]: boolean
+type HeaderActionsMenuState = {
+  [k in HeaderActionsMenuName]: boolean
 }
 
-export interface IActionsMenuProps {
+export interface HeaderActionsMenuProps {
   state: boolean
-  toggleStateHandler: (stateName: TActionsMenuName) => void
+  toggleMenuStateHandler: (menu: HeaderActionsMenuName) => void
 }
 
 export default function HeaderActions() {
-  const [actionsMenuState, setActionsMenuState] = useState<TActionsMenuState>({
-    profile: false,
-    notify: false,
-    cart: false,
-    favorite: false,
-  })
+  const [actionsMenuState, setActionsMenuState] =
+    useState<HeaderActionsMenuState>({
+      profile: false,
+      notify: false,
+      cart: false,
+      favorite: false,
+    })
 
-  function closeAllMenus(exceptionName?: TActionsMenuName) {
+  function closeActionsMenus(exceptionMenu?: HeaderActionsMenuName) {
     setActionsMenuState((prev) => {
       let state = prev
 
       Object.keys(state).forEach((key) => {
-        if (key !== exceptionName) state[key as TActionsMenuName] = false
+        if (key !== exceptionMenu) state[key as HeaderActionsMenuName] = false
       })
 
       return { ...state }
     })
   }
 
-  function toggleStateHandler(stateName: TActionsMenuName) {
-    closeAllMenus(stateName)
+  function toggleMenuStateHandler(menu: HeaderActionsMenuName) {
+    closeActionsMenus(menu)
 
-    setActionsMenuState((prev) => ({ ...prev, [stateName]: !prev[stateName] }))
+    setActionsMenuState((prev) => ({ ...prev, [menu]: !prev[menu] }))
   }
 
   useEffect(() => {
-    function handleDocumentClick(event: MouseEvent) {
-      if (!(event.target as HTMLLIElement).closest('.' + headerActionsItem)) {
-        closeAllMenus()
+    function documentClickHandler(event: MouseEvent) {
+      if (
+        !(event.target as HTMLLIElement).closest('.' + styles.headerActionsItem)
+      ) {
+        closeActionsMenus()
       }
     }
 
-    document.addEventListener('click', handleDocumentClick)
+    document.addEventListener('click', documentClickHandler)
 
-    return () => document.removeEventListener('click', handleDocumentClick)
+    return () => document.removeEventListener('click', documentClickHandler)
   }, [])
 
   return (
-    <div className={headerActions}>
-      <ul className={headerActionsList}>
+    <div className={styles.headerActions}>
+      <ul className={styles.headerActionsList}>
         <HeaderActionsFavorite
           state={actionsMenuState.favorite}
-          toggleStateHandler={toggleStateHandler}
+          toggleMenuStateHandler={toggleMenuStateHandler}
         />
         <HeaderActionsCart
           state={actionsMenuState.cart}
-          toggleStateHandler={toggleStateHandler}
+          toggleMenuStateHandler={toggleMenuStateHandler}
         />
         <HeaderActionsNotify
           state={actionsMenuState.notify}
-          toggleStateHandler={toggleStateHandler}
+          toggleMenuStateHandler={toggleMenuStateHandler}
         />
-        <HeaderActionsProfile
-          state={actionsMenuState.profile}
-          toggleStateHandler={toggleStateHandler}
-        />
+        <HeaderActionsProfileContextProvider>
+          <HeaderActionsProfile
+            state={actionsMenuState.profile}
+            toggleMenuStateHandler={toggleMenuStateHandler}
+          />
+        </HeaderActionsProfileContextProvider>
       </ul>
     </div>
   )

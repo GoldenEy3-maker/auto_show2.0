@@ -1,13 +1,10 @@
 import type { MouseEventHandler, ReactNode } from 'react'
-import { useEffect, useRef } from 'react'
 
 import PrimaryButton from '@/components/Button/PrimaryButton'
 
 import styles from './HeaderActions.module.scss'
 
-const { headerActionsItem, headerActionsItemIcon } = styles
-
-interface IHeaderActionsItemProps {
+interface HeaderActionsItemProps {
   children: ReactNode
   icon: ReactNode
   title: string
@@ -19,12 +16,12 @@ export default function HeaderActionsItem({
   icon,
   title,
   onClickHandler,
-}: IHeaderActionsItemProps) {
+}: HeaderActionsItemProps) {
   return (
-    <li className={headerActionsItem}>
+    <li className={styles.headerActionsItem}>
       <PrimaryButton
         type='button'
-        className={headerActionsItemIcon}
+        className={styles.headerActionsItemIcon}
         title={title}
         onClick={onClickHandler}
       >

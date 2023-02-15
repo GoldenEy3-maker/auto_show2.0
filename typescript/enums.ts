@@ -8,3 +8,9 @@ export const enum ERouterPaths {
   NotifyPage = '/notify',
   SettingsPage = '/settings'
 }
+
+export const enum LocalStorageNames {
+  SiteTheme = 'site-theme',
+  DocumentLang = 'document-lang',
+  UserCity = 'user-city'
+}

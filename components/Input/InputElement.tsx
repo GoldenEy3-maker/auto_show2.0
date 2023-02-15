@@ -6,7 +6,7 @@ import type {
 } from 'react'
 
 import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
-import { setStaticCls } from '@/lib/setCls'
+import { setStaticCls } from '@/utils/setCls'
 import PrimaryButton from '../Button/PrimaryButton'
 
 import { IoMdClose } from 'react-icons/io'

@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import Sidebar from '@/components/Sidebar/Sidebar'
-import { setStaticCls } from '@/lib/setCls'
+import { setStaticCls } from '@/utils/setCls'
 import Head from 'next/head'
 import { ReactNode } from 'react'
 

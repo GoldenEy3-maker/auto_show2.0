@@ -1,0 +1,45 @@
+.radioSelectElement {
+  display: flex;
+
+  label {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    padding: 0.8rem 1.5rem;
+
+    width: 100%;
+
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+
+    transition: background-color 200ms ease;
+  }
+
+  &:focus-within {
+    label {
+      background-color: hsla(var(--hsla-secondary-purple-highlight));
+    }
+  }
+
+  &Icon {
+    display: inline-block;
+
+    font-size: 1.5rem;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    label:hover {
+      background-color: hsla(var(--hsla-primary-purple-highlight));
+    }
+  }
+}

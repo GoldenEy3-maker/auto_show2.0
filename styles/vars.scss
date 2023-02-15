@@ -10,7 +10,8 @@
   --hsl-primary-dark: var(--hsl-base-default), 13%;
   --hsl-secondary-dark: var(--hsl-base-default), 7%;
   --hsl-primary-purple: var(--hsl-base-primary-purple), 60%;
-  --hsla-primary-purple-highlight: var(--hsl-primary-purple), 0.2;
+  --hsla-primary-purple-highlight: var(--hsl-primary-purple), 0.3;
+  --hsla-secondary-purple-highlight: var(--hsl-primary-purple), 0.2;
   --hsl-primary-red: var(--hsl-base-primary-red), 60%;
   --hsl-secondary-red: var(--hsl-base-secondary-red), 50%;
   --hsla-secondary-red-highlight: var(--hsl-secondary-red), 0.2;
@@ -21,7 +22,7 @@
 
   --bxs-primary: 0 10px 20px;
   --bxs-primary-hsl: var(--hsl-black);
-  --bxs-primary-hsla: var(--bxs-primary-hsl), .25;
+  --bxs-primary-hsla: var(--bxs-primary-hsl), 0.25;
 
   --wh-container: 1400px;
   --pg-container: 1rem;

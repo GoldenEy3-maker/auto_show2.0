@@ -1,4 +1,4 @@
-import { setStaticCls } from '@/lib/setCls'
+import { setStaticCls } from '@/utils/setCls'
 import styles from './Footer.module.scss'
 
 const {footer} = styles

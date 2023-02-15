@@ -1,5 +1,5 @@
 import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
-import { setDynamicCls } from '@/lib/setCls'
+import { setDynamicCls } from '@/utils/setCls'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import styles from './PrimaryButton.module.scss'
 

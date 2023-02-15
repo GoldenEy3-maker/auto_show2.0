@@ -1,18 +1,21 @@
 import { createContext, useContext, useState } from 'react'
 
+import { generateContextError } from '@/utils/contextError'
 import type { Dispatch, ReactNode, SetStateAction } from 'react'
 
-interface ISidebarContextProviderProps {
+interface SidebarContextProviderProps {
   children: ReactNode
 }
 
-type TSidebarContext = [boolean, Dispatch<SetStateAction<boolean>>] | undefined
+type SidebarContextType =
+  | [boolean, Dispatch<SetStateAction<boolean>>]
+  | undefined
 
-const SidebarContext = createContext<TSidebarContext>(undefined)
+const SidebarContext = createContext<SidebarContextType>(undefined)
 
 export function SidebarContextProvider({
   children,
-}: ISidebarContextProviderProps) {
+}: SidebarContextProviderProps) {
   const sidebarContextState = useState(true)
 
   return (
@@ -25,11 +28,8 @@ export function SidebarContextProvider({
 export function useSidebarContext() {
   const context = useContext(SidebarContext)
 
-  if (!context) {
-    throw new Error(
-      'useSidebarContext must be used within SidebarContextProvider'
-    )
-  }
+  if (!context)
+    throw generateContextError('useSidebarContext', 'SidebarContextProvider')
 
   return context
 }

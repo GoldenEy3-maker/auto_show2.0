@@ -1,5 +1,5 @@
 import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
-import { setDynamicCls, setStaticCls } from '@/lib/setCls'
+import { setDynamicCls, setStaticCls } from '@/utils/setCls'
 import Link, { LinkProps } from 'next/link'
 import { HTMLProps, ReactNode, RefAttributes } from 'react'
 import styles from './PrimaryLink.module.scss'
