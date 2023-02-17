@@ -13,10 +13,7 @@ import { IoMdClose } from 'react-icons/io'
 
 import styles from './InputElement.module.scss'
 
-const { inputElement, inputElementTrailingIcon, inputElementLeadingIcon } =
-  styles
-
-interface IInputElementProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputElementProps extends InputHTMLAttributes<HTMLInputElement> {
   leadingIcon: ReactNode
   trailingResetButton?: boolean
   setValue: Dispatch<SetStateAction<string>>
@@ -28,7 +25,7 @@ export default function InputElement({
   trailingResetButton,
   setValue,
   ...attr
-}: IInputElementProps) {
+}: InputElementProps) {
   const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
 
   function resetValueHandler() {
@@ -36,13 +33,13 @@ export default function InputElement({
   }
 
   return (
-    <div className={setStaticCls(inputElement, className)}>
+    <div className={setStaticCls(styles.inputElement, className)}>
       {leadingIcon ? (
         <label
           htmlFor={attr.id}
           onPointerDown={handleRipplesEffectPointerDownEvent}
           title='Фокус на поле ввода'
-          className={inputElementLeadingIcon}
+          className={styles.inputElementLeadingIcon}
         >
           {leadingIcon}
         </label>
@@ -51,7 +48,7 @@ export default function InputElement({
       {trailingResetButton && !!attr.value ? (
         <PrimaryButton
           type='reset'
-          className={inputElementTrailingIcon}
+          className={styles.inputElementTrailingIcon}
           title='Отчистить поле ввода'
           onClick={resetValueHandler}
         >

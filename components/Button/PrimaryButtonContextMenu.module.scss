@@ -1,0 +1,44 @@
+.primaryButtonContextMenu {
+  position: relative;
+
+  &Wrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    border-radius: var(--bri-primary);
+
+    transform-origin: top right;
+    transform: scale(0.8);
+
+    max-width: 300px;
+
+    padding-block: 0.5rem;
+
+    background-color: hsla(var(--hsl-primary-dark), 0.8);
+    backdrop-filter: blur(var(--bf-primary-blur));
+
+    box-shadow: var(--bxs-primary) hsla(var(--bxs-primary-hsla));
+
+    transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease;
+
+    button,
+    a {
+      border-radius: 0;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &._open {
+      opacity: 1;
+      visibility: visible;
+
+      transform: scale(1);
+    }
+  }
+}

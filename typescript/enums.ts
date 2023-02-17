@@ -1,4 +1,4 @@
-export const enum ERouterPaths {
+export const enum RouterPaths {
   HomePage = '/',
   CatalogPage = '/catalog',
   SupportPage = '/support',

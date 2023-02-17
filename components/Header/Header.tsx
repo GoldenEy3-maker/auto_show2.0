@@ -5,8 +5,6 @@ import styles from './Header.module.scss'
 import HeaderMenu from './HeaderMenu'
 import HeaderSearchForm from './HeaderSearchForm'
 
-const { header } = styles
-
 export default function Header() {
   const [headerNodeRefCallback] = useRefCallback((node) => {
     document.body.style.setProperty(
@@ -16,7 +14,7 @@ export default function Header() {
   })
 
   return (
-    <header className={header} ref={headerNodeRefCallback}>
+    <header className={styles.header} ref={headerNodeRefCallback}>
       <HeaderMenu />
       <HeaderSearchForm />
       <HeaderActions />

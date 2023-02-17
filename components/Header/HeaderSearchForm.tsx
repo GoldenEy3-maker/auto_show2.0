@@ -8,8 +8,6 @@ import { FiSearch } from 'react-icons/fi'
 
 import styles from './HeaderSearchForm.module.scss'
 
-const { headerSearchForm, headerSearchFormInput } = styles
-
 export default function HeaderSearchForm() {
   const [searchValue, setSearchValue] = useState('')
 
@@ -22,7 +20,11 @@ export default function HeaderSearchForm() {
   }
 
   return (
-    <form action='/' className={headerSearchForm} onSubmit={submitFormHandler}>
+    <form
+      action='/'
+      className={styles.headerSearchForm}
+      onSubmit={submitFormHandler}
+    >
       <InputElement
         type='text'
         name='search'
@@ -31,7 +33,7 @@ export default function HeaderSearchForm() {
         title='Поиск'
         leadingIcon={<FiSearch />}
         trailingResetButton={true}
-        className={headerSearchFormInput}
+        className={styles.headerSearchFormInput}
         value={searchValue}
         setValue={setSearchValue}
         onChange={changeSearchHandler}

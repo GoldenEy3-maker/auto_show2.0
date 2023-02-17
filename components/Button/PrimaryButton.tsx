@@ -3,14 +3,12 @@ import { setDynamicCls } from '@/utils/setCls'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import styles from './PrimaryButton.module.scss'
 
-const { primaryButton, _isHovering, _grayType, _isBackgroundColor } = styles
+type PrimaryButtonStyleType = 'normal' | 'gray'
 
-type TPrimaryButtonStyleType = 'normal' | 'gray'
-
-interface IPrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   isHovering?: boolean
-  styleType?: TPrimaryButtonStyleType
+  styleType?: PrimaryButtonStyleType
   isBackgroundColor?: boolean
 }
 
@@ -46,14 +44,18 @@ export default function PrimaryButton({
   isBackgroundColor = false,
   styleType = 'normal',
   ...attr
-}: IPrimaryButtonProps) {
+}: PrimaryButtonProps) {
   const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
 
   return (
     <button
       className={setDynamicCls({
-        stClasses: [primaryButton, className],
-        dnClasses: [[_isHovering], [_grayType], [_isBackgroundColor]],
+        stClasses: [styles.primaryButton, className],
+        dnClasses: [
+          [styles._isHovering],
+          [styles._grayType],
+          [styles._isBackgroundColor],
+        ],
         conditions: [!!isHovering, styleType === 'gray', isBackgroundColor],
       })}
       onPointerDown={handleRipplesEffectPointerDownEvent}

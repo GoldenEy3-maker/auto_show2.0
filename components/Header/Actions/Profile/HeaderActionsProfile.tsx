@@ -1,6 +1,6 @@
 import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryLink from '@/components/Link/PrimaryLink'
-import { ERouterPaths } from '@/typescript/enums'
+import { RouterPaths } from '@/typescript/enums'
 import Image from 'next/image'
 import { MouseEvent, MouseEventHandler, useState } from 'react'
 import { AiOutlinePoweroff } from 'react-icons/ai'
@@ -17,10 +17,10 @@ import headerActionsStyles from '../HeaderActions.module.scss'
 import styles from './HeaderActionsProfile.module.scss'
 import HeaderActionsProfileCity from './HeaderActionsProfileCity'
 import HeaderActionsProfileLang, {
-  DocumentLangState
+    DocumentLangState
 } from './HeaderActionsProfileLang'
 import HeaderActionsProfileTheme, {
-  SiteThemeState
+    SiteThemeState
 } from './HeaderActionsProfileTheme'
 
 type HeaderActionsProfileSelectedMenuState =
@@ -106,7 +106,7 @@ export default function HeaderActionsProfile({
               )}
             >
               <PrimaryLink
-                href={ERouterPaths.ProfilePage}
+                href={RouterPaths.ProfilePage}
                 className={styles.headerActionsProfileHeaderAvatar}
               >
                 <Image
@@ -173,7 +173,7 @@ export default function HeaderActionsProfile({
               <span className={styles.headerActionsProfile__separator}></span>
               <li>
                 <PrimaryLink
-                  href={ERouterPaths.SettingsPage}
+                  href={RouterPaths.SettingsPage}
                   className={styles.headerActionsProfileItemLink}
                   title='Настройки'
                 >
@@ -186,7 +186,7 @@ export default function HeaderActionsProfile({
               <span className={styles.headerActionsProfile__separator}></span>
               <li>
                 <PrimaryLink
-                  href={ERouterPaths.HomePage}
+                  href={RouterPaths.HomePage}
                   className={styles.headerActionsProfileItemLink}
                   styleType='danger'
                   title='Выход'

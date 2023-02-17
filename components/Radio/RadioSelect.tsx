@@ -3,11 +3,9 @@ import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
 import { setStaticCls } from '@/utils/setCls'
 import { InputHTMLAttributes } from 'react'
 import { BsCheck } from 'react-icons/bs'
-import radioSelectStyles from './RadioSelect.module.scss'
+import styles from './RadioSelect.module.scss'
 
-const { radioSelectElement, radioSelectElementIcon } = radioSelectStyles
-
-interface IRadioSelectProps extends InputHTMLAttributes<HTMLInputElement> {
+interface RadioSelectProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
 }
 
@@ -17,11 +15,11 @@ export default function RadioSelect({
   className,
   checked,
   ...restAttrs
-}: IRadioSelectProps) {
+}: RadioSelectProps) {
   const ripplesEffectPointerDownHandler = useRipplesHighlight()
 
   return (
-    <div className={setStaticCls(radioSelectElement, className)}>
+    <div className={setStaticCls(styles.radioSelectElement, className)}>
       <label
         htmlFor={id}
         onPointerDown={ripplesEffectPointerDownHandler}
@@ -29,7 +27,7 @@ export default function RadioSelect({
       >
         <p>{label}</p>
         {checked ? (
-          <span className={radioSelectElementIcon}>
+          <span className={styles.radioSelectElementIcon}>
             <BsCheck />
           </span>
         ) : null}

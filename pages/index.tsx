@@ -1,8 +1,6 @@
 import MainLayout from '@/layouts/MainLayout'
 import styles from '@/styles/pages/Home.module.scss'
 
-const { homePageSection } = styles
-
 export default function HomePage() {
   return (
     <MainLayout title='Next 12 - Home Page'>

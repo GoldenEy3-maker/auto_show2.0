@@ -1,4 +1,4 @@
-import { ERouterPaths } from '@/typescript/enums'
+import { RouterPaths } from '@/typescript/enums'
 
 import PrimaryLink from '../Link/PrimaryLink'
 
@@ -15,143 +15,131 @@ import { SlSettings } from 'react-icons/sl'
 import { useSidebarContext } from '@/context/SidebarContext'
 import styles from './Sidebar.module.scss'
 
-const {
-  sidebar,
-  sidebarNavListItemLink,
-  sidebarNavListItemLinkIcon,
-  sidebarNavListItem,
-  sidebarNav,
-  sidebarNavList,
-  sidebarNavListSeparater,
-  sidebarNavListItemLinkText,
-  _collapsed,
-} = styles
-
 export default function Sidebar() {
   const [isSidebarExpanded] = useSidebarContext()
 
   return (
     <aside
       className={setDynamicCls({
-        stClasses: [sidebar],
-        dnClasses: [[_collapsed]],
+        stClasses: [styles.sidebar],
+        dnClasses: [[styles._collapsed]],
         conditions: [!isSidebarExpanded],
       })}
     >
-      <nav className={sidebarNav}>
-        <ul className={sidebarNavList}>
-          <li className={sidebarNavListItem}>
+      <nav className={styles.sidebarNav}>
+        <ul className={styles.sidebarNavList}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.HomePage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.HomePage}
+              className={styles.sidebarNavListItemLink}
               title='Главная'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <BiHomeAlt />
               </span>
-              <p className={sidebarNavListItemLinkText}>Главная</p>
+              <p className={styles.sidebarNavListItemLinkText}>Главная</p>
             </PrimaryLink>
           </li>
-          <li className={sidebarNavListItem}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.CatalogPage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.CatalogPage}
+              className={styles.sidebarNavListItemLink}
               title='Каталог'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <GrCatalogOption />
               </span>
-              <p className={sidebarNavListItemLinkText}>Каталог</p>
+              <p className={styles.sidebarNavListItemLinkText}>Каталог</p>
             </PrimaryLink>
           </li>
 
-          <li className={sidebarNavListItem}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.SupportPage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.SupportPage}
+              className={styles.sidebarNavListItemLink}
               title='Поддержка'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <BiSupport />
               </span>
-              <p className={sidebarNavListItemLinkText}>Поддержка</p>
+              <p className={styles.sidebarNavListItemLinkText}>Поддержка</p>
             </PrimaryLink>
           </li>
-          <span className={sidebarNavListSeparater} />
-          <li className={sidebarNavListItem}>
+          <span className={styles.sidebarNavListSeparater} />
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.ProfilePage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.ProfilePage}
+              className={styles.sidebarNavListItemLink}
               title='Профиль'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <CgProfile />
               </span>
-              <p className={sidebarNavListItemLinkText}>Профиль</p>
+              <p className={styles.sidebarNavListItemLinkText}>Профиль</p>
             </PrimaryLink>
           </li>
-          <li className={sidebarNavListItem}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.CartPage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.CartPage}
+              className={styles.sidebarNavListItemLink}
               title='Корзина'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <BsCart2 />
               </span>
-              <p className={sidebarNavListItemLinkText}>Корзина</p>
+              <p className={styles.sidebarNavListItemLinkText}>Корзина</p>
             </PrimaryLink>
           </li>
-          <li className={sidebarNavListItem}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.FavoritesPage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.FavoritesPage}
+              className={styles.sidebarNavListItemLink}
               title='Избранное'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <MdFavoriteBorder />
               </span>
-              <p className={sidebarNavListItemLinkText}>Избранное</p>
+              <p className={styles.sidebarNavListItemLinkText}>Избранное</p>
             </PrimaryLink>
           </li>
-          <li className={sidebarNavListItem}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.NotifyPage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.NotifyPage}
+              className={styles.sidebarNavListItemLink}
               title='Уведомления'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <MdNotificationsNone />
               </span>
-              <p className={sidebarNavListItemLinkText}>Уведомления</p>
+              <p className={styles.sidebarNavListItemLinkText}>Уведомления</p>
             </PrimaryLink>
           </li>
-          <li className={sidebarNavListItem}>
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={ERouterPaths.SettingsPage}
-              className={sidebarNavListItemLink}
+              href={RouterPaths.SettingsPage}
+              className={styles.sidebarNavListItemLink}
               title='Настройки'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <SlSettings />
               </span>
-              <p className={sidebarNavListItemLinkText}>Настройки</p>
+              <p className={styles.sidebarNavListItemLinkText}>Настройки</p>
             </PrimaryLink>
           </li>
         </ul>
-        <ul className={sidebarNavList}>
-          <span className={sidebarNavListSeparater} />
-          <li className={sidebarNavListItem}>
+        <ul className={styles.sidebarNavList}>
+          <span className={styles.sidebarNavListSeparater} />
+          <li className={styles.sidebarNavListItem}>
             <PrimaryLink
               href='/'
               styleType='danger'
-              className={sidebarNavListItemLink}
+              className={styles.sidebarNavListItemLink}
               title='Выход'
             >
-              <span className={sidebarNavListItemLinkIcon}>
+              <span className={styles.sidebarNavListItemLinkIcon}>
                 <AiOutlinePoweroff />
               </span>
-              <p className={sidebarNavListItemLinkText}>Выход</p>
+              <p className={styles.sidebarNavListItemLinkText}>Выход</p>
             </PrimaryLink>
           </li>
         </ul>
