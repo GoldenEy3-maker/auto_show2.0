@@ -1,0 +1,118 @@
+.checkboxElement {
+  display: flex;
+
+  transition: background-color 200ms ease;
+
+  label {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 0.7rem 1.5rem;
+
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+
+    transition: background-color 200ms ease;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+  }
+
+  &Switcher {
+    position: relative;
+
+    width: 2.2rem;
+    height: 0.7rem;
+
+    border-radius: 100px;
+
+    background-color: hsl(var(--hsl-secondary-dark));
+
+    transition: background-color 200ms ease;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 0;
+
+      width: calc(1rem + 2px);
+      height: calc(1rem + 2px);
+
+      border: 2px solid hsl(var(--hsl-secondary-dark));
+
+      border-radius: 50%;
+
+      transform: translate(0, -50%);
+
+      background-color: hsl(var(--hsl-white));
+
+      transition: background-color 200ms ease, left 200ms ease,
+        border-color 200ms ease;
+    }
+
+    ._checked & {
+      background-color: hsl(var(--hsl-primary-purple));
+
+      span {
+        left: calc(1rem + 2px);
+
+        background-color: hsl(var(--hsl-primary-dark));
+
+        border-color: hsl(var(--hsl-primary-purple));
+      }
+    }
+  }
+
+  &Check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(1.2rem + 2px);
+    height: calc(1.2rem + 2px);
+
+    border: 2px solid hsl(var(--hsl-white));
+
+    border-radius: var(--bri-primary);
+
+    transition: border-color 200ms ease, background-color 200ms ease;
+
+    ._checked & {
+      span {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translate(0, 0);
+      }
+    }
+
+    span {
+      opacity: 0;
+      visibility: hidden;
+
+      transform: translate(-10px, 0);
+
+      transition: opacity 200ms ease, visibility 200ms ease,
+        transform 200ms ease;
+    }
+  }
+
+  &:focus-within {
+    outline: none;
+
+    background-color: hsla(var(--hsla-secondary-purple-highlight));
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    label:hover {
+      background-color: hsla(var(--hsla-primary-purple-highlight));
+    }
+  }
+}

@@ -5,12 +5,12 @@ import { setStaticCls } from '@/utils/setCls'
 import Head from 'next/head'
 import { ReactNode } from 'react'
 
-interface IMainLayoutProps {
+interface MainLayoutProps {
   children: ReactNode
   title?: string
 }
 
-export default function MainLayout({ children, title }: IMainLayoutProps) {
+export default function MainLayout({ children, title }: MainLayoutProps) {
   return (
     <>
       <Head>

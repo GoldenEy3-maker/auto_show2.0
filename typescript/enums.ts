@@ -12,5 +12,6 @@ export const enum RouterPaths {
 export const enum LocalStorageNames {
   SiteTheme = 'site-theme',
   DocumentLang = 'document-lang',
-  UserCity = 'user-city'
+  UserCity = 'user-city',
+  IsNotifyOff = 'notify-off'
 }

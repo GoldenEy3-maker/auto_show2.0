@@ -18,6 +18,7 @@ export default function HeaderMenu() {
         type='button'
         title='Развернуть/Свернуть боковое меню'
         onClick={toggleBurgerClickHandler}
+        className={styles.headerMenuBurgerButton}
       >
         <div className={styles.headerMenuBurger}>
           <span className={styles.headerMenuBurgerLine}></span>

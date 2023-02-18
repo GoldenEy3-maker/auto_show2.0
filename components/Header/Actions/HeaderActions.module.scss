@@ -31,12 +31,12 @@
     visibility: hidden;
 
     width: max-content;
-    max-width: 550px;
+    max-width: 500px;
 
-    max-height: calc(100vh - 0.8rem - 4rem);
+    max-height: calc(100vh - 5rem);
     overflow: auto;
 
-    background-color: hsla(var(--hsl-primary-dark), 0.8);
+    background-color: hsla(var(--hsla-primary-dark));
     backdrop-filter: blur(var(--bf-primary-blur));
 
     border-radius: var(--bri-primary);
@@ -70,7 +70,7 @@
 
       padding: 0.5rem 1.5rem;
 
-      background-color: hsl(var(--hsl-base-default), 9%);
+      background-color: hsl(var(--hsl-secondary-dark));
     }
 
     &Footer {
@@ -86,7 +86,7 @@
 
       padding: 0.5rem 1.5rem;
 
-      background-color: hsl(var(--hsl-base-default), 9%);
+      background-color: hsl(var(--hsl-secondary-dark));
     }
   }
 }

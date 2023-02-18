@@ -27,7 +27,7 @@ body {
   min-height: 100vh;
 
   color: hsl(var(--hsl-white));
-  background-color: hsl(var(--hsl-secondary-dark));
+  background-color: hsl(var(--hsl-base-default), 6%);
 
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;

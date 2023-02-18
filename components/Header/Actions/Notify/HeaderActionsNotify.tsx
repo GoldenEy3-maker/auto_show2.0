@@ -8,11 +8,11 @@ import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryButtonContextMenu from '@/components/Button/PrimaryButtonContextMenu'
 import PrimaryLink from '@/components/Link/PrimaryLink'
 import Image from 'next/image'
-import { useState } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
 import { FiMoreVertical } from 'react-icons/fi'
 import headerActionsStyles from '../HeaderActions.module.scss'
 import styles from './HeaderActionsNotify.module.scss'
+import HeaderActionsNotifyOffCheckbox from './HeaderActionsNotifyOffCheckbox'
 
 interface HeaderActionsNotify extends HeaderActionsMenuProps {}
 
@@ -52,9 +52,7 @@ export default function HeaderActionsNotify({
             >
               <ul>
                 <li>
-                  <PrimaryLink href='/' title='Отключить уведомления'>
-                    Отключить уведомления
-                  </PrimaryLink>
+                  <HeaderActionsNotifyOffCheckbox />
                 </li>
                 <li>
                   <PrimaryLink
@@ -91,7 +89,10 @@ export default function HeaderActionsNotify({
                 <div className={styles.headerActionsNotifyItemContent}>
                   <h3 className={styles.headerActionsNotifyItemTitle}>
                     <div className={styles.headerActionsNotifyItemTitleText}>
-                      <p>Lorem ipsum test dwadwa dwadaw Lorem ipsum test dwadwa dwadaw</p>
+                      <p>
+                        Lorem ipsum test dwadwa dwadaw Lorem ipsum test dwadwa
+                        dwadaw
+                      </p>
                     </div>
 
                     <span

@@ -10,7 +10,7 @@
 
   padding-inline: 0.5rem;
 
-  background-color: hsl(var(--hsl-primary-dark));
+  background-color: hsla(var(--hsla-primary-dark));
 
   overflow: auto;
 
@@ -50,8 +50,6 @@
           gap: 1rem;
 
           color: inherit;
-
-
 
           &Icon {
             flex-shrink: 0;
