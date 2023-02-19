@@ -1,6 +1,7 @@
 import type {
   Dispatch,
   InputHTMLAttributes,
+  MouseEventHandler,
   ReactNode,
   SetStateAction
 } from 'react'
@@ -14,23 +15,18 @@ import { IoMdClose } from 'react-icons/io'
 import styles from './InputElement.module.scss'
 
 interface InputElementProps extends InputHTMLAttributes<HTMLInputElement> {
-  leadingIcon: ReactNode
-  trailingResetButton?: boolean
-  setValue: Dispatch<SetStateAction<string>>
+  leadingIcon?: ReactNode
+  trailingResetHandler?: MouseEventHandler
 }
 
 export default function InputElement({
   className,
   leadingIcon,
-  trailingResetButton,
-  setValue,
+  trailingResetHandler,
   ...attr
 }: InputElementProps) {
   const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
 
-  function resetValueHandler() {
-    setValue('')
-  }
 
   return (
     <div className={setStaticCls(styles.inputElement, className)}>
@@ -45,12 +41,12 @@ export default function InputElement({
         </label>
       ) : null}
       <input {...attr} />
-      {trailingResetButton && !!attr.value ? (
+      {trailingResetHandler && !!attr.value ? (
         <PrimaryButton
           type='reset'
           className={styles.inputElementTrailingIcon}
           title='Отчистить поле ввода'
-          onClick={resetValueHandler}
+          onClick={trailingResetHandler}
         >
           <IoMdClose />
         </PrimaryButton>

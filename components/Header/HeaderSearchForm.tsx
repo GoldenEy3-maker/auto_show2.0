@@ -19,6 +19,10 @@ export default function HeaderSearchForm() {
     event.preventDefault()
   }
 
+  function resetValueHandler() {
+    setSearchValue('')
+  }
+
   return (
     <form
       action='/'
@@ -26,16 +30,15 @@ export default function HeaderSearchForm() {
       onSubmit={submitFormHandler}
     >
       <InputElement
-        type='text'
+        type='search'
         name='search'
         id='search'
         placeholder='Что-то ищите'
         title='Поиск'
         leadingIcon={<FiSearch />}
-        trailingResetButton={true}
+        trailingResetHandler={resetValueHandler}
         className={styles.headerSearchFormInput}
         value={searchValue}
-        setValue={setSearchValue}
         onChange={changeSearchHandler}
       />
       <PrimaryButton

@@ -1,4 +1,4 @@
-import { Montserrat } from '@next/font/google'
+import { Inter } from '@next/font/google'
 import type { AppProps } from 'next/app'
 
 import Footer from '@/components/Footer/Footer'
@@ -11,12 +11,12 @@ import { setStaticCls } from '@/utils/setCls'
 
 import '@/styles/globals.scss'
 
-const montserrat = Montserrat({ subsets: ['cyrillic', 'latin'], weight: '400' })
+const inter = Inter({ subsets: ['cyrillic', 'latin'], weight: '400' })
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SidebarContextProvider>
-      <div className={setStaticCls('wrapper', montserrat.className)}>
+      <div className={setStaticCls('wrapper', inter.className)}>
         <Header />
         <div className='page-content'>
           <Sidebar />

@@ -98,7 +98,7 @@ export default function HeaderActionsProfile({
         aria-hidden={state}
       >
         {selectedMenu === null ? (
-          <>
+          <div className={headerActionsStyles.headerActionsMenuWrapper}>
             <header
               className={setStaticCls(
                 headerActionsStyles.headerActionsMenuHeader,
@@ -125,7 +125,7 @@ export default function HeaderActionsProfile({
                 <p>+7 (913) 225 31-47</p>
               </div>
             </header>
-            <div className={headerActionsStyles.headerActionsMenuWrapper}>
+            <div className={headerActionsStyles.headerActionsMenuBody}>
               <ul className={styles.headerActionsProfileList}>
                 <li>
                   <PrimaryButton
@@ -200,7 +200,7 @@ export default function HeaderActionsProfile({
                 </li>
               </ul>
             </div>
-          </>
+          </div>
         ) : null}
         {selectedMenu === 'changeTheme' ? (
           <HeaderActionsProfileTheme

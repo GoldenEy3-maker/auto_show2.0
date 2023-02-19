@@ -20,9 +20,11 @@ export default function HeaderActionsFavorite({
         className={headerActionsStyles.headerActionsMenu}
         aria-hidden={state}
       >
-        <header className={headerActionsStyles.headerActionsMenuHeader}>
-          Избранное
-        </header>
+        <div className={headerActionsStyles.headerActionsMenuWrapper}>
+          <header className={headerActionsStyles.headerActionsMenuHeader}>
+            Избранное
+          </header>
+        </div>
       </div>
     </HeaderActionsItem>
   )

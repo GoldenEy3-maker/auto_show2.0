@@ -17,9 +17,11 @@
   --hsl-secondary-red: var(--hsl-base-secondary-red), 40%;
   --hsla-secondary-red-highlight: var(--hsl-secondary-red), 0.2;
 
-  --bf-primary-blur: 5px;
+  --hsl-primary-text-purple: var(--hsl-base-primary-purple), 75%;
 
-  --bri-primary: 6px;
+  --bf-primary-blur: 7px;
+
+  --bri-primary: 10px;
 
   --bxs-primary: 0 10px 20px;
   --bxs-primary-hsl: var(--hsl-black);
