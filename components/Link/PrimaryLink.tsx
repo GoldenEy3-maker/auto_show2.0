@@ -1,14 +1,13 @@
 import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
+import { InteractionElementsStyleType } from '@/typescript/types'
 import { setDynamicCls, setStaticCls } from '@/utils/setCls'
 import Link, { LinkProps } from 'next/link'
 import { HTMLProps, ReactNode, RefAttributes } from 'react'
 import styles from './PrimaryLink.module.scss'
 
-type PrimaryLinkStyleType = 'normal' | 'danger'
-
 type PrimaryLinkProps = {
   children: ReactNode
-  styleType?: PrimaryLinkStyleType
+  styleType?: InteractionElementsStyleType
   isHovering?: boolean
 } & LinkProps &
   RefAttributes<HTMLAnchorElement> &
@@ -27,8 +26,16 @@ export default function PrimaryLink({
     <Link
       className={setDynamicCls({
         stClasses: [styles.primaryLink, className],
-        dnClasses: [[styles._dangerType], [styles._isHovering]],
-        conditions: [styleType === 'danger', !!isHovering],
+        dnClasses: [
+          [styles._dangerType],
+          [styles._grayType],
+          [styles._isHovering],
+        ],
+        conditions: [
+          styleType === 'danger',
+          styleType === 'gray',
+          !!isHovering,
+        ],
       })}
       onPointerDown={handleRipplesEffectPointerDownEvent}
       {...attr}

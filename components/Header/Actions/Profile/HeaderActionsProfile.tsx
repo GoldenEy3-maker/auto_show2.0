@@ -17,10 +17,10 @@ import headerActionsStyles from '../HeaderActions.module.scss'
 import styles from './HeaderActionsProfile.module.scss'
 import HeaderActionsProfileCity from './HeaderActionsProfileCity'
 import HeaderActionsProfileLang, {
-    DocumentLangState
+  DocumentLangState
 } from './HeaderActionsProfileLang'
 import HeaderActionsProfileTheme, {
-    SiteThemeState
+  SiteThemeState
 } from './HeaderActionsProfileTheme'
 
 type HeaderActionsProfileSelectedMenuState =
@@ -98,7 +98,7 @@ export default function HeaderActionsProfile({
         aria-hidden={state}
       >
         {selectedMenu === null ? (
-          <div className={headerActionsStyles.headerActionsMenuWrapper}>
+          <>
             <header
               className={setStaticCls(
                 headerActionsStyles.headerActionsMenuHeader,
@@ -125,80 +125,82 @@ export default function HeaderActionsProfile({
                 <p>+7 (913) 225 31-47</p>
               </div>
             </header>
-            <ul className={styles.headerActionsProfileList}>
-              <li>
-                <PrimaryButton
-                  className={styles.headerActionsProfileItemLink}
-                  title='Сменить тему'
-                  onClick={handleSetSelectedMenu.bind(null, 'changeTheme')}
-                >
-                  <span className={styles.headerActionsProfileItemLinkIcon}>
-                    <GrSolaris />
-                  </span>
-                  <p>
-                    Сменить тему:{' '}
-                    <span>{convertSiteThemeValue(siteTheme)}</span>
-                  </p>
-                </PrimaryButton>
-              </li>
-              <li>
-                <PrimaryButton
-                  className={styles.headerActionsProfileItemLink}
-                  title='Выбрать язык'
-                  onClick={handleSetSelectedMenu.bind(null, 'changeLang')}
-                >
-                  <span className={styles.headerActionsProfileItemLinkIcon}>
-                    <GrLanguage />
-                  </span>
-                  <p>
-                    Выбрать язык:{' '}
-                    <span>{convertDocumentLangValue(documentLang)}</span>
-                  </p>
-                </PrimaryButton>
-              </li>
-              <li>
-                <PrimaryButton
-                  className={styles.headerActionsProfileItemLink}
-                  title='Указать город'
-                  onClick={handleSetSelectedMenu.bind(null, 'changeCity')}
-                >
-                  <span className={styles.headerActionsProfileItemLinkIcon}>
-                    <FaRegAddressBook />
-                  </span>
-                  <p>
-                    Указать город: <span>{userCity}</span>
-                  </p>
-                </PrimaryButton>
-              </li>
-              <span className={styles.headerActionsProfile__separator}></span>
-              <li>
-                <PrimaryLink
-                  href={RouterPaths.SettingsPage}
-                  className={styles.headerActionsProfileItemLink}
-                  title='Настройки'
-                >
-                  <span className={styles.headerActionsProfileItemLinkIcon}>
-                    <SlSettings />
-                  </span>
-                  <p>Настройки</p>
-                </PrimaryLink>
-              </li>
-              <span className={styles.headerActionsProfile__separator}></span>
-              <li>
-                <PrimaryLink
-                  href={RouterPaths.HomePage}
-                  className={styles.headerActionsProfileItemLink}
-                  styleType='danger'
-                  title='Выход'
-                >
-                  <span className={styles.headerActionsProfileItemLinkIcon}>
-                    <AiOutlinePoweroff />
-                  </span>
-                  <p>Выход</p>
-                </PrimaryLink>
-              </li>
-            </ul>
-          </div>
+            <div className={headerActionsStyles.headerActionsMenuWrapper}>
+              <ul className={styles.headerActionsProfileList}>
+                <li>
+                  <PrimaryButton
+                    className={styles.headerActionsProfileItemLink}
+                    title='Сменить тему'
+                    onClick={handleSetSelectedMenu.bind(null, 'changeTheme')}
+                  >
+                    <span className={styles.headerActionsProfileItemLinkIcon}>
+                      <GrSolaris />
+                    </span>
+                    <p>
+                      Сменить тему:{' '}
+                      <span>{convertSiteThemeValue(siteTheme)}</span>
+                    </p>
+                  </PrimaryButton>
+                </li>
+                <li>
+                  <PrimaryButton
+                    className={styles.headerActionsProfileItemLink}
+                    title='Выбрать язык'
+                    onClick={handleSetSelectedMenu.bind(null, 'changeLang')}
+                  >
+                    <span className={styles.headerActionsProfileItemLinkIcon}>
+                      <GrLanguage />
+                    </span>
+                    <p>
+                      Выбрать язык:{' '}
+                      <span>{convertDocumentLangValue(documentLang)}</span>
+                    </p>
+                  </PrimaryButton>
+                </li>
+                <li>
+                  <PrimaryButton
+                    className={styles.headerActionsProfileItemLink}
+                    title='Указать город'
+                    onClick={handleSetSelectedMenu.bind(null, 'changeCity')}
+                  >
+                    <span className={styles.headerActionsProfileItemLinkIcon}>
+                      <FaRegAddressBook />
+                    </span>
+                    <p>
+                      Указать город: <span>{userCity}</span>
+                    </p>
+                  </PrimaryButton>
+                </li>
+                <span className={styles.headerActionsProfile__separator}></span>
+                <li>
+                  <PrimaryLink
+                    href={RouterPaths.SettingsPage}
+                    className={styles.headerActionsProfileItemLink}
+                    title='Настройки'
+                  >
+                    <span className={styles.headerActionsProfileItemLinkIcon}>
+                      <SlSettings />
+                    </span>
+                    <p>Настройки</p>
+                  </PrimaryLink>
+                </li>
+                <span className={styles.headerActionsProfile__separator}></span>
+                <li>
+                  <PrimaryLink
+                    href={RouterPaths.HomePage}
+                    className={styles.headerActionsProfileItemLink}
+                    styleType='danger'
+                    title='Выход'
+                  >
+                    <span className={styles.headerActionsProfileItemLinkIcon}>
+                      <AiOutlinePoweroff />
+                    </span>
+                    <p>Выход</p>
+                  </PrimaryLink>
+                </li>
+              </ul>
+            </div>
+          </>
         ) : null}
         {selectedMenu === 'changeTheme' ? (
           <HeaderActionsProfileTheme

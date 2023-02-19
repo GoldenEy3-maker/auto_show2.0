@@ -11,13 +11,23 @@
   touch-action: none;
   -webkit-tap-highlight-color: transparent;
 
-  transition: background-color 200ms ease;
+  transition: background-color 200ms ease, color 200ms ease;
+
+  &._dangerType {
+    [data-ripples-element] {
+      background-color: hsl(var(--hsl-secondary-red));
+    }
+  }
 
   &._isBackgroundColor {
     background-color: hsla(var(--hsl-primary-purple), 0.15);
 
     &._grayType {
-      background-color: hsla(var(--hsl-white), .1);
+      background-color: hsla(var(--hsl-white), 0.1);
+    }
+
+    &._dangerType {
+      background-color: hsl(var(--hsl-secondary-red));
     }
   }
 }
@@ -28,6 +38,12 @@
 
     &._grayType {
       background-color: hsla(var(--hsla-white-highlight));
+    }
+
+    &._dangerType {
+      color: hsl(var(--hsl-primary-red));
+
+      background-color: hsla(var(--hsla-secondary-red-highlight));
     }
   }
 }

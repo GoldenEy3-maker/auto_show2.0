@@ -1,0 +1,1 @@
+export type InteractionElementsStyleType = 'normal' | 'danger' | 'gray'

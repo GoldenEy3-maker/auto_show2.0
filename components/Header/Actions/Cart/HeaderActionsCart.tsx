@@ -1,18 +1,16 @@
 import { HeaderActionsMenuProps } from '../HeaderActions'
 import HeaderActionsItem from '../HeaderActionsItem'
 
-import { BsArrowRight, BsArrowRightShort, BsCart2 } from 'react-icons/bs'
+import { BsCart2 } from 'react-icons/bs'
 
 import headerActionsStyles from '../HeaderActions.module.scss'
 
 import PrimaryButton from '@/components/Button/PrimaryButton'
-import PrimaryButtonContextMenu from '@/components/Button/PrimaryButtonContextMenu'
 import PrimaryLink from '@/components/Link/PrimaryLink'
 import ListProductItem from '@/components/ProductItem/ListProductItem'
 import { RouterPaths } from '@/typescript/enums'
 import { setStaticCls } from '@/utils/setCls'
-import Image from 'next/image'
-import { FiArrowRight, FiMoreVertical, FiTrash2 } from 'react-icons/fi'
+import { FiArrowRight, FiTrash2 } from 'react-icons/fi'
 import styles from './HeaderActionsCart.module.scss'
 
 interface HeaderActionsCartProps extends HeaderActionsMenuProps {}
@@ -38,7 +36,11 @@ export default function HeaderActionsCart({
           )}
         >
           <p>Корзина</p>
-          <PrimaryButton type='button' title='Отчистить корзину'>
+          <PrimaryButton
+            type='button'
+            title='Отчистить корзину'
+            styleType='danger'
+          >
             <FiTrash2 />
           </PrimaryButton>
         </header>

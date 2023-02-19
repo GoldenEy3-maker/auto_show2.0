@@ -17,7 +17,7 @@ export default function HeaderActionsProfileMenuWrapper({
   backButtonClickHandler,
 }: HeaderActionsProfileMenuWrapperProps) {
   return (
-    <div className={headerActionsStyles.headerActionsMenuWrapper}>
+    <>
       <header className={headerActionsStyles.headerActionsMenuHeader}>
         <PrimaryButton
           type='button'
@@ -28,7 +28,9 @@ export default function HeaderActionsProfileMenuWrapper({
         </PrimaryButton>
         <p>{title}</p>
       </header>
-      {children}
-    </div>
+      <div className={headerActionsStyles.headerActionsMenuWrapper}>
+        {children}
+      </div>
+    </>
   )
 }

@@ -1,4 +1,17 @@
 .headerActionsNotify {
+  &Indicator {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+
+    width: 0.5rem;
+    height: 0.5rem;
+
+    border-radius: 50%;
+
+    background-color: hsl(var(--hsl-primary-purple));
+  }
+
   &Header {
     justify-content: space-between;
 

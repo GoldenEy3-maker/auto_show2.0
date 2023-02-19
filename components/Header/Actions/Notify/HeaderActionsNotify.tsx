@@ -1,18 +1,23 @@
 import HeaderActionsItem from '../HeaderActionsItem'
 
 import { setStaticCls } from '@/utils/setCls'
-import { MdNotificationsNone } from 'react-icons/md'
+import {
+  MdOutlineNotificationsNone,
+  MdOutlineNotificationsOff
+} from 'react-icons/md'
 import { HeaderActionsMenuProps } from '../HeaderActions'
 
 import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryButtonContextMenu from '@/components/Button/PrimaryButtonContextMenu'
+import CheckboxElement from '@/components/Checkbox/CheckboxElement'
 import PrimaryLink from '@/components/Link/PrimaryLink'
+import { LocalStorageNames } from '@/typescript/enums'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
 import { FiMoreVertical } from 'react-icons/fi'
 import headerActionsStyles from '../HeaderActions.module.scss'
 import styles from './HeaderActionsNotify.module.scss'
-import HeaderActionsNotifyOffCheckbox from './HeaderActionsNotifyOffCheckbox'
 
 interface HeaderActionsNotify extends HeaderActionsMenuProps {}
 
@@ -20,12 +25,39 @@ export default function HeaderActionsNotify({
   state,
   toggleMenuStateHandler,
 }: HeaderActionsNotify) {
+  const [isNotifyOff, setIsNotifyOff] = useState(false)
+
+  function changeNotifyOffHandler() {
+    setIsNotifyOff((prev) => {
+      localStorage.setItem(LocalStorageNames.IsNotifyOff, String(!prev))
+
+      return !prev
+    })
+  }
+
+  useEffect(() => {
+    const storedIsNotifyOff = localStorage.getItem(
+      LocalStorageNames.IsNotifyOff
+    )
+
+    if (storedIsNotifyOff) {
+      setIsNotifyOff(storedIsNotifyOff === 'false' ? false : true)
+    }
+  }, [])
+
   return (
     <HeaderActionsItem
       onClickHandler={toggleMenuStateHandler.bind(null, 'notify')}
-      icon={<MdNotificationsNone />}
+      icon={
+        isNotifyOff ? (
+          <MdOutlineNotificationsOff />
+        ) : (
+          <MdOutlineNotificationsNone />
+        )
+      }
       title='Уведомления'
     >
+      <span className={styles.headerActionsNotifyIndicator}></span>
       <div
         className={setStaticCls(
           headerActionsStyles.headerActionsMenu,
@@ -52,7 +84,14 @@ export default function HeaderActionsNotify({
             >
               <ul>
                 <li>
-                  <HeaderActionsNotifyOffCheckbox />
+                  <CheckboxElement
+                    label='Отключить уведомления'
+                    id='notify-off'
+                    name='notify-off'
+                    onChange={changeNotifyOffHandler}
+                    checked={isNotifyOff}
+                    isSwitcher={true}
+                  />
                 </li>
                 <li>
                   <PrimaryLink

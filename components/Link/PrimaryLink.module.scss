@@ -28,6 +28,10 @@
   .primaryLink._isHovering:hover {
     background-color: hsla(var(--hsla-primary-purple-highlight));
 
+    &._grayType {
+      background-color: hsla(var(--hsla-white-highlight));
+    }
+
     &._dangerType {
       color: hsl(var(--hsl-primary-red));
 
