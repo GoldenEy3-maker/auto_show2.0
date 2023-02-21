@@ -12,12 +12,14 @@ import PrimaryButtonContextMenu from '@/components/Button/PrimaryButtonContextMe
 import CheckboxElement from '@/components/Checkbox/CheckboxElement'
 import PrimaryLink from '@/components/Link/PrimaryLink'
 import { LocalStorageNames } from '@/typescript/enums'
+import { NotifyData } from '@/typescript/types'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
 import { FiMoreVertical } from 'react-icons/fi'
 import headerActionsStyles from '../HeaderActions.module.scss'
 import styles from './HeaderActionsNotify.module.scss'
+import HeaderActionsNotifyItem from './HeaderActionsNotifyItem'
 
 interface HeaderActionsNotify extends HeaderActionsMenuProps {}
 
@@ -25,6 +27,79 @@ export default function HeaderActionsNotify({
   state,
   toggleMenuStateHandler,
 }: HeaderActionsNotify) {
+  const [notifyData, setNotifyData] = useState<NotifyData[]>([
+    {
+      id: 1,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-02-21 8:30'),
+    },
+    {
+      id: 2,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-02-20 11:22'),
+    },
+    {
+      id: 3,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-02-10 13:20'),
+    },
+    {
+      id: 4,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-01-10 13:20'),
+    },
+    {
+      id: 5,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2022-01-10 13:20'),
+    },
+    {
+      id: 6,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-02-21 8:30'),
+    },
+    {
+      id: 7,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-02-20 11:22'),
+    },
+    {
+      id: 8,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-02-10 13:20'),
+    },
+    {
+      id: 9,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2023-01-10 13:20'),
+    },
+    {
+      id: 10,
+      img: 'https://via.placeholder.com/50',
+      title: 'Lorem ipsum test',
+      text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
+      date: new Date('2022-01-10 13:20'),
+    },
+  ])
+
   const [isNotifyOff, setIsNotifyOff] = useState(false)
 
   function changeNotifyOffHandler() {
@@ -108,94 +183,17 @@ export default function HeaderActionsNotify({
             </div>
           </header>
           <div className={headerActionsStyles.headerActionsMenuBody}>
-            <ul>
-              <li>
-                <PrimaryLink
-                  href='/'
-                  className={setStaticCls(
-                    styles.headerActionsNotifyItem,
-                    styles._newNotify
-                  )}
-                  title='Lorem ipsum test'
-                >
-                  <div className={styles.headerActionsNotifyItemImg}>
-                    <Image
-                      src='https://via.placeholder.com/50'
-                      width={50}
-                      height={50}
-                      alt=''
-                    />
-                  </div>
-                  <div className={styles.headerActionsNotifyItemContent}>
-                    <h3 className={styles.headerActionsNotifyItemTitle}>
-                      <div className={styles.headerActionsNotifyItemTitleText}>
-                        <p>
-                          Lorem ipsum test dwadwa dwadaw Lorem ipsum test dwadwa
-                          dwadaw
-                        </p>
-                      </div>
-
-                      <span
-                        className={styles.headerActionsNotifyItemIndicator}
-                      ></span>
-                      <time
-                        className={styles.headerActionsNotifyItemTime}
-                        title='Сегодня: 8:30'
-                        dateTime='2023-02-16T8:30'
-                      >
-                        8:30
-                      </time>
-                    </h3>
-                    <p className={styles.headerActionsNotifyItemText}>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi sint iure repellendus atque, reprehenderit quidem
-                      dolor enim esse magni earum in nemo blanditiis error
-                      mollitia totam? Optio enim omnis pariatur.
-                    </p>
-                  </div>
-                </PrimaryLink>
-              </li>
-              <li>
-                <PrimaryLink
-                  href='/'
-                  className={styles.headerActionsNotifyItem}
-                  title='Lorem ipsum test'
-                >
-                  <div className={styles.headerActionsNotifyItemImg}>
-                    <Image
-                      src='https://via.placeholder.com/50'
-                      width={50}
-                      height={50}
-                      alt=''
-                    />
-                  </div>
-                  <div className={styles.headerActionsNotifyItemContent}>
-                    <h3 className={styles.headerActionsNotifyItemTitle}>
-                      <div className={styles.headerActionsNotifyItemTitleText}>
-                        <p>Lorem ipsum test dwadwa dwadaw </p>
-                      </div>
-
-                      <span
-                        className={styles.headerActionsNotifyItemIndicator}
-                      ></span>
-                      <time
-                        className={styles.headerActionsNotifyItemTime}
-                        title='Сегодня: 8:30'
-                        dateTime='2023-02-16T8:30'
-                      >
-                        8:30
-                      </time>
-                    </h3>
-                    <p className={styles.headerActionsNotifyItemText}>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Nisi sint iure repellendus atque, reprehenderit quidem
-                      dolor enim esse magni earum in nemo blanditiis error
-                      mollitia totam? Optio enim omnis pariatur.
-                    </p>
-                  </div>
-                </PrimaryLink>
-              </li>
-            </ul>
+            {notifyData && notifyData.length > 0 ? (
+              <ul>
+                {notifyData.map((notifyItem) => (
+                  <li key={notifyItem.id}>
+                    <HeaderActionsNotifyItem {...notifyItem} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <h1>Уведомлений нет</h1>
+            )}
           </div>
         </div>
       </div>

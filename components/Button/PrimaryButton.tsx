@@ -1,4 +1,4 @@
-import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
+import { useRippleHighlight } from '@/hooks/rippleHighlight'
 import { InteractionElementsStyleType } from '@/typescript/types'
 import { setDynamicCls } from '@/utils/setCls'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
@@ -45,7 +45,7 @@ export default function PrimaryButton({
   styleType = 'normal',
   ...attr
 }: PrimaryButtonProps) {
-  const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
+  const handleRippleEffectPointerDownEvent = useRippleHighlight()
 
   return (
     <button
@@ -64,7 +64,7 @@ export default function PrimaryButton({
           isBackgroundColor,
         ],
       })}
-      onPointerDown={handleRipplesEffectPointerDownEvent}
+      onPointerDown={handleRippleEffectPointerDownEvent}
       {...attr}
     >
       {children}

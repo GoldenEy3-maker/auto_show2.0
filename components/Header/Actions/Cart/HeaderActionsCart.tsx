@@ -178,7 +178,10 @@ export default function HeaderActionsCart({
                 {cartData &&
                   cartData.length &&
                   cartData.map((cartItem) => (
-                    <li key={cartItem.id}>
+                    <li
+                      key={cartItem.id}
+                      className={styles.headerActionsCartItem}
+                    >
                       <HeaderActionsCartProductItem
                         setCartData={setCartData}
                         {...cartItem}
@@ -187,17 +190,9 @@ export default function HeaderActionsCart({
                   ))}
               </ul>
             ) : (
-              <div className={styles.headerActionsCartEmpty}>
-                <h3 className={styles.headerActionsCartEmptyTitle}>
-                  Ваша корзина пуста
-                </h3>
-                <Link
-                  href={RouterPaths.CatalogPage}
-                  className={styles.headerActionsCartEmptyLink}
-                >
-                  Давайте это исправим!
-                </Link>
-              </div>
+              <h3 className={styles.headerActionsCartEmptyTitle}>
+                Ваша корзина пуста
+              </h3>
             )}
           </div>
           {cartData && cartData.length > 0 && (

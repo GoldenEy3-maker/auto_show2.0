@@ -32,6 +32,16 @@
     display: inline-block;
 
     font-size: 1.5rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 200ms ease, visibility 200ms ease;
+
+    ._checked & {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   input {

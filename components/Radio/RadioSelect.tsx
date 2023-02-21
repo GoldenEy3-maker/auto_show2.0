@@ -1,6 +1,6 @@
 import PrimaryButton from '@/components/Button/PrimaryButton'
-import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
-import { setStaticCls } from '@/utils/setCls'
+import { useRippleHighlight } from '@/hooks/rippleHighlight'
+import { setDynamicCls, setStaticCls } from '@/utils/setCls'
 import { InputHTMLAttributes } from 'react'
 import { BsCheck } from 'react-icons/bs'
 import styles from './RadioSelect.module.scss'
@@ -16,21 +16,25 @@ export default function RadioSelect({
   checked,
   ...restAttrs
 }: RadioSelectProps) {
-  const ripplesEffectPointerDownHandler = useRipplesHighlight()
+  const ripplesEffectPointerDownHandler = useRippleHighlight()
 
   return (
-    <div className={setStaticCls(styles.radioSelectElement, className)}>
+    <div
+      className={setDynamicCls({
+        stClasses: [styles.radioSelectElement, className],
+        dnClasses: [[styles._checked]],
+        conditions: [!!checked],
+      })}
+    >
       <label
         htmlFor={id}
         onPointerDown={ripplesEffectPointerDownHandler}
         title={label}
       >
         <p>{label}</p>
-        {checked ? (
-          <span className={styles.radioSelectElementIcon}>
-            <BsCheck />
-          </span>
-        ) : null}
+        <span className={styles.radioSelectElementIcon}>
+          <BsCheck />
+        </span>
       </label>
       <input type='radio' id={id} checked={checked} {...restAttrs} />
     </div>

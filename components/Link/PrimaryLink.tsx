@@ -1,4 +1,4 @@
-import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
+import { useRippleHighlight } from '@/hooks/rippleHighlight'
 import { InteractionElementsStyleType } from '@/typescript/types'
 import { setDynamicCls, setStaticCls } from '@/utils/setCls'
 import Link, { LinkProps } from 'next/link'
@@ -20,7 +20,7 @@ export default function PrimaryLink({
   isHovering = true,
   ...attr
 }: PrimaryLinkProps) {
-  const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
+  const handleRippleEffectPointerDownEvent = useRippleHighlight()
 
   return (
     <Link
@@ -37,7 +37,7 @@ export default function PrimaryLink({
           !!isHovering,
         ],
       })}
-      onPointerDown={handleRipplesEffectPointerDownEvent}
+      onPointerDown={handleRippleEffectPointerDownEvent}
       {...attr}
     >
       {children}

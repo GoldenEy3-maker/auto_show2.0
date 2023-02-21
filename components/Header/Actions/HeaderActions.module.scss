@@ -26,14 +26,14 @@
     position: absolute;
     top: calc(100% + 0.8rem);
     right: 0;
+    z-index: 10;
 
     opacity: 0;
     visibility: hidden;
 
     overflow: hidden;
 
-    background-color: hsla(var(--hsla-primary-dark));
-    backdrop-filter: blur(var(--bf-primary-blur));
+    background-color: hsl(var(--hsl-secondary-dark));
 
     border-radius: var(--bri-primary);
 
@@ -50,14 +50,6 @@
       max-height: calc(100vh - 5rem);
 
       overflow: auto;
-
-      &::-webkit-scrollbar {
-        width: 0.7rem;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: hsla(var(--hsl-white), 20%);
-      }
     }
 
     &Body {
@@ -83,6 +75,8 @@
       padding: 0.5rem 1rem;
 
       background-color: hsl(var(--hsl-secondary-dark));
+
+      border-bottom: 2px solid hsla(var(--hsla-white-highlight));
     }
 
     &Footer {

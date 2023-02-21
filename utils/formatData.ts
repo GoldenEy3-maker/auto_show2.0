@@ -6,3 +6,32 @@ export function formatPrice(price: number) {
     maximumFractionDigits: 0
   }).format(price)
 }
+
+export function formatDate(passDate: Date, dateDiff: number) {
+  const dateLocale = 'ru-RU'
+
+  let dateOptions: Intl.DateTimeFormatOptions = {
+    hour: 'numeric',
+    minute: 'numeric'
+  }
+  let dateDetailedOptions: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric'
+  }
+
+  if (dateDiff > 1 && dateDiff < 7) {
+    dateOptions = { ...dateOptions, weekday: 'short', }
+  } else if (dateDiff > 7 && dateDiff < 365) {
+    dateOptions = { ...dateOptions, day: 'numeric', month: 'short' }
+  } else if (dateDiff > 365) {
+    dateOptions = { year: 'numeric', month: 'short' }
+  }
+
+  return {
+    detailedDate: new Intl.DateTimeFormat(dateLocale, dateDetailedOptions).format(passDate),
+    date: new Intl.DateTimeFormat(dateLocale, dateOptions).format(passDate)
+  }
+}

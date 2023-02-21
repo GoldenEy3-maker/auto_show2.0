@@ -9,6 +9,15 @@
   padding: 0;
 
   border: none;
+
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+    background-color: hsla(var(--hsl-base-default), 15%);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: hsla(var(--hsl-base-default), 40%);
+  }
 }
 
 html {

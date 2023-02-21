@@ -9,3 +9,11 @@ export type CartData = {
   maxCount: number
   price: number
 }
+
+export type NotifyData = {
+  id: number
+  img: string
+  title: string
+  text: string
+  date: Date
+}

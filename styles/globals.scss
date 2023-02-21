@@ -29,7 +29,7 @@
   margin-inline: auto;
 }
 
-.ripples-element {
+.ripple-element {
   user-select: none;
   pointer-events: none;
 
@@ -43,14 +43,18 @@
 
   transform: translate(-50%, -50%);
 
-  animation: ripples ease infinite;
+  animation: ripple ease forwards;
 }
 
-@keyframes ripples {
+@keyframes ripple {
   from {
     width: 0;
     height: 0;
 
+    opacity: 0.3;
+  }
+
+  35% {
     opacity: 0.3;
   }
 
@@ -63,7 +67,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-  .ripples-element {
+  .ripple-element {
     background-color: hsl(var(--hsl-black));
   }
 }

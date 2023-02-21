@@ -1,4 +1,4 @@
-import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
+import { useRippleHighlight } from '@/hooks/rippleHighlight'
 import { setDynamicCls } from '@/utils/setCls'
 import { InputHTMLAttributes } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
@@ -16,7 +16,7 @@ export default function CheckboxElement({
   checked,
   ...restAttr
 }: CheckboxElementProps) {
-  const ripplesEffectPointerDownHandler = useRipplesHighlight()
+  const ripplesEffectPointerDownHandler = useRippleHighlight()
 
   return (
     <div

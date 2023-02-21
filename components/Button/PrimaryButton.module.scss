@@ -8,13 +8,12 @@
 
   color: inherit;
 
-  touch-action: none;
   -webkit-tap-highlight-color: transparent;
 
   transition: background-color 200ms ease, color 200ms ease;
 
   &._dangerType {
-    [data-ripples-element] {
+    [data-ripple-element] {
       background-color: hsl(var(--hsl-secondary-red));
     }
   }

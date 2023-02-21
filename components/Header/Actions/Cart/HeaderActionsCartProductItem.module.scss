@@ -3,7 +3,7 @@
   align-items: center;
   gap: 0.5rem;
 
-  padding: 0.5rem 1rem;
+  padding-inline: 1rem;
 
   &Img {
     flex-shrink: 0;
@@ -25,7 +25,7 @@
       margin-bottom: 0.3rem;
 
       &Title {
-        max-width: 15em;
+        max-width: 18em;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;

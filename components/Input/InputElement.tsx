@@ -6,7 +6,7 @@ import type {
   SetStateAction
 } from 'react'
 
-import { useRipplesHighlight } from '@/hooks/ripplesHighlight'
+import { useRippleHighlight } from '@/hooks/rippleHighlight'
 import { setStaticCls } from '@/utils/setCls'
 import PrimaryButton from '../Button/PrimaryButton'
 
@@ -25,7 +25,7 @@ export default function InputElement({
   trailingResetHandler,
   ...attr
 }: InputElementProps) {
-  const handleRipplesEffectPointerDownEvent = useRipplesHighlight()
+  const handleRipplesEffectPointerDownEvent = useRippleHighlight()
 
 
   return (
