@@ -1,4 +1,3 @@
-import PrimaryButton from '@/components/Button/PrimaryButton'
 import { useRippleHighlight } from '@/hooks/rippleHighlight'
 import { setDynamicCls, setStaticCls } from '@/utils/setCls'
 import { InputHTMLAttributes } from 'react'
@@ -16,7 +15,7 @@ export default function RadioSelect({
   checked,
   ...restAttrs
 }: RadioSelectProps) {
-  const ripplesEffectPointerDownHandler = useRippleHighlight()
+  const rippleEffectPointerDownHandler = useRippleHighlight()
 
   return (
     <div
@@ -28,7 +27,7 @@ export default function RadioSelect({
     >
       <label
         htmlFor={id}
-        onPointerDown={ripplesEffectPointerDownHandler}
+        onPointerDown={rippleEffectPointerDownHandler}
         title={label}
       >
         <p>{label}</p>

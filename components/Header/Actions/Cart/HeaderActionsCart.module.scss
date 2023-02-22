@@ -13,12 +13,10 @@
 
     font-size: 0.75rem;
 
-    background-color: hsl(var(--hsl-primary-purple));
+    background-color: hsl(var(--hsl-bg-primary-purple));
 
     padding: 0 0.3rem;
     border-radius: 100px;
-
-    border: 1px solid hsl(var(--hsl-white));
   }
 
   &Item {
@@ -34,7 +32,7 @@
 
       border-radius: 100px;
 
-      background-color: hsla(var(--hsla-white-highlight));
+      background-color: hsla(var(--hsla-text-main-alpha-02));
     }
   }
 
@@ -47,7 +45,7 @@
 
   &TotalPrice {
     span {
-      color: hsl(var(--hsl-primary-text-purple));
+      color: hsl(var(--hsl-text-primary-purple));
     }
   }
 

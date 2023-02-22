@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
 
-  border: 2px solid hsl(var(--hsl-primary-purple), 0.3);
+  border: 2px solid hsl(var(--hsla-bg-primary-purple-alpha-03));
   border-radius: 100px;
 
   overflow: hidden;
@@ -20,7 +20,6 @@
 
     padding: 0.8rem;
 
-    touch-action: none;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -44,6 +43,6 @@
   }
 
   &:focus-within {
-    border-color: hsl(var(--hsl-primary-purple));
+    border-color: hsl(var(--hsl-bg-primary-purple));
   }
 }

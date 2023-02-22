@@ -34,23 +34,27 @@ export default function HeaderActionsNotifyItem({
       <div className={styles.headerActionsNotifyItemImg}>
         <Image src={img} width={50} height={50} alt={title} />
       </div>
-      <div className={styles.headerActionsNotifyItemContent}>
-        <h3 className={styles.headerActionsNotifyItemTitle}>
-          <div className={styles.headerActionsNotifyItemTitleText}>
-            <p>{title}</p>
+      <div className={styles.headerActionsNotifyItemInfo}>
+        <header className={styles.headerActionsNotifyItemInfoHeader}>
+          <div className={styles.headerActionsNotifyItemInfoHeaderTitle}>
+            <h3>{title}</h3>
           </div>
-          <span className={styles.headerActionsNotifyItemIndicator}></span>
-          {dateDiff && (
-            <time
-              className={styles.headerActionsNotifyItemTime}
-              title={formatDate(date, dateDiff).detailedDate}
-              dateTime={date.toISOString()}
-            >
-              {formatDate(date, dateDiff).date}
-            </time>
-          )}
-        </h3>
-        <p className={styles.headerActionsNotifyItemText}>{text}</p>
+          <div className={styles.headerActionsNotifyItemInfoHeaderWrapper}>
+            <span
+              className={styles.headerActionsNotifyItemInfoHeaderIndicator}
+            ></span>
+            {dateDiff && (
+              <time
+                className={styles.headerActionsNotifyItemInfoHeaderTime}
+                title={formatDate(date, dateDiff).fullDate}
+                dateTime={date.toISOString()}
+              >
+                {formatDate(date, dateDiff).shortDate}
+              </time>
+            )}
+          </div>
+        </header>
+        <p className={styles.headerActionsNotifyItemText} title={text}>{text}</p>
       </div>
     </PrimaryLink>
   )

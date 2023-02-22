@@ -23,6 +23,8 @@
   }
 
   &Menu {
+    --hsl-bg: var(--hsl-bg-primary-lightness-10);
+
     position: absolute;
     top: calc(100% + 0.8rem);
     right: 0;
@@ -33,11 +35,11 @@
 
     overflow: hidden;
 
-    background-color: hsl(var(--hsl-secondary-dark));
+    background-color: hsl(var(--hsl-bg));
 
-    border-radius: var(--bri-primary);
+    border-radius: var(--br-primary-radius);
 
-    box-shadow: var(--bxs-primary) hsla(var(--bxs-primary-hsla));
+    box-shadow: var(--bxs-primary) hsla(var(--hsla-bxs-primary-alpha-025));
 
     transform: scale(0.8);
     transform-origin: right top;
@@ -74,9 +76,9 @@
 
       padding: 0.5rem 1rem;
 
-      background-color: hsl(var(--hsl-secondary-dark));
+      background-color: hsl(var(--hsl-bg));
 
-      border-bottom: 2px solid hsla(var(--hsla-white-highlight));
+      border-bottom: 2px solid hsla(var(--hsla-text-main-alpha-02));
     }
 
     &Footer {
@@ -92,7 +94,7 @@
 
       padding: 0.5rem 1.5rem;
 
-      background-color: hsl(var(--hsl-secondary-dark));
+      background-color: hsl(var(--hsl-bg));
     }
   }
 }

@@ -1,37 +1,46 @@
 :root {
-  --hsl-base-default: 0, 0%;
-  --hsl-base-primary-purple: 282, 69%;
-  --hsl-base-primary-red: 0, 80%;
-  --hsl-base-secondary-red: 0, 70%;
+  --hs-base-null: 0, 0%;
+  --hs-base-primary-purple: 282, 69%;
+  --hs-base-primary-error: 0, 80%;
+  --hs-base-primary-error: 0, 70%;
 
-  --hsl-white: var(--hsl-base-default), 100%;
-  --hsla-white-highlight: var(--hsl-white), 0.2;
-  --hsl-black: var(--hsl-base-default), 0%;
-  --hsl-primary-dark: var(--hsl-base-default), 14%;
-  --hsl-secondary-dark: var(--hsl-base-default), 10%;
-  --hsla-primary-dark: var(--hsl-primary-dark), .7;
-  --hsl-primary-purple: var(--hsl-base-primary-purple), 60%;
-  --hsla-primary-purple-highlight: var(--hsl-primary-purple), 0.3;
-  --hsla-secondary-purple-highlight: var(--hsl-primary-purple), 0.2;
-  --hsl-primary-red: var(--hsl-base-primary-red), 65%;
-  --hsl-secondary-red: var(--hsl-base-secondary-red), 40%;
-  --hsla-secondary-red-highlight: var(--hsl-secondary-red), 0.2;
+  --hsl-bg-main: var(--hs-base-null), 6%;
+  --hsl-text-main: var(--hs-base-null), 100%;
+  --hsla-text-main-alpha-02: var(--hsl-text-main), 0.2;
+  --hsla-text-main-alpha-07: var(--hsl-text-main), 0.7;
 
-  --hsl-primary-text-purple: var(--hsl-base-primary-purple), 75%;
+  --hsl-scrollbar-bg-main: var(--hs-base-null), 16%;
+  --hsl-scrollbar-thumb-bg-main: var(--hs-base-null), 40%;
 
-  --bf-primary-blur: 7px;
+  --hsl-bg-primary: var(--hs-base-null), 14%;
+  --hsl-bg-primary-lightness-10: var(--hs-base-null), 10%;
+  --hsla-bg-primary-alpha-07: var(--hsl-bg-primary), 0.7;
 
-  --bri-primary: 10px;
+  --hsl-bg-primary-gray: var(--hs-base-null), 30%;
+  --hsl-bg-primary-gray-lightness-40: var(--hs-base-null), 40%;
+
+  --hsl-bg-primary-purple: var(--hs-base-primary-purple), 60%;
+  --hsla-bg-primary-purple-alpha-02: var(--hsl-bg-primary-purple), 0.2;
+  --hsla-bg-primary-purple-alpha-03: var(--hsl-bg-primary-purple), 0.3;
+  --hsl-text-primary-purple: var(--hs-base-primary-purple), 75%;
+
+  --hsl-error-bg-primary: var(--hs-base-primary-error), 40%;
+  --hsla-error-bg-primary-alpha-02: var(--hsl-error-bg-primary), 0.2;
+  --hsl-error-text-primary: var(--hs-base-primary-error), 65%;
+
+  --bdf-primary-blur: 7px;
+
+  --br-primary-radius: 10px;
 
   --bxs-primary: 0 10px 20px;
-  --bxs-primary-hsl: var(--hsl-black);
-  --bxs-primary-hsla: var(--bxs-primary-hsl), 0.25;
+  --hsl-bxs-primary: var(--hs-base-null), 0%;
+  --hsla-bxs-primary-alpha-025: var(--hsl-bxs-primary), 0.25;
 
   --wh-container: 1400px;
   --pg-container: 1rem;
 
   --fs-default: 16px;
-  --ff-default: 'Montserrat', sans-serif;
+  --ff-default: 'Inter', sans-serif;
   --lh-default: 1.5;
 
   font-family: var(--ff-default);

@@ -30,6 +30,8 @@
 }
 
 .ripple-element {
+  --hsl-bg: var(--hsl-bg-primary-purple);
+
   user-select: none;
   pointer-events: none;
 
@@ -39,7 +41,7 @@
 
   border-radius: 50%;
 
-  background-color: hsl(var(--hsl-primary-purple));
+  background-color: hsl(var(--hsl-bg));
 
   transform: translate(-50%, -50%);
 
@@ -63,11 +65,5 @@
     height: 500px;
 
     opacity: 0;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .ripple-element {
-    background-color: hsl(var(--hsl-black));
   }
 }

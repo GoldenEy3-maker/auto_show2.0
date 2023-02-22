@@ -12,11 +12,11 @@
 
   &::-webkit-scrollbar {
     width: 0.7rem;
-    background-color: hsla(var(--hsl-base-default), 15%);
+    background-color: hsl(var(--hsl-scrollbar-bg-main));
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: hsla(var(--hsl-base-default), 40%);
+    background-color: hsla(var(--hsl-scrollbar-thumb-bg-main));
   }
 }
 
@@ -35,8 +35,8 @@ body {
 
   min-height: 100vh;
 
-  color: hsl(var(--hsl-white));
-  background-color: hsl(var(--hsl-base-default), 6%);
+  color: hsl(var(--hsl-text-main));
+  background-color: hsl(var(--hsl-bg-main));
 
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;

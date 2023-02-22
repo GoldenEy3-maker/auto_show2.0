@@ -14,35 +14,35 @@
 
   &._dangerType {
     [data-ripple-element] {
-      background-color: hsl(var(--hsl-secondary-red));
+      background-color: hsl(var(--hsl-error-bg-primary));
     }
   }
 
   &._isBackgroundColor {
-    background-color: hsla(var(--hsl-primary-purple), 0.15);
+    background-color: hsla(var(--hsl-bg-primary-purple), 0.1);
 
     &._grayType {
-      background-color: hsla(var(--hsl-white), 0.1);
+      background-color: hsl(var(--hsl-bg-primary-gray));
     }
 
     &._dangerType {
-      background-color: hsl(var(--hsl-secondary-red));
+      background-color: hsl(var(--hsl-error-bg-primary));
     }
   }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .primaryButton._isHovering:hover {
-    background-color: hsla(var(--hsla-primary-purple-highlight));
+    background-color: hsla(var(--hsla-bg-primary-purple-alpha-03));
 
     &._grayType {
-      background-color: hsla(var(--hsla-white-highlight));
+      background-color: hsl(var(--hsl-bg-primary-gray-lightness-40));
     }
 
     &._dangerType {
-      color: hsl(var(--hsl-primary-red));
+      color: hsl(var(--hsl-error-text-primary));
 
-      background-color: hsla(var(--hsla-secondary-red-highlight));
+      background-color: hsla(var(--hsla-error-bg-primary-alpha-02));
     }
   }
 }

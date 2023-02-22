@@ -25,13 +25,13 @@ export function formatDate(passDate: Date, dateDiff: number) {
   if (dateDiff > 1 && dateDiff < 7) {
     dateOptions = { ...dateOptions, weekday: 'short', }
   } else if (dateDiff > 7 && dateDiff < 365) {
-    dateOptions = { ...dateOptions, day: 'numeric', month: 'short' }
+    dateOptions = { ...dateOptions, day: 'numeric', month: 'short', year: 'numeric' }
   } else if (dateDiff > 365) {
     dateOptions = { year: 'numeric', month: 'short' }
   }
 
   return {
-    detailedDate: new Intl.DateTimeFormat(dateLocale, dateDetailedOptions).format(passDate),
-    date: new Intl.DateTimeFormat(dateLocale, dateOptions).format(passDate)
+    fullDate: new Intl.DateTimeFormat(dateLocale, dateDetailedOptions).format(passDate),
+    shortDate: new Intl.DateTimeFormat(dateLocale, dateOptions).format(passDate)
   }
 }

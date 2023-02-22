@@ -25,6 +25,8 @@ export function useRippleHighlight() {
 
     ripple.style.left = x + 'px'
     ripple.style.top = y + 'px'
+    ripple.style.setProperty('--width', target.offsetWidth + 'px')
+    ripple.style.setProperty('--height', target.offsetHeight + 'px')
 
     target.appendChild(ripple)
 

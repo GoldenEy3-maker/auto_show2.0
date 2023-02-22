@@ -12,6 +12,6 @@
 
   padding: 0.3rem calc(2rem - 0.7rem);
 
-  background-color: hsl(var(--hsla-primary-dark));
-  backdrop-filter: blur(var(--bf-primary-blur));
+  background-color: hsl(var(--hsla-bg-primary-alpha-07));
+  backdrop-filter: blur(var(--bdf-primary-blur));
 }

@@ -14,7 +14,6 @@
 
     padding: 0.7rem 1.5rem;
 
-    touch-action: none;
     -webkit-tap-highlight-color: transparent;
 
     transition: background-color 200ms ease;
@@ -26,6 +25,9 @@
   }
 
   &Switcher {
+    --hsl-bg: var(--hsl-bg-primary-lightness-10);
+    --hsl-checked-bg: var(--hsl-bg-primary-purple);
+
     position: relative;
 
     width: 2.2rem;
@@ -33,54 +35,59 @@
 
     border-radius: 100px;
 
-    background-color: hsl(var(--hsl-secondary-dark));
+    background-color: hsl(var(--hsl-bg));
 
     transition: background-color 200ms ease;
 
     span {
+      --border-width: 2px;
+
       position: absolute;
       top: 50%;
       left: 0;
 
-      width: calc(1rem + 2px);
-      height: calc(1rem + 2px);
+      width: calc(1rem + var(--border-width));
+      height: calc(1rem + var(--border-width));
 
-      border: 2px solid hsl(var(--hsl-secondary-dark));
+      border: var(--border-width) solid hsl(var(--hsl-bg));
 
       border-radius: 50%;
 
       transform: translate(0, -50%);
 
-      background-color: hsl(var(--hsl-white));
+      background-color: hsl(var(--hsl-text-main));
 
       transition: background-color 200ms ease, left 200ms ease,
         border-color 200ms ease;
     }
 
     ._checked & {
-      background-color: hsl(var(--hsl-primary-purple));
+      background-color: hsl(var(--hsl-checked-bg));
 
       span {
-        left: calc(1rem + 2px);
+        left: calc(1rem + var(--border-width));
 
-        background-color: hsl(var(--hsl-primary-dark));
+        background-color: hsl(var(--hsl-bg-primary));
 
-        border-color: hsl(var(--hsl-primary-purple));
+        border-color: hsl(var(--hsl-checked-bg));
       }
     }
   }
 
   &Check {
+    --border-width: 2px;
+    --hsl-br: var(--hsl-text-main);
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: calc(1.2rem + 2px);
-    height: calc(1.2rem + 2px);
+    width: calc(1.2rem + var(--border-width));
+    height: calc(1.2rem + var(--border-width));
 
-    border: 2px solid hsl(var(--hsl-white));
+    border: var(--border-width) solid hsl(var(--hsl-br));
 
-    border-radius: var(--bri-primary);
+    border-radius: var(--br-primary-radius);
 
     transition: border-color 200ms ease, background-color 200ms ease;
 
@@ -107,12 +114,12 @@
   &:focus-within {
     outline: none;
 
-    background-color: hsla(var(--hsla-secondary-purple-highlight));
+    background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
   }
 
   @media (hover: hover) and (pointer: fine) {
     label:hover {
-      background-color: hsla(var(--hsla-primary-purple-highlight));
+      background-color: hsla(var(--hsla-bg-primary-purple-alpha-03));
     }
   }
 }

@@ -5,11 +5,12 @@
     position: absolute;
     top: 100%;
     right: 0;
+    z-index: 1000;
 
     opacity: 0;
     visibility: hidden;
 
-    border-radius: var(--bri-primary);
+    border-radius: var(--br-primary-radius);
 
     transform-origin: top right;
     transform: scale(0.8);
@@ -19,16 +20,21 @@
 
     padding-block: 0.5rem;
 
-    background-color: hsla(var(--hsl-primary-dark), .8);
-    backdrop-filter: blur(var(--bf-primary-blur));
+    background-color: hsla(var(--hsl-bg-primary), 0.8);
+    backdrop-filter: blur(var(--bdf-primary-blur));
 
-    box-shadow: var(--bxs-primary) hsla(var(--bxs-primary-hsla));
+    box-shadow: var(--bxs-primary) hsla(var(--hsla-bxs-primary-alpha-025));
 
     transition: opacity 200ms ease, visibility 200ms ease, transform 200ms ease;
 
     button,
     a {
       border-radius: 0;
+
+      padding: 0.7rem 1.5rem;
+      display: block;
+      width: 100%;
+      text-align: left;
 
       white-space: nowrap;
       overflow: hidden;

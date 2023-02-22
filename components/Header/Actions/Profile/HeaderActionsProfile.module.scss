@@ -14,7 +14,7 @@
       img {
         border-radius: 50%;
 
-        background-color: hsla(var(--hsla-white-highlight));
+        background-color: hsla(var(--hsla-text-main-alpha-02));
       }
     }
 
@@ -24,11 +24,11 @@
       gap: 0.2rem;
 
       font-size: 0.875rem;
-      color: hsla(var(--hsl-white), 0.7);
+      color: hsla(var(--hsla-text-main-alpha-07));
 
       &Name {
         font-size: 1rem;
-        color: hsl(var(--hsl-white));
+        color: hsl(var(--hsl-text-main));
       }
     }
   }
@@ -41,11 +41,8 @@
 
     margin-block: 0.2rem;
 
-    background-color: hsla(var(--hsla-white-highlight));
+    background-color: hsla(var(--hsla-text-main-alpha-02));
     border-radius: 100px;
-  }
-
-  &List {
   }
 
   &Item {

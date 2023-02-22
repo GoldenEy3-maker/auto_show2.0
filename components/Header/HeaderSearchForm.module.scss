@@ -6,10 +6,10 @@
   &Input {
     border-radius: 100px 0 0 100px;
 
-    border-color: hsla(var(--hsl-white), 0.2);
+    border-color: hsla(var(--hsla-text-main-alpha-02));
 
     &:focus-within {
-      border-color: hsla(var(--hsl-white), 0.8);
+      border-color: hsla(var(--hsl-text-main), 0.8);
     }
   }
 
