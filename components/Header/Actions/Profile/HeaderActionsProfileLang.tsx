@@ -33,7 +33,7 @@ export default function HeaderActionsProfileLang({
       <ul>
         <li>
           <RadioSelect
-            label='Россия'
+            label='Русский'
             value='ru'
             id='ru'
             name='lang'

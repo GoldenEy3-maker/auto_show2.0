@@ -14,7 +14,7 @@ import PrimaryLink from '@/components/Link/PrimaryLink'
 import { LocalStorageNames } from '@/typescript/enums'
 import { NotifyData } from '@/typescript/types'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
 import { FiMoreVertical } from 'react-icons/fi'
 import headerActionsStyles from '../HeaderActions.module.scss'
@@ -35,6 +35,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test test test 2 text dwad d dw dw dw dw wd wd ',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-02-21 8:30'),
+        isNew: false,
       },
       {
         id: 2,
@@ -42,6 +43,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test consectetut',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-02-20 11:22'),
+        isNew: true,
       },
       {
         id: 3,
@@ -49,6 +51,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-02-10 13:20'),
+        isNew: true,
       },
       {
         id: 4,
@@ -56,6 +59,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-01-10 13:20'),
+        isNew: true,
       },
       {
         id: 5,
@@ -63,6 +67,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-01-12 13:20'),
+        isNew: true,
       },
       {
         id: 6,
@@ -70,6 +75,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-01-21 8:30'),
+        isNew: true,
       },
       {
         id: 7,
@@ -77,6 +83,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test consectetur adipisicing elit',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-02-15 11:22'),
+        isNew: true,
       },
       {
         id: 8,
@@ -84,6 +91,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-02-11 13:20'),
+        isNew: true,
       },
       {
         id: 9,
@@ -91,6 +99,7 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2023-02-17 13:20'),
+        isNew: false,
       },
       {
         id: 10,
@@ -98,9 +107,10 @@ export default function HeaderActionsNotify({
         title: 'Lorem ipsum test',
         text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
         date: new Date('2022-12-10 13:20'),
+        isNew: false,
       },
     ].sort((a, b) => {
-      return b.date.getTime() - a.date.getTime()
+      return b.date.getTime() - a.date.getTime() && +b.isNew - +a.isNew
     })
   )
 
@@ -114,7 +124,9 @@ export default function HeaderActionsNotify({
     })
   }
 
-  function clearNotify() {
+  function clearNotify(event: MouseEvent) {
+    event.stopPropagation()
+
     setNotifyData([])
   }
 
@@ -156,39 +168,44 @@ export default function HeaderActionsNotify({
             )}
           >
             <p>Уведомления</p>
-            <div className={styles.headerActionsNotifyHeaderActionButtons}>
-              <PrimaryButton title='Отметить все как прочитанное' type='button'>
-                <BsCheck2 />
-              </PrimaryButton>
+            {notifyData && notifyData.length > 0 && (
+              <div className={styles.headerActionsNotifyHeaderActionButtons}>
+                <PrimaryButton
+                  title='Отметить все как прочитанное'
+                  type='button'
+                >
+                  <BsCheck2 />
+                </PrimaryButton>
 
-              <PrimaryButtonContextMenu
-                buttonContent={<FiMoreVertical />}
-                title='Настройки уведомлений'
-                type='button'
-              >
-                <ul>
-                  <li>
-                    <CheckboxElement
-                      label='Отключить уведомления'
-                      id='notify-off'
-                      name='notify-off'
-                      onChange={changeNotifyOffHandler}
-                      checked={isNotifyOff}
-                      isSwitcher={true}
-                    />
-                  </li>
-                  <li>
-                    <PrimaryButton
-                      title='Удалить все уведомления'
-                      styleType='danger'
-                      onClick={clearNotify}
-                    >
-                      Удалить все уведомления
-                    </PrimaryButton>
-                  </li>
-                </ul>
-              </PrimaryButtonContextMenu>
-            </div>
+                <PrimaryButtonContextMenu
+                  buttonContent={<FiMoreVertical />}
+                  title='Настройки уведомлений'
+                  type='button'
+                >
+                  <ul>
+                    <li>
+                      <CheckboxElement
+                        label='Отключить уведомления'
+                        id='notify-off'
+                        name='notify-off'
+                        onChange={changeNotifyOffHandler}
+                        checked={isNotifyOff}
+                        isSwitcher={true}
+                      />
+                    </li>
+                    <li>
+                      <PrimaryButton
+                        title='Удалить все уведомления'
+                        styleType='danger'
+                        onClick={clearNotify}
+                      >
+                        Удалить все уведомления
+                      </PrimaryButton>
+                    </li>
+                  </ul>
+                </PrimaryButtonContextMenu>
+              </div>
+            )}
           </header>
           <div className={headerActionsStyles.headerActionsMenuBody}>
             {notifyData && notifyData.length > 0 ? (

@@ -33,7 +33,7 @@ export default function HeaderSearchForm() {
         type='search'
         name='search'
         id='search'
-        placeholder='Что-то ищите'
+        placeholder='Напишите что-нибудь...'
         title='Поиск'
         leadingIcon={<FiSearch />}
         trailingResetHandler={resetValueHandler}

@@ -1,6 +1,6 @@
 import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryLink from '@/components/Link/PrimaryLink'
-import QuantityElement from '@/components/quantity/QuantityElement'
+import QuantityElement from '@/components/Quantity/QuantityElement'
 import { CartData } from '@/typescript/types'
 import { formatPrice } from '@/utils/formatData'
 import Image from 'next/image'
@@ -57,7 +57,7 @@ export default function HeaderActionsCartProductItem({
 
   function removeProductItemFormCart(event: MouseEvent) {
     event.stopPropagation()
-    
+
     setCartData((prev) => prev.filter((cartItem) => cartItem.id !== id))
   }
 
@@ -72,7 +72,10 @@ export default function HeaderActionsCartProductItem({
       </PrimaryLink>
       <div className={styles.headerActionsCartProductItemInfo}>
         <header className={styles.headerActionsCartProductItemInfoHeader}>
-          <h3 className={styles.headerActionsCartProductItemInfoHeaderTitle} title={title}>
+          <h3
+            className={styles.headerActionsCartProductItemInfoHeaderTitle}
+            title={title}
+          >
             {title}
           </h3>
           <PrimaryButton
@@ -85,7 +88,9 @@ export default function HeaderActionsCartProductItem({
             <AiOutlineClose />
           </PrimaryButton>
         </header>
-        <p className={styles.headerActionsCartProductItemInfoText} title={text}>{text}</p>
+        <p className={styles.headerActionsCartProductItemInfoText} title={text}>
+          {text}
+        </p>
         <footer className={styles.headerActionsCartProductItemInfoFooter}>
           <QuantityElement
             decreaseHandler={decreaseQuantityHandler}
@@ -93,7 +98,9 @@ export default function HeaderActionsCartProductItem({
             value={quantity}
             name={`quantity-item-${id}`}
           />
-          <p className={styles.headerActionsCartProductItemInfoFooterPrice}>{formatPrice(quantity * price)}</p>
+          <p className={styles.headerActionsCartProductItemInfoFooterPrice}>
+            {formatPrice(quantity * price)}
+          </p>
         </footer>
       </div>
     </div>

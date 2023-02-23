@@ -3,9 +3,8 @@ import { useDateDiff } from '@/hooks/dateDiff'
 import { RouterPaths } from '@/typescript/enums'
 import { NotifyData } from '@/typescript/types'
 import { formatDate } from '@/utils/formatData'
-import { setStaticCls } from '@/utils/setCls'
+import { setDynamicCls, setStaticCls } from '@/utils/setCls'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import styles from './HeaderActionsNotifyItem.module.scss'
 
@@ -17,6 +16,7 @@ export default function HeaderActionsNotifyItem({
   text,
   date,
   id,
+  isNew,
 }: HeaderActionsNotifyItemProps) {
   const dateDiffState = useDateDiff(date)
 
@@ -25,10 +25,11 @@ export default function HeaderActionsNotifyItem({
   return (
     <PrimaryLink
       href={RouterPaths.NotifyPage}
-      className={setStaticCls(
-        styles.headerActionsNotifyItem,
-        styles._newNotify
-      )}
+      className={setDynamicCls({
+        stClasses: [styles.headerActionsNotifyItem],
+        dnClasses: [[styles._newNotify]],
+        conditions: [isNew],
+      })}
       title={title}
     >
       <div className={styles.headerActionsNotifyItemImg}>
@@ -54,7 +55,9 @@ export default function HeaderActionsNotifyItem({
             )}
           </div>
         </header>
-        <p className={styles.headerActionsNotifyItemText} title={text}>{text}</p>
+        <p className={styles.headerActionsNotifyItemText} title={text}>
+          {text}
+        </p>
       </div>
     </PrimaryLink>
   )

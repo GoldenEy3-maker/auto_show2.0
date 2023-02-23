@@ -1,6 +1,9 @@
 import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryLink from '@/components/Link/PrimaryLink'
+import { useHeaderActionsProfileContext } from '@/context/HeaderActionsProfileContext'
 import { RouterPaths } from '@/typescript/enums'
+import { setStaticCls } from '@/utils/setCls'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { MouseEvent, MouseEventHandler, useState } from 'react'
 import { AiOutlinePoweroff } from 'react-icons/ai'
@@ -8,12 +11,9 @@ import { CgProfile } from 'react-icons/cg'
 import { FaRegAddressBook } from 'react-icons/fa'
 import { GrLanguage, GrSolaris } from 'react-icons/gr'
 import { SlSettings } from 'react-icons/sl'
-import HeaderActionsItem from '../HeaderActionsItem'
-
-import { useHeaderActionsProfileContext } from '@/context/HeaderActionsProfileContext'
-import { setStaticCls } from '@/utils/setCls'
 import { HeaderActionsMenuProps } from '../HeaderActions'
 import headerActionsStyles from '../HeaderActions.module.scss'
+import HeaderActionsItem from '../HeaderActionsItem'
 import styles from './HeaderActionsProfile.module.scss'
 import HeaderActionsProfileCity from './HeaderActionsProfileCity'
 import HeaderActionsProfileLang, {
@@ -77,13 +77,13 @@ export default function HeaderActionsProfile({
   function convertDocumentLangValue(documentLangValue: DocumentLangState) {
     switch (documentLangValue) {
       case 'ru':
-        return 'Россия'
+        return 'Русский'
       case 'de':
-        return 'Германия'
+        return 'Немецкий'
       case 'en':
-        return 'Англия'
+        return 'Английский'
       case 'en-us':
-        return 'США'
+        return 'Английский (США)'
     }
   }
 

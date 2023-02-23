@@ -16,4 +16,13 @@ export type NotifyData = {
   title: string
   text: string
   date: Date
+  isNew: boolean
+}
+
+export type FavoritesData = {
+  id: number
+  img: string
+  title: string
+  text: string
+  price: number
 }

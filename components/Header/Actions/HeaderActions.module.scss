@@ -78,7 +78,7 @@
 
       background-color: hsl(var(--hsl-bg));
 
-      border-bottom: 2px solid hsla(var(--hsla-text-main-alpha-02));
+      border-bottom: 2px solid hsl(var(--hsl-bg-primary-gray));
     }
 
     &Footer {
