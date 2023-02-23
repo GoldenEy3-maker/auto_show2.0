@@ -1,0 +1,9 @@
+.headerActionsFavoriteItem {
+  &Info {
+    &Header {
+      &Button {
+        color: hsl(var(--hsl-bg-primary-purple));
+      }
+    }
+  }
+}

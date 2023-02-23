@@ -1,18 +1,16 @@
+import { FavoritesData } from '@/typescript/types'
 import { MouseEvent, useState } from 'react'
 import { HeaderActionsMenuProps } from '../HeaderActions'
-import HeaderActionsItem from '../HeaderActionsItem'
 
 import PrimaryButton from '@/components/Button/PrimaryButton'
-import PrimaryLink from '@/components/Link/PrimaryLink'
-import { setStaticCls } from '@/utils/setCls'
-import Image from 'next/image'
-import { FiTrash2 } from 'react-icons/fi'
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
-import headerActionsStyles from '../HeaderActions.module.scss'
+import HeaderActionsItem from '../HeaderActionsItem'
+import HeaderActionsFavoriteProductItem from './HeaderActionsFavoriteProductItem'
 
-import { FavoritesData } from '@/typescript/types'
-import { formatPrice } from '@/utils/formatData'
-import { BsCart2 } from 'react-icons/bs'
+import { setStaticCls } from '@/utils/setCls'
+import { FiTrash2 } from 'react-icons/fi'
+import { MdFavoriteBorder } from 'react-icons/md'
+
+import headerActionsStyles from '../HeaderActions.module.scss'
 import styles from './HeaderActionsFavorite.module.scss'
 
 interface HeaderActionsFavoriteProps extends HeaderActionsMenuProps {}
@@ -92,7 +90,6 @@ export default function HeaderActionsFavorite({
       text: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae praesentium sint esse voluptas commodi, illo nisi veroex reiciendis suscipit vitae eius mollitia veritatis inventore nulla quia architecto alias facilis.',
       price: 1000,
     },
-    
   ])
 
   function removeFavoriteProducts(event: MouseEvent) {
@@ -141,56 +138,18 @@ export default function HeaderActionsFavorite({
           <div className={headerActionsStyles.headerActionsMenuBody}>
             {favoritesData && favoritesData.length > 0 ? (
               <ul>
-                {favoritesData.map(({ id, title, text, img, price }) => (
-                  <li key={id} className={styles.headerActionsFavoriteItem}>
-                    <div className={styles.headerActionsFavoriteItemWrapper}>
-                      <PrimaryLink
-                        href='/'
-                        className={styles.headerActionsFavoriteItemImg}
-                        title={title}
-                      >
-                        <Image src={img} alt={title} width={75} height={75} />
-                      </PrimaryLink>
-                      <div className={styles.headerActionsFavoriteItemInfo}>
-                        <header
-                          className={styles.headerActionsFavoriteItemInfoHeader}
-                        >
-                          <h3>{title}</h3>
-                          <PrimaryButton
-                            type='button'
-                            title='Удалить из избранного'
-                            onClick={removeFavoriteProduct.bind(null, id)}
-                          >
-                            <MdFavorite />
-                          </PrimaryButton>
-                        </header>
-                        <p className={styles.headerActionsFavoriteItemInfoText}>
-                          {text}
-                        </p>
-                        <footer
-                          className={styles.headerActionsFavoriteItemInfoFooter}
-                        >
-                          <span
-                            className={
-                              styles.headerActionsFavoriteItemInfoFooterPrice
-                            }
-                          >
-                            {formatPrice(price)}
-                          </span>
-                          <PrimaryButton
-                            type='button'
-                            title='Добавить в корзину'
-                          >
-                            <BsCart2 />
-                          </PrimaryButton>
-                        </footer>
-                      </div>
-                    </div>
-                  </li>
+                {favoritesData.map((favoriteItem) => (
+                  <HeaderActionsFavoriteProductItem
+                    key={favoriteItem.id}
+                    deleteFavoriteHandler={removeFavoriteProduct}
+                    {...favoriteItem}
+                  />
                 ))}
               </ul>
             ) : (
-              <h3>У вас нет избранных товаров</h3>
+              <p className={headerActionsStyles.headerActionsMenuEmptyMessage}>
+                У вас нет избранных товаров
+              </p>
             )}
           </div>
         </div>

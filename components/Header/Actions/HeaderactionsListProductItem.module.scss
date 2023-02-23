@@ -1,0 +1,73 @@
+.headerActionsListProductItem {
+  padding-inline: 1rem;
+
+  &:not(:last-child) {
+    &:after {
+      content: '';
+
+      display: block;
+      width: 100%;
+      height: 2px;
+
+      margin-block: 0.5rem;
+
+      border-radius: 100px;
+
+      background-color: hsla(var(--hsl-bg-primary-gray));
+    }
+  }
+
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &Img {
+    flex-shrink: 0;
+
+    padding: 0.5rem;
+
+    border-radius: 100px;
+
+    img {
+      border-radius: inherit;
+    }
+  }
+
+  &Info {
+    &Header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      &Title {
+        max-width: 18em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    &Text {
+      font-size: 0.875rem;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    &Footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      &Price {
+        color: hsl(var(--hsl-text-primary-purple));
+      }
+    }
+  }
+}

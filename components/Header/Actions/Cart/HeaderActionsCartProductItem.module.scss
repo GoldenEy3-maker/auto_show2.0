@@ -1,60 +1,11 @@
 .headerActionsCartProductItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  &Img {
-    flex-shrink: 0;
-
-    padding: 0.5rem;
-
-    img {
-      border-radius: inherit;
-    }
-  }
-
   &Info {
-    &Header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-
-      margin-bottom: 0.3rem;
-
-      &Title {
-        max-width: 18em;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-
-      &Button {
-        flex-shrink: 0;
-      }
-    }
-
     &Text {
-      font-size: 0.875rem;
       color: hsla(var(--hsl-text-main), 0.7);
-
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
     }
 
     &Footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-
       margin-top: 0.3rem;
-
-      &Price {
-        color: hsl(var(--hsl-text-primary-purple));
-      }
     }
   }
 }

@@ -178,21 +178,17 @@ export default function HeaderActionsCart({
                 {cartData &&
                   cartData.length &&
                   cartData.map((cartItem) => (
-                    <li
+                    <HeaderActionsCartProductItem
                       key={cartItem.id}
-                      className={styles.headerActionsCartItem}
-                    >
-                      <HeaderActionsCartProductItem
-                        setCartData={setCartData}
-                        {...cartItem}
-                      />
-                    </li>
+                      setCartData={setCartData}
+                      {...cartItem}
+                    />
                   ))}
               </ul>
             ) : (
-              <h3 className={styles.headerActionsCartEmptyTitle}>
+              <p className={headerActionsStyles.headerActionsMenuEmptyMessage}>
                 Ваша корзина пуста
-              </h3>
+              </p>
             )}
           </div>
           {cartData && cartData.length > 0 && (

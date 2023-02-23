@@ -152,7 +152,7 @@ export default function HeaderActionsNotify({
       }
       title='Уведомления'
     >
-      <span className={styles.headerActionsNotifyIndicator}></span>
+      {notifyData && notifyData.length > 0 && <span className={styles.headerActionsNotifyIndicator}></span>}
       <div
         className={setStaticCls(
           headerActionsStyles.headerActionsMenu,
@@ -217,7 +217,9 @@ export default function HeaderActionsNotify({
                 ))}
               </ul>
             ) : (
-              <h1>Уведомлений нет</h1>
+              <p className={headerActionsStyles.headerActionsMenuEmptyMessage}>
+                Ваш почтовый ящик пуст
+              </p>
             )}
           </div>
         </div>

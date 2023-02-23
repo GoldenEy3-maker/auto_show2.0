@@ -3,9 +3,11 @@ import PrimaryLink from '@/components/Link/PrimaryLink'
 import QuantityElement from '@/components/Quantity/QuantityElement'
 import { CartData } from '@/typescript/types'
 import { formatPrice } from '@/utils/formatData'
+import { setStaticCls } from '@/utils/setCls'
 import Image from 'next/image'
 import { Dispatch, MouseEvent, SetStateAction } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
+import listProductItemStyles from '../HeaderActionsListProductItem.module.scss'
 import styles from './HeaderActionsCartProductItem.module.scss'
 
 interface HeaderActionsCartProductItemProps extends CartData {
@@ -62,47 +64,71 @@ export default function HeaderActionsCartProductItem({
   }
 
   return (
-    <div className={styles.headerActionsCartProductItem}>
-      <PrimaryLink
-        href='/'
-        className={styles.headerActionsCartProductItemImg}
-        title={title}
+    <li className={listProductItemStyles.headerActionsListProductItem}>
+      <div
+        className={listProductItemStyles.headerActionsListProductItemWrapper}
       >
-        <Image src={img} alt={title} width={75} height={75} />
-      </PrimaryLink>
-      <div className={styles.headerActionsCartProductItemInfo}>
-        <header className={styles.headerActionsCartProductItemInfoHeader}>
-          <h3
-            className={styles.headerActionsCartProductItemInfoHeaderTitle}
-            title={title}
+        <PrimaryLink
+          href='/'
+          className={listProductItemStyles.headerActionsListProductItemImg}
+          title={title}
+        >
+          <Image src={img} alt={title} width={75} height={75} />
+        </PrimaryLink>
+        <div className={listProductItemStyles.headerActionsListProductItemInfo}>
+          <header
+            className={
+              listProductItemStyles.headerActionsListProductItemInfoHeader
+            }
           >
-            {title}
-          </h3>
-          <PrimaryButton
-            type='button'
-            styleType='danger'
-            className={styles.headerActionsCartProductItemInfoHeaderButton}
-            title='Убрать товар из корзины'
-            onClick={removeProductItemFormCart}
+            <h3
+              className={
+                listProductItemStyles.headerActionsListProductItemInfoHeaderTitle
+              }
+              title={title}
+            >
+              {title}
+            </h3>
+            <PrimaryButton
+              type='button'
+              styleType='danger'
+              title='Убрать товар из корзины'
+              onClick={removeProductItemFormCart}
+            >
+              <AiOutlineClose />
+            </PrimaryButton>
+          </header>
+          <p
+            className={setStaticCls(
+              listProductItemStyles.headerActionsListProductItemInfoText,
+              styles.headerActionsCartProductItemInfoText
+            )}
+            title={text}
           >
-            <AiOutlineClose />
-          </PrimaryButton>
-        </header>
-        <p className={styles.headerActionsCartProductItemInfoText} title={text}>
-          {text}
-        </p>
-        <footer className={styles.headerActionsCartProductItemInfoFooter}>
-          <QuantityElement
-            decreaseHandler={decreaseQuantityHandler}
-            increaseHandler={increaseQuantityHandler}
-            value={quantity}
-            name={`quantity-item-${id}`}
-          />
-          <p className={styles.headerActionsCartProductItemInfoFooterPrice}>
-            {formatPrice(quantity * price)}
+            {text}
           </p>
-        </footer>
+          <footer
+            className={setStaticCls(
+              listProductItemStyles.headerActionsListProductItemInfoFooter,
+              styles.headerActionsCartProductItemInfoFooter
+            )}
+          >
+            <QuantityElement
+              decreaseHandler={decreaseQuantityHandler}
+              increaseHandler={increaseQuantityHandler}
+              value={quantity}
+              name={`quantity-item-${id}`}
+            />
+            <p
+              className={
+                listProductItemStyles.headerActionsListProductItemInfoFooterPrice
+              }
+            >
+              {formatPrice(quantity * price)}
+            </p>
+          </footer>
+        </div>
       </div>
-    </div>
+    </li>
   )
 }
