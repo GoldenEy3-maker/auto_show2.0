@@ -4,7 +4,7 @@
   flex: 1;
 
   &Input {
-    border-radius: 100px 0 0 100px;
+    // border-radius: 100px 0 0 100px;
 
     border-color: hsla(var(--hsla-text-main-alpha-02));
 
@@ -13,9 +13,9 @@
     }
   }
 
-  & > button {
-    padding-block: calc(0.8rem + 2px);
+  // & > button {
+  //   padding-block: calc(0.8rem + 2px);
 
-    border-radius: 0 100px 100px 0;
-  }
+  //   border-radius: 0 100px 100px 0;
+  // }
 }

@@ -14,4 +14,6 @@
 
   background-color: hsl(var(--hsla-bg-primary-alpha-07));
   backdrop-filter: blur(var(--bdf-primary-blur));
+
+  box-shadow: var(--bxs-primary) hsla(var(--hsla-bxs-primary-alpha-025));
 }

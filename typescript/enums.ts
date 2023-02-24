@@ -6,7 +6,9 @@ export const enum RouterPaths {
   CartPage = '/cart',
   FavoritesPage = '/favorites',
   NotifyPage = '/notify',
-  SettingsPage = '/settings'
+  SettingsPage = '/settings',
+  AuthPage = '/auth',
+  RegisterPage = '/register'
 }
 
 export const enum LocalStorageNames {

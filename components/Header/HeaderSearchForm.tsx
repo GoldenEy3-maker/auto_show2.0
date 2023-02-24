@@ -41,14 +41,14 @@ export default function HeaderSearchForm() {
         value={searchValue}
         onChange={changeSearchHandler}
       />
-      <PrimaryButton
+      {/* <PrimaryButton
         title='Поиск'
         type='submit'
         styleType='gray'
         isBackgroundColor={true}
       >
         <FiSearch />
-      </PrimaryButton>
+      </PrimaryButton> */}
     </form>
   )
 }

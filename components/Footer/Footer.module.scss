@@ -1,5 +1,54 @@
 .footer {
   margin-top: auto;
 
-  padding: 2rem;
+  background-color: hsl(var(--hs-base-null), 4%);
+
+  &Wrapper {
+    padding-block: 2rem;
+  }
+
+  &Nav {
+    &Social {
+      text-align: center;
+
+      margin-bottom: 1rem;
+
+      &Title {
+        font-size: 1.5rem;
+        // color: hsl(var(--hsl-text-primary-purple));
+
+        margin-bottom: 1rem;
+      }
+
+      &List {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 1rem;
+
+        &Item {
+          a {
+            font-size: 1.5rem;
+            color: white;
+
+            padding: 1rem;
+
+            background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
+
+            border-radius: var(--br-primary-radius);
+
+            box-shadow: 0 0px 15px hsla(var(--hsl-bg-primary-purple), 0.2);
+          }
+        }
+      }
+    }
+
+    &Menus {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+  }
 }

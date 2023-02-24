@@ -152,7 +152,9 @@ export default function HeaderActionsNotify({
       }
       title='Уведомления'
     >
-      {notifyData && notifyData.length > 0 && <span className={styles.headerActionsNotifyIndicator}></span>}
+      {notifyData && notifyData.length > 0 && (
+        <span className={styles.headerActionsNotifyIndicator}></span>
+      )}
       <div
         className={setStaticCls(
           headerActionsStyles.headerActionsMenu,
