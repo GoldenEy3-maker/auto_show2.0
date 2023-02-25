@@ -11,7 +11,22 @@
     &Social {
       text-align: center;
 
-      margin-bottom: 1rem;
+      // margin-bottom: 1rem;
+
+      &:after {
+        content: '';
+
+        display: block;
+
+        width: 5rem;
+        height: 2px;
+
+        margin: 2rem auto;
+
+        border-radius: 100px;
+
+        background-color: hsl(var(--hsl-bg-primary-gray));
+      }
 
       &Title {
         font-size: 1.5rem;
@@ -35,7 +50,7 @@
 
             padding: 1rem;
 
-            background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
+            // background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
 
             border-radius: var(--br-primary-radius);
 
@@ -47,8 +62,87 @@
 
     &Menus {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1rem;
+    }
+
+    &Menu {
+      &Title {
+        font-size: 1.25rem;
+
+        margin-bottom: 0.5rem;
+      }
+
+      &List {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        &Item {
+          display: flex;
+          align-items: center;
+
+          gap: 0.5rem;
+
+          > a {
+            position: relative;
+
+            color: hsl(var(--hsl-text-primary-purple));
+
+            @media (hover: hover) and (pointer: fine) {
+              &:after {
+                content: '';
+
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+
+                width: 100%;
+                height: 2px;
+
+                border-radius: 100px;
+
+                background-color: hsl(var(--hsl-bg-primary-purple));
+
+                opacity: 0;
+                visibility: hidden;
+
+                transform: scale(0.8);
+
+                transition: transform 200ms ease, opacity 200ms ease,
+                  visibility 200ms ease;
+              }
+
+              &:hover {
+                &:after {
+                  opacity: 1;
+                  visibility: visible;
+                  transform: scale(1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &Copyright {
+    text-align: center;
+
+    &:before {
+      content: '';
+
+      display: block;
+
+      width: 30%;
+      height: 2px;
+
+      margin: 2rem auto 1rem;
+
+      border-radius: 100px;
+
+      background-color: hsl(var(--hsl-bg-primary-gray));
     }
   }
 }

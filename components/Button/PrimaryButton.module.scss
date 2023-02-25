@@ -14,12 +14,12 @@
 
   &._dangerType {
     [data-ripple-element] {
-      background-color: hsl(var(--hsl-error-bg-primary));
+      background-color: hsla(var(--hsl-error-bg-primary));
     }
   }
 
   &._isBackgroundColor {
-    background-color: hsla(var(--hsl-bg-primary-purple), 0.1);
+    background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
 
     &._grayType {
       background-color: hsl(var(--hsl-bg-primary-gray));

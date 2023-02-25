@@ -1,14 +1,16 @@
 .inputElement {
+  --border-width: 2px;
+  --padding: 1rem;
+
   display: flex;
   align-items: center;
 
-  border: 2px solid hsl(var(--hsla-bg-primary-purple-alpha-03));
+  border: var(--border-width) solid hsl(var(--hsla-bg-primary-purple-alpha-03));
   border-radius: 100px;
 
   overflow: hidden;
 
   flex: 1;
-  max-width: 450px;
 
   transition: border-color 200ms ease;
 
@@ -18,7 +20,7 @@
 
     flex-shrink: 0;
 
-    padding: 0.8rem;
+    padding: var(--padding);
 
     -webkit-tap-highlight-color: transparent;
   }
@@ -27,7 +29,7 @@
     width: 100%;
     flex: 1;
 
-    padding: calc(0.8rem - 4px) 0.5rem;
+    padding: calc(var(--padding) - var(--border-width) * 2) 0.5rem;
 
     &:focus {
       outline: none;
@@ -39,7 +41,7 @@
 
     flex-shrink: 0;
 
-    padding: 0.8rem;
+    padding: var(--padding);
   }
 
   &:focus-within {

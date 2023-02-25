@@ -21,6 +21,18 @@
       background-color: hsl(var(--hsl-error-bg-primary));
     }
   }
+
+  &._isBackgroundColor {
+    background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
+
+    &._grayType {
+      background-color: hsl(var(--hsl-bg-primary-gray));
+    }
+
+    &._dangerType {
+      background-color: hsl(var(--hsl-error-bg-primary));
+    }
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

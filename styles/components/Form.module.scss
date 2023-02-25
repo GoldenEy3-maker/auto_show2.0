@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  &Inputs {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.7rem;
+  }
+
+  &Footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    > button {
+      padding: 0.7rem 1rem;
+    }
+  }
+}

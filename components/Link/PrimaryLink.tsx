@@ -9,6 +9,7 @@ type PrimaryLinkProps = {
   children: ReactNode
   styleType?: InteractionElementsStyleType
   isHovering?: boolean
+  isBackgroundColor?: boolean
 } & LinkProps &
   RefAttributes<HTMLAnchorElement> &
   HTMLProps<HTMLAnchorElement>
@@ -18,6 +19,7 @@ export default function PrimaryLink({
   children,
   styleType = 'normal',
   isHovering = true,
+  isBackgroundColor,
   ...attr
 }: PrimaryLinkProps) {
   const handleRippleEffectPointerDownEvent = useRippleHighlight()
@@ -30,11 +32,13 @@ export default function PrimaryLink({
           [styles._dangerType],
           [styles._grayType],
           [styles._isHovering],
+          [styles._isBackgroundColor]
         ],
         conditions: [
           styleType === 'danger',
           styleType === 'gray',
           !!isHovering,
+          !!isBackgroundColor
         ],
       })}
       onPointerDown={handleRippleEffectPointerDownEvent}
