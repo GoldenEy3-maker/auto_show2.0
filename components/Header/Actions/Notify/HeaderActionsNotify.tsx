@@ -10,10 +10,8 @@ import { HeaderActionsMenuProps } from '../HeaderActions'
 import PrimaryButton from '@/components/Button/PrimaryButton'
 import PrimaryButtonContextMenu from '@/components/Button/PrimaryButtonContextMenu'
 import CheckboxElement from '@/components/Checkbox/CheckboxElement'
-import PrimaryLink from '@/components/Link/PrimaryLink'
 import { LocalStorageNames } from '@/typescript/enums'
 import { NotifyData } from '@/typescript/types'
-import Image from 'next/image'
 import { MouseEvent, useEffect, useState } from 'react'
 import { BsCheck2 } from 'react-icons/bs'
 import { FiMoreVertical } from 'react-icons/fi'
@@ -207,7 +205,7 @@ export default function HeaderActionsNotify({
                   </ul>
                 </PrimaryButtonContextMenu>
               </div>
-            )}
+             )}
           </header>
           <div className={headerActionsStyles.headerActionsMenuBody}>
             {notifyData && notifyData.length > 0 ? (

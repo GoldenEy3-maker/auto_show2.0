@@ -50,7 +50,7 @@ export default function HeaderActionsNotifyItem({
                 title={formatDate(date, dateDiff).fullDate}
                 dateTime={date.toISOString()}
               >
-                {formatDate(date, dateDiff).shortDate}
+                {Math.floor(dateDiff)} д. назад
               </time>
             )}
           </div>
