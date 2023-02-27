@@ -1,7 +1,7 @@
 import { PointerEvent } from 'react'
 
 export function useRippleHighlight() {
-	const animationDuration = 700
+	const animationDuration = 500
 
 	function handleRippleEffectPointerDownEvent(event: PointerEvent<HTMLElement>) {
 		const target = event.currentTarget

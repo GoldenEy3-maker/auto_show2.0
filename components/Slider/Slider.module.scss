@@ -1,28 +1,3 @@
-.section {
-  &Title {
-    display: inline-block;
-
-    font-size: 1.5rem;
-
-    margin-bottom: 1rem;
-
-    &:after {
-      content: "";
-
-      display: block;
-
-      width: 30%;
-      height: 2px;
-
-      margin-top: 0.3rem;
-
-      border-radius: 100px;
-
-      background-color: hsl(var(--hsl-bg-primary-purple));
-    }
-  }
-}
-
 .slider {
   display: flex;
   align-items: center;
