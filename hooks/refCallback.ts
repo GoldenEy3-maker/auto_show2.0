@@ -1,15 +1,15 @@
-import { useCallback, useRef } from 'react'
+import { RefCallback, RefObject, useCallback, useRef } from 'react'
 
-export default function useRefCallback(callback?: (node: HTMLElement) => void) {
-  const ref = useRef<HTMLElement | null>(null)
+export function useRefCallback<T>(callback?: (node: T) => void): [RefCallback<T>, RefObject<T>] {
+  const ref = useRef<T>()
 
-  const refCallback = useCallback((node: HTMLElement) => {
+  const refCallback = useCallback<RefCallback<T>>((node) => {
     if (node) {
       ref.current = node
-      
+
       if (callback) callback(node)
     }
   }, [callback])
 
-  return [refCallback, ref]
+  return [refCallback, ref as RefObject<T>]
 }

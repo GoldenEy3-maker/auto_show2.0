@@ -17,22 +17,21 @@ export function Slider<DataType>({
   children,
 }: SliderProps<DataType>) {
   const MIN_SWIPE_REQUIRED = minSwipeRequired ?? 40
+  const maxOffsetX = 0
 
   const [activeSlideIdx, setActiveSlideIdx] = useState(0)
   const currentOffsetXRef = useRef(0)
   const startXRef = useRef(0)
   const minOffsetXRef = useRef(0)
-  const trackWidthRef = useRef(0)
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0)
-  const maxContainerWidthRef = useRef(0)
 
-  const sliderTrackRef = useRef<HTMLDivElement>(null)
-  const sliderContainerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
 
   function swipeStartHandler(event: React.PointerEvent<HTMLElement>) {
-    const trackElement = getRefValue(sliderTrackRef)
+    const trackElement = getRefValue(trackRef)
     trackElement.style.transition = "none"
-    trackWidthRef.current = trackElement.getBoundingClientRect().width
+
     minOffsetXRef.current =
       trackElement.getBoundingClientRect().width - trackElement.scrollWidth
 
@@ -52,15 +51,15 @@ export function Slider<DataType>({
   }
 
   function swipeEndHandler(event: PointerEvent) {
-    const trackElement = getRefValue(sliderTrackRef)
+    const trackElement = getRefValue(trackRef)
+    const trackWidth = trackElement.getBoundingClientRect().width
     trackElement.style.transition = "transform 400ms ease"
 
     const currentOffsetX = getRefValue(currentOffsetXRef)
-    const trackWidth = getRefValue(trackWidthRef)
     let newOffsetX = getRefValue(offsetXRef)
 
     const diff = currentOffsetX - newOffsetX
-    const maxOffsetX = 0
+
     const minOffsetX = getRefValue(minOffsetXRef)
 
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
@@ -78,13 +77,16 @@ export function Slider<DataType>({
     if (newOffsetX < minOffsetX) newOffsetX = minOffsetX
 
     setOffsetX(newOffsetX)
-    setActiveSlideIdx(Math.abs(newOffsetX / trackWidth))
+    setActiveSlideIdx(Math.floor(Math.abs(newOffsetX / trackWidth)))
 
     document.removeEventListener("pointermove", swipeMoveHandler)
     document.removeEventListener("pointerup", swipeEndHandler)
   }
 
   function slideNext() {
+    const trackElement = getRefValue(trackRef)
+    const trackWidth = trackElement.getBoundingClientRect().width
+
     setActiveSlideIdx((prevIndex) => {
       let nextIndex = prevIndex + 1
 
@@ -92,13 +94,16 @@ export function Slider<DataType>({
         nextIndex = 0
       }
 
-      setOffsetX(-(maxContainerWidthRef.current * nextIndex))
+      setOffsetX(-(trackWidth * nextIndex))
 
       return nextIndex
     })
   }
 
   function slidePrev() {
+    const trackElement = getRefValue(trackRef)
+    const trackWidth = trackElement.getBoundingClientRect().width
+
     setActiveSlideIdx((prevIndex) => {
       let nextIndex = prevIndex - 1
 
@@ -106,34 +111,15 @@ export function Slider<DataType>({
         nextIndex = data.length - 1
       }
 
-      setOffsetX(-(maxContainerWidthRef.current * nextIndex))
+      setOffsetX(-(trackWidth * nextIndex))
 
       return nextIndex
     })
   }
 
   useEffect(() => {
-    const trackElement = getRefValue(sliderTrackRef)
-    const containerElement = getRefValue(sliderContainerRef)
-
-    const items = Array.from(trackElement.children) as HTMLDivElement[]
-    let maxWidth = items[0].getBoundingClientRect().width
-
-    items.forEach((item) => {
-      const { width } = item.getBoundingClientRect()
-
-      if (width > maxWidth) maxWidth = width
-
-      item.style.width = "100%"
-    })
-
-    containerElement.style.width = maxWidth + "px"
-    maxContainerWidthRef.current = maxWidth
-  }, [])
-
-  useEffect(() => {
-    const trackElement = getRefValue(sliderTrackRef)
-    const containerElement = getRefValue(sliderContainerRef)
+    const trackElement = getRefValue(trackRef)
+    const containerElement = getRefValue(containerRef)
     const items = Array.from(trackElement.children) as HTMLDivElement[]
     const { height } = items[activeSlideIdx].getBoundingClientRect()
 
@@ -150,10 +136,10 @@ export function Slider<DataType>({
       >
         <IoIosArrowBack />
       </PrimaryButton>
-      <div className={styles.sliderContainer} ref={sliderContainerRef}>
+      <div className={styles.sliderContainer} ref={containerRef}>
         <div
           className={styles.sliderTrack}
-          ref={sliderTrackRef}
+          ref={trackRef}
           onPointerDown={swipeStartHandler}
           style={{
             transform: `translate3D(${offsetX}px, 0 ,0)`,
