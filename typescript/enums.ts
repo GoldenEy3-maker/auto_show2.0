@@ -1,5 +1,6 @@
 export const enum RouterPaths {
   HomePage = '/',
+  NewsPage= '/news',
   CatalogPage = '/catalog',
   SupportPage = '/support',
   ProfilePage = '/profile',

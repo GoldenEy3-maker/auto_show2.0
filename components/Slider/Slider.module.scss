@@ -1,8 +1,10 @@
 .slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
 
   &Button {
     font-size: 1.5rem;
@@ -55,6 +57,63 @@
       background-color: hsl(var(--hsl-bg-primary-gray));
 
       border-radius: inherit;
+    }
+  }
+
+  &Dots {
+    margin-top: 1rem;
+    &List {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &Item {
+      &Button {
+        &Icon {
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          position: relative;
+
+          border-radius: 50%;
+
+          border: 2px solid hsl(var(--hsla-text-main-alpha-07));
+
+          transition: border-color 200ms ease;
+
+          &:after {
+            content: "";
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: calc(1rem / 2);
+            height: calc(1rem / 2);
+
+            border-radius: 50%;
+
+            opacity: 0;
+            visibility: hidden;
+
+            background-color: hsl(var(--hsl-text-primary-purple));
+
+            transform: translate(-50%, -50%);
+
+            transition: opacity 200ms ease, visibility 200ms ease-in-out;
+          }
+
+          ._active & {
+            border-color: hsl(var(--hsl-text-primary-purple));
+
+            &:after {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,21 @@
+.news {
+  &List {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    // place-items: center;
+    // align-content: center;
+    // justify-items: center;
+    gap: 1rem;
+  }
+
+  &Item {
+    flex: 1 1 320px;
+    border-radius: var(--br-primary-radius);
+    overflow: hidden;
+
+    background-color: hsl(var(--hsl-bg-primary));
+  }
+}

@@ -59,6 +59,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className={styles.footerNavMenuListItem}>
+                  <Link href={RouterPaths.NewsPage} title='Новости'>
+                    Новости
+                  </Link>
+                </li>
+                <li className={styles.footerNavMenuListItem}>
                   <Link href={RouterPaths.CatalogPage} title='Каталог'>
                     Каталог
                   </Link>

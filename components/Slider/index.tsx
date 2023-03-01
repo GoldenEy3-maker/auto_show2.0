@@ -1,5 +1,6 @@
 import { useStateRef } from "@/hooks/stateRef"
 import { getRefValue } from "@/utils/refValue"
+import { setDynamicCls } from "@/utils/setCls"
 import React, { ReactNode, useEffect, useRef, useState } from "react"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import PrimaryButton from "../Button/PrimaryButton"
@@ -26,7 +27,7 @@ export function Slider<DataType>({
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0)
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLUListElement>(null)
 
   function swipeStartHandler(event: React.PointerEvent<HTMLElement>) {
     const trackElement = getRefValue(trackRef)
@@ -86,6 +87,7 @@ export function Slider<DataType>({
   function slideNext() {
     const trackElement = getRefValue(trackRef)
     const trackWidth = trackElement.getBoundingClientRect().width
+    trackElement.style.transition = "transform 400ms ease"
 
     setActiveSlideIdx((prevIndex) => {
       let nextIndex = prevIndex + 1
@@ -103,6 +105,7 @@ export function Slider<DataType>({
   function slidePrev() {
     const trackElement = getRefValue(trackRef)
     const trackWidth = trackElement.getBoundingClientRect().width
+    trackElement.style.transition = "transform 400ms ease"
 
     setActiveSlideIdx((prevIndex) => {
       let nextIndex = prevIndex - 1
@@ -117,50 +120,98 @@ export function Slider<DataType>({
     })
   }
 
+  function clickDotHandler(idx: number) {
+    const trackElement = getRefValue(trackRef)
+    const trackWidth = trackElement.getBoundingClientRect().width
+
+    setActiveSlideIdx(idx)
+    setOffsetX(-(trackWidth * idx))
+  }
+
   useEffect(() => {
     const trackElement = getRefValue(trackRef)
     const containerElement = getRefValue(containerRef)
-    const items = Array.from(trackElement.children) as HTMLDivElement[]
+    const items = Array.from(trackElement.children) as HTMLLIElement[]
     const { height } = items[activeSlideIdx].getBoundingClientRect()
 
     containerElement.style.height = height + "px"
-  }, [activeSlideIdx])
+
+    function resizeWindowHandler() {
+      const { height } = items[activeSlideIdx].getBoundingClientRect()
+      const { width } = trackElement.getBoundingClientRect()
+
+      trackElement.style.transition = "none"
+
+      setOffsetX(-(width * activeSlideIdx))
+
+      containerElement.style.height = height + "px"
+    }
+
+    window.addEventListener("resize", resizeWindowHandler)
+
+    return () => window.removeEventListener("resize", resizeWindowHandler)
+  }, [activeSlideIdx, setOffsetX])
 
   return (
     <div className={styles.slider}>
-      <PrimaryButton
-        className={styles.sliderButton}
-        type="button"
-        title="Предыдущий слайд"
-        onClick={slidePrev}
-      >
-        <IoIosArrowBack />
-      </PrimaryButton>
-      <div className={styles.sliderContainer} ref={containerRef}>
-        <div
-          className={styles.sliderTrack}
-          ref={trackRef}
-          onPointerDown={swipeStartHandler}
-          style={{
-            transform: `translate3D(${offsetX}px, 0 ,0)`,
-          }}
+      <div className={styles.sliderWrapper}>
+        <PrimaryButton
+          className={styles.sliderButton}
+          type="button"
+          title="Предыдущий слайд"
+          onClick={slidePrev}
         >
+          <IoIosArrowBack />
+        </PrimaryButton>
+        <div className={styles.sliderContainer} ref={containerRef}>
+          <ul
+            className={styles.sliderTrack}
+            ref={trackRef}
+            onPointerDown={swipeStartHandler}
+            style={{
+              transform: `translate3D(${offsetX}px, 0 ,0)`,
+            }}
+          >
+            {data.length > 0 &&
+              data.map((slide, idx) => (
+                <li key={idx} className={styles.sliderItem}>
+                  {children(slide)}
+                </li>
+              ))}
+          </ul>
+        </div>
+        <PrimaryButton
+          type="button"
+          className={styles.sliderButton}
+          title="Следующий слайд"
+          onClick={slideNext}
+        >
+          <IoIosArrowForward />
+        </PrimaryButton>
+      </div>
+      <div className={styles.sliderDots}>
+        <ul className={styles.sliderDotsList}>
           {data.length > 0 &&
             data.map((slide, idx) => (
-              <div key={idx} className={styles.sliderItem}>
-                {children(slide)}
-              </div>
+              <li
+                key={idx}
+                className={setDynamicCls({
+                  stClasses: [styles.sliderDotsItem],
+                  dnClasses: [[styles._active]],
+                  conditions: [activeSlideIdx === idx],
+                })}
+              >
+                <PrimaryButton
+                  type="button"
+                  className={styles.sliderDotsItemButton}
+                  onClick={() => clickDotHandler(idx)}
+                >
+                  <span className={styles.sliderDotsItemButtonIcon}></span>
+                </PrimaryButton>
+              </li>
             ))}
-        </div>
+        </ul>
       </div>
-      <PrimaryButton
-        type="button"
-        className={styles.sliderButton}
-        title="Следующий слайд"
-        onClick={slideNext}
-      >
-        <IoIosArrowForward />
-      </PrimaryButton>
     </div>
   )
 }

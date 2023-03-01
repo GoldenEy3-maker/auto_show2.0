@@ -1,5 +1,5 @@
-@import './vars.scss';
-@import './defaults.scss';
+@import "./vars.scss";
+@import "./defaults.scss";
 
 .wrapper {
   width: 100%;
@@ -47,7 +47,7 @@
 
   transform: translate(-50%, -50%) scale(0);
 
-  animation: ripple ease forwards;
+  animation: ripple linear forwards;
 }
 
 @keyframes ripple {
@@ -55,5 +55,38 @@
     transform: translate(-50%, -50%) scale(2.5);
 
     opacity: 0;
+  }
+}
+
+.section {
+  &-title {
+    display: block;
+
+    font-size: 1.5rem;
+
+    margin-bottom: 1.5rem;
+
+    &:after {
+      content: "";
+
+      display: block;
+
+      width: 100px;
+      height: 2px;
+
+      margin-top: 0.3rem;
+
+      border-radius: 100px;
+
+      background-color: hsl(var(--hsl-bg-primary-purple));
+    }
+
+    &._centered {
+      text-align: center;
+
+      &:after {
+        margin-inline: auto;
+      }
+    }
   }
 }

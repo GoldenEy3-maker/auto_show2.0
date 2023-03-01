@@ -26,3 +26,15 @@ export type FavoritesData = {
   text: string
   price: number
 }
+
+export type NewsData = {
+  id: number
+  img: {
+    src: string
+    width: number
+    height: number
+  }
+  title: string
+  text: string
+  date: Date
+}

@@ -1,0 +1,21 @@
+.dilers {
+  &List {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &Item {
+    &Link {
+      flex-direction: column;
+
+      border-radius: var(--br-primary-radius);
+
+      &Icon {
+        font-size: 2rem;
+      }
+    }
+  }
+}

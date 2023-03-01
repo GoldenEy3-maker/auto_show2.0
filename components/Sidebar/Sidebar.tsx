@@ -5,7 +5,7 @@ import PrimaryLink from '../Link/PrimaryLink'
 import { setDynamicCls } from '@/utils/setCls'
 
 import { AiOutlinePoweroff } from 'react-icons/ai'
-import { BiHomeAlt, BiSupport } from 'react-icons/bi'
+import { BiHomeAlt, BiNews, BiSupport } from 'react-icons/bi'
 import { BsCart2 } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
 import { GrCatalogOption } from 'react-icons/gr'
@@ -38,6 +38,18 @@ export default function Sidebar() {
                 <BiHomeAlt />
               </span>
               <p className={styles.sidebarNavListItemLinkText}>Главная</p>
+            </PrimaryLink>
+          </li>
+          <li className={styles.sidebarNavListItem}>
+            <PrimaryLink
+              href={RouterPaths.NewsPage}
+              className={styles.sidebarNavListItemLink}
+              title='Новости'
+            >
+              <span className={styles.sidebarNavListItemLinkIcon}>
+                <BiNews />
+              </span>
+              <p className={styles.sidebarNavListItemLinkText}>Новости</p>
             </PrimaryLink>
           </li>
           <li className={styles.sidebarNavListItem}>
