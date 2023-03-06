@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import HeaderActionsNotify from './Notify/HeaderActionsNotify'
-import HeaderActionsProfile from './Profile/HeaderActionsProfile'
+import HeaderActionsNotify from './Notify'
+import HeaderActionsProfile from './Profile'
 
 import { HeaderActionsProfileContextProvider } from '@/context/HeaderActionsProfileContext'
-import HeaderActionsCart from './Cart/HeaderActionsCart'
-import HeaderActionsFavorite from './Favorite/HeaderActionsFavorite'
+import HeaderActionsCart from './Cart'
+import HeaderActionsFavorite from './Favorite'
 import styles from './HeaderActions.module.scss'
 
 type HeaderActionsMenuName = 'profile' | 'notify' | 'cart' | 'favorite'

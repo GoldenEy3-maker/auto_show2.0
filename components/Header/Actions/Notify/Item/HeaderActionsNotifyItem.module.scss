@@ -1,0 +1,79 @@
+.headerActionsNotifyItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  border-radius: 0;
+
+  &Img {
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    img {
+      border-radius: inherit;
+
+      background-color: hsla(var(--hsla-text-main-alpha-02));
+    }
+  }
+
+  &Info {
+    overflow: hidden;
+
+    color: hsla(var(--hsla-text-main-alpha-07));
+
+    &Header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      margin-bottom: 0.2rem;
+
+      &Wrapper {
+        display: flex;
+        align-items: center;
+        gap: inherit;
+      }
+
+      &Title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &Indicator {
+        display: none;
+
+        width: 0.5rem;
+        height: 0.5rem;
+
+        border-radius: 50%;
+
+        background-color: hsl(var(--hsl-bg-primary-purple));
+
+        ._newNotify & {
+          display: inline-block;
+        }
+      }
+
+      &Time {
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+
+      ._newNotify & {
+        color: hsl(var(--hsl-text-main));
+      }
+    }
+  }
+
+  &Text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+    font-size: 0.875rem;
+  }
+}

@@ -36,6 +36,8 @@
   }
 
   &Info {
+    overflow: hidden;
+
     &Header {
       display: flex;
       align-items: center;
@@ -43,10 +45,13 @@
       gap: 0.5rem;
 
       &Title {
-        max-width: 18em;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+      }
+
+      &Button {
+        flex-shrink: 0;
       }
     }
 

@@ -3,20 +3,22 @@ import { getRefValue } from "@/utils/refValue"
 import { setDynamicCls } from "@/utils/setCls"
 import React, { ReactNode, useEffect, useRef, useState } from "react"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
-import PrimaryButton from "../Button/PrimaryButton"
+import PrimaryButton from "../Button"
 import styles from "./Slider.module.scss"
+import { convertAst } from "tsutils"
 
 interface SliderProps<DataType> {
   data: DataType[]
   minSwipeRequired?: number
+
   children(data: DataType): ReactNode
 }
 
 export function Slider<DataType>({
-  data,
-  minSwipeRequired,
-  children,
-}: SliderProps<DataType>) {
+                                   data,
+                                   minSwipeRequired,
+                                   children
+                                 }: SliderProps<DataType>) {
   const MIN_SWIPE_REQUIRED = minSwipeRequired ?? 40
   const maxOffsetX = 0
 
@@ -31,10 +33,11 @@ export function Slider<DataType>({
 
   function swipeStartHandler(event: React.PointerEvent<HTMLElement>) {
     const trackElement = getRefValue(trackRef)
+    const containerElement = getRefValue(containerRef)
     trackElement.style.transition = "none"
 
     minOffsetXRef.current =
-      trackElement.getBoundingClientRect().width - trackElement.scrollWidth
+      containerElement.getBoundingClientRect().width - trackElement.scrollWidth
 
     currentOffsetXRef.current = getRefValue(offsetXRef)
     startXRef.current = event.clientX
@@ -53,7 +56,8 @@ export function Slider<DataType>({
 
   function swipeEndHandler(event: PointerEvent) {
     const trackElement = getRefValue(trackRef)
-    const trackWidth = trackElement.getBoundingClientRect().width
+    const containerElement = getRefValue(containerRef)
+    const containerWidth = containerElement.getBoundingClientRect().width
     trackElement.style.transition = "transform 400ms ease"
 
     const currentOffsetX = getRefValue(currentOffsetXRef)
@@ -65,12 +69,12 @@ export function Slider<DataType>({
 
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
       if (diff > 0) {
-        newOffsetX = Math.floor(newOffsetX / trackWidth) * trackWidth
+        newOffsetX = Math.floor(newOffsetX / containerWidth) * containerWidth
       } else {
-        newOffsetX = Math.ceil(newOffsetX / trackWidth) * trackWidth
+        newOffsetX = Math.ceil(newOffsetX / containerWidth) * containerWidth
       }
     } else {
-      newOffsetX = Math.round(newOffsetX / trackWidth) * trackWidth
+      newOffsetX = Math.round(newOffsetX / containerWidth) * containerWidth
     }
 
     if (newOffsetX > maxOffsetX) newOffsetX = maxOffsetX
@@ -78,7 +82,7 @@ export function Slider<DataType>({
     if (newOffsetX < minOffsetX) newOffsetX = minOffsetX
 
     setOffsetX(newOffsetX)
-    setActiveSlideIdx(Math.floor(Math.abs(newOffsetX / trackWidth)))
+    setActiveSlideIdx(Math.floor(Math.abs(newOffsetX / containerWidth)))
 
     document.removeEventListener("pointermove", swipeMoveHandler)
     document.removeEventListener("pointerup", swipeEndHandler)
@@ -86,7 +90,8 @@ export function Slider<DataType>({
 
   function slideNext() {
     const trackElement = getRefValue(trackRef)
-    const trackWidth = trackElement.getBoundingClientRect().width
+    const containerElement = getRefValue(containerRef)
+    const containerWidth = containerElement.getBoundingClientRect().width
     trackElement.style.transition = "transform 400ms ease"
 
     setActiveSlideIdx((prevIndex) => {
@@ -96,7 +101,7 @@ export function Slider<DataType>({
         nextIndex = 0
       }
 
-      setOffsetX(-(trackWidth * nextIndex))
+      setOffsetX(-(containerWidth * nextIndex))
 
       return nextIndex
     })
@@ -104,7 +109,8 @@ export function Slider<DataType>({
 
   function slidePrev() {
     const trackElement = getRefValue(trackRef)
-    const trackWidth = trackElement.getBoundingClientRect().width
+    const containerElement = getRefValue(containerRef)
+    const containerWidth = containerElement.getBoundingClientRect().width
     trackElement.style.transition = "transform 400ms ease"
 
     setActiveSlideIdx((prevIndex) => {
@@ -114,37 +120,29 @@ export function Slider<DataType>({
         nextIndex = data.length - 1
       }
 
-      setOffsetX(-(trackWidth * nextIndex))
+      setOffsetX(-(containerWidth * nextIndex))
 
       return nextIndex
     })
   }
 
   function clickDotHandler(idx: number) {
-    const trackElement = getRefValue(trackRef)
-    const trackWidth = trackElement.getBoundingClientRect().width
+    const containerElement = getRefValue(containerRef)
+    const containerWidth = containerElement.getBoundingClientRect().width
 
     setActiveSlideIdx(idx)
-    setOffsetX(-(trackWidth * idx))
+    setOffsetX(-(containerWidth * idx))
   }
 
   useEffect(() => {
     const trackElement = getRefValue(trackRef)
-    const containerElement = getRefValue(containerRef)
-    const items = Array.from(trackElement.children) as HTMLLIElement[]
-    const { height } = items[activeSlideIdx].getBoundingClientRect()
-
-    containerElement.style.height = height + "px"
 
     function resizeWindowHandler() {
-      const { height } = items[activeSlideIdx].getBoundingClientRect()
       const { width } = trackElement.getBoundingClientRect()
 
       trackElement.style.transition = "none"
 
       setOffsetX(-(width * activeSlideIdx))
-
-      containerElement.style.height = height + "px"
     }
 
     window.addEventListener("resize", resizeWindowHandler)
@@ -161,7 +159,7 @@ export function Slider<DataType>({
           title="Предыдущий слайд"
           onClick={slidePrev}
         >
-          <IoIosArrowBack />
+          <IoIosArrowBack/>
         </PrimaryButton>
         <div className={styles.sliderContainer} ref={containerRef}>
           <ul
@@ -169,13 +167,15 @@ export function Slider<DataType>({
             ref={trackRef}
             onPointerDown={swipeStartHandler}
             style={{
-              transform: `translate3D(${offsetX}px, 0 ,0)`,
+              transform: `translate3D(${offsetX}px, 0 ,0)`
             }}
           >
             {data.length > 0 &&
               data.map((slide, idx) => (
                 <li key={idx} className={styles.sliderItem}>
-                  {children(slide)}
+                  <div className={styles.sliderItemWrapper}>
+                    {children(slide)}
+                  </div>
                 </li>
               ))}
           </ul>
@@ -186,7 +186,7 @@ export function Slider<DataType>({
           title="Следующий слайд"
           onClick={slideNext}
         >
-          <IoIosArrowForward />
+          <IoIosArrowForward/>
         </PrimaryButton>
       </div>
       <div className={styles.sliderDots}>
@@ -198,7 +198,7 @@ export function Slider<DataType>({
                 className={setDynamicCls({
                   stClasses: [styles.sliderDotsItem],
                   dnClasses: [[styles._active]],
-                  conditions: [activeSlideIdx === idx],
+                  conditions: [activeSlideIdx === idx]
                 })}
               >
                 <PrimaryButton

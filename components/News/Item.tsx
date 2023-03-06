@@ -2,12 +2,13 @@ import { useDateDiff } from "@/hooks/dateDiff"
 import { NewsData } from "@/typescript/types"
 import { formatDate } from "@/utils/formatData"
 import Image from "next/image"
-import PrimaryLink from "../Link/PrimaryLink"
+import PrimaryLink from "../Link"
 import styles from "./Item.module.scss"
 
-interface NewsItemProps extends NewsData {}
+interface NewsItemProps extends NewsData {
+}
 
-export default function NewsItem({ date, img, title, text }: NewsItemProps) {
+export default function NewsItem({ date, image, title, text }: NewsItemProps) {
   const dateDiffState = useDateDiff(date)
   const dateDiff = dateDiffState && dateDiffState / 1000 / 60 / 60 / 24
 
@@ -15,10 +16,10 @@ export default function NewsItem({ date, img, title, text }: NewsItemProps) {
     <article className={styles.new}>
       <div className={styles.newImg}>
         <Image
-          src={img.src}
-          width={img.width}
-          height={img.height}
+          src={image}
+          fill
           alt={title}
+          sizes="100vw"
         />
       </div>
       <div className={styles.newInfo}>

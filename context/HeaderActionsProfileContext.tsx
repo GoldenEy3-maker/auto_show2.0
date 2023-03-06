@@ -1,6 +1,6 @@
-import { UserCityState } from '@/components/Header/Actions/Profile/HeaderActionsProfileCity'
-import { DocumentLangState } from '@/components/Header/Actions/Profile/HeaderActionsProfileLang'
-import { SiteThemeState } from '@/components/Header/Actions/Profile/HeaderActionsProfileTheme'
+import { UserCityState } from '@/components/Header/Actions/Profile/City'
+import { DocumentLangState } from '@/components/Header/Actions/Profile/Lang'
+import { SiteThemeState } from '@/components/Header/Actions/Profile/Theme'
 import { LocalStorageNames } from '@/typescript/enums'
 import { generateContextError } from '@/utils/contextError'
 import {

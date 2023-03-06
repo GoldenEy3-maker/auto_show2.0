@@ -1,5 +1,5 @@
 import { SiAudi, SiBmw, SiHonda, SiHyundai, SiMercedes, SiMitsubishi, SiOpel, SiPorsche, SiSkoda } from "react-icons/si"
-import PrimaryLink from "../Link/PrimaryLink"
+import PrimaryLink from "../Link"
 import styles from "./Dilers.module.scss"
 
 export default function Dillers() {

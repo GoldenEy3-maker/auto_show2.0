@@ -1,15 +1,21 @@
+@import "@/styles/functions.scss";
+
 .new {
   display: flex;
   flex-direction: column;
   height: 100%;
 
   &Img {
+    position: relative;
+    height: px-clamp(200, 250);
+
+    overflow: hidden;
     background-color: hsl(var(--hsl-bg-primary-lightness-10));
 
     img {
-      // width: 100%;
-      // height: 100%;
       margin: auto;
+      object-fit: cover;
+      object-position: center;
     }
   }
 

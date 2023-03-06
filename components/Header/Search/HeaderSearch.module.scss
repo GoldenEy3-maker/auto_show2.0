@@ -1,0 +1,19 @@
+.headerSearch {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  &Input {
+    --br-color: hsla(var(--hsla-text-main-alpha-02));
+    --br-focused-color: hsla(var(--hsl-text-main), 0.8);
+
+    max-width: 500px;
+    // border-radius: 100px 0 0 100px;
+  }
+
+  // & > button {
+  //   padding-block: calc(0.8rem + 2px);
+
+  //   border-radius: 0 100px 100px 0;
+  // }
+}

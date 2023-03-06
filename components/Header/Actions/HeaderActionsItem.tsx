@@ -1,6 +1,6 @@
 import type { MouseEventHandler, ReactNode } from 'react'
 
-import PrimaryButton from '@/components/Button/PrimaryButton'
+import PrimaryButton from '@/components/Button'
 
 import styles from './HeaderActions.module.scss'
 

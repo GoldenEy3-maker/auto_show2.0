@@ -1,18 +1,29 @@
 .inputElement {
   --border-width: 2px;
+  --br-color: hsl(var(--hsla-bg-primary-purple-alpha-03));
+  --br-focused-color: hsl(var(--hsl-bg-primary-purple));
   --padding: 1rem;
 
-  display: flex;
-  align-items: center;
-
-  border: var(--border-width) solid hsl(var(--hsla-bg-primary-purple-alpha-03));
-  border-radius: 100px;
-
-  overflow: hidden;
+  position: relative;
 
   flex: 1;
 
-  transition: border-color 200ms ease;
+
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    border: var(--border-width) solid var(--br-color);
+
+    border-radius: 100px;
+
+    transition: border-color 200ms ease;
+
+    &:focus-within {
+      border-color: hsl(var(--br-focused-color));
+    }
+  }
 
   &LeadingIcon {
     position: relative;
@@ -44,7 +55,21 @@
     padding: var(--padding);
   }
 
-  &:focus-within {
-    border-color: hsl(var(--hsl-bg-primary-purple));
+  &SearchResult {
+    position: absolute;
+    top: 115%;
+    left: 50%;
+    width: 140%;
+
+    border-radius: var(--br-primary-radius);
+    overflow: hidden;
+
+    background-color: hsl(var(--hsl-bg-primary));
+
+    box-shadow: var(--bxs-primary) hsla(var(--hsla-bxs-primary-alpha-025));
+
+    transform: translate3d(-50%, 0, 0);
   }
+
+
 }

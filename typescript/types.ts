@@ -1,4 +1,4 @@
-export type InteractionElementsStyleType = 'normal' | 'danger' | 'gray'
+export type InteractionElementsStyleType = "normal" | "danger" | "gray"
 
 export type CartData = {
   id: number
@@ -29,12 +29,22 @@ export type FavoritesData = {
 
 export type NewsData = {
   id: number
-  img: {
-    src: string
-    width: number
-    height: number
-  }
+  image: string
   title: string
   text: string
   date: Date
+}
+
+export type ProductItemType = {
+  _id?: number
+  image: string
+  title: string
+  text: string
+  price: number
+}
+
+export type APIResponse<T = undefined> = {
+  data: T
+  message: string
+  isSuccess: boolean
 }

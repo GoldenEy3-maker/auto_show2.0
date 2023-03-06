@@ -1,3 +1,5 @@
+@import "@/styles/functions.scss";
+
 .slider {
   &Wrapper {
     display: flex;
@@ -11,9 +13,13 @@
   }
 
   &Container {
+
+
     border-radius: var(--br-primary-radius);
 
     flex: 1;
+    height: px-clamp(200, 500);
+    //width: 1000px;
     touch-action: pan-y;
 
     overflow: hidden;
@@ -27,6 +33,8 @@
     position: absolute;
     left: 0;
     top: 0;
+
+    width: 100%;
 
     user-select: none;
 
@@ -51,17 +59,23 @@
 
     flex-shrink: 0;
 
-    border-radius: var(--br-primary-radius);
-
-    img {
+    &Wrapper {
+      position: relative;
+      width: 800px;
+      height: px-clamp(200, 500);
       background-color: hsl(var(--hsl-bg-primary-gray));
 
-      border-radius: inherit;
+      img {
+        object-fit: cover;
+
+        border-radius: var(--br-primary-radius);
+      }
     }
   }
 
   &Dots {
     margin-top: 1rem;
+
     &List {
       display: flex;
       align-items: center;

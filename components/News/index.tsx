@@ -1,8 +1,4 @@
-import { useDateDiff } from "@/hooks/dateDiff"
 import { NewsData } from "@/typescript/types"
-import { formatDate } from "@/utils/formatData"
-import Image from "next/image"
-import PrimaryLink from "../Link/PrimaryLink"
 import NewsItem from "./Item"
 import styles from "./News.module.scss"
 

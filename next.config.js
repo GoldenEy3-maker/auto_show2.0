@@ -5,8 +5,13 @@ const nextConfig = {
     appDir: false,
   },
   images: {
-    domains: ['via.placeholder.com']
-  }
+    domains: ["via.placeholder.com"],
+  },
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    APP_URL: process.env.APP_URL,
+    NODE_ENV: process.env.NODE_ENV,
+  },
 }
 
 module.exports = nextConfig
