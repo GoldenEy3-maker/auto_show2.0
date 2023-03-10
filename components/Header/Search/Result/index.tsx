@@ -1,14 +1,15 @@
-import { APIResponse, ProductItemType } from "@/typescript/types"
+import { APIResponse, ErrorAPIResponse, ProductType } from "@/typescript/types"
 import styles from "./HeaderSearchReslt.module.scss"
 import PrimaryLink from "@/components/Link"
 import Image from "next/image"
 import { formatPrice } from "@/utils/formatData"
 import { setDynamicCls } from "@/utils/setCls"
+import { AxiosError } from "axios"
 
 interface HeaderSearchResultProps {
   isFetchingData: boolean
-  products: ProductItemType[] | undefined
-  error: APIResponse | null
+  products: ProductType[] | undefined
+  error: AxiosError<ErrorAPIResponse> | null
 }
 
 export default function HeaderSearchResult({ products, isFetchingData, error }: HeaderSearchResultProps) {
@@ -31,7 +32,8 @@ export default function HeaderSearchResult({ products, isFetchingData, error }: 
 
       ) : error ? (
 
-        <p className={styles.searchResultErrorMessage}>{error.message}</p>
+        <p
+          className={styles.searchResultErrorMessage}>{error.response?.data ? `${error.message}: ${error.response.data.message}` : error.message}</p>
 
       ) : products ? products.length > 0 ? (
 

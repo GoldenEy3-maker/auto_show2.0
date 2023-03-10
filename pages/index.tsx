@@ -1,13 +1,17 @@
 import Dilers from "@/components/Dilers"
 import News from "@/components/News"
-import { ProductItem } from "@/components/Product"
 import { Slider } from "@/components/Slider"
 import MainLayout from "@/layouts/MainLayout"
 import styles from "@/styles/pages/Home.module.scss"
-import { NewsData, ProductItemType } from "@/typescript/types"
+import { NewsData, ProductType } from "@/typescript/types"
 import Image from "next/image"
 import PopularProducts from "@/components/PopularProducts"
 import ViewedProducts from "@/components/ViewedProducts"
+import { NextPage } from "next"
+
+interface HomePageProps {
+  products: ProductType[]
+}
 
 const mokSliderData = [
   {
@@ -73,44 +77,44 @@ const mokNewsData: NewsData[] = [
   }
 ]
 
-const mokPopularProducts: ProductItemType[] = [
+const mokPopularProducts: ProductType[] = [
   {
-    _id: 1,
+    _id: "1",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   },
   {
-    _id: 2,
+    _id: "2",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   },
   {
-    _id: 3,
+    _id: "3",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   },
   {
-    _id: 4,
+    _id: "4",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   },
   {
-    _id: 5,
+    _id: "5",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   },
   {
-    _id: 6,
+    _id: "6",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
@@ -118,21 +122,21 @@ const mokPopularProducts: ProductItemType[] = [
   }
 ]
 
-const mokViewedProducts: ProductItemType[] = [
+const mokViewedProducts: ProductType[] = [
   {
-    _id: 1,
+    _id: "1",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   }, {
-    _id: 2,
+    _id: "2",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
     price: 50000000
   }, {
-    _id: 3,
+    _id: "3",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
@@ -140,7 +144,7 @@ const mokViewedProducts: ProductItemType[] = [
   }
 ]
 
-export default function HomePage() {
+const HomePage: NextPage = () => {
   return (
     <MainLayout title="Next 12 - Home Page">
       <main className={styles.homePage}>
@@ -189,3 +193,7 @@ export default function HomePage() {
     </MainLayout>
   )
 }
+
+export default HomePage
+
+

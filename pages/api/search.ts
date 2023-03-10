@@ -1,16 +1,18 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { APIResponse, ProductItemType } from "@/typescript/types"
-import { HydratedDocument, Query, Error as MongoError } from "mongoose"
+import { APIResponse, ProductType } from "@/typescript/types"
+import { Error as MongoError } from "mongoose"
 import connectToMongo from "@/utils/mongodb"
 import Product from "@/models/product"
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<APIResponse<HydratedDocument<ProductItemType> | Query<ProductItemType[], ProductItemType> | undefined>>) {
+export default async function searchHandler(req: NextApiRequest, res: NextApiResponse<APIResponse<ProductType[]>>) {
   try {
     await connectToMongo()
 
-    const searchValue: string = req.body
+    const { body } = req
 
-    if (searchValue === "") throw new Error("Произошла ошибка: Передана пустая строка")
+    if (!body) throw new Error("Поступил пустой запрос")
+
+    const { searchValue } = body
 
     const products = await Product.find({
       $or: [
@@ -23,11 +25,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       ]
     })
 
-    res.send({ data: JSON.parse(JSON.stringify(products)), isSuccess: true, message: "Success" })
+    res.send(products)
   } catch (error: unknown) {
     if (error instanceof Error || error instanceof MongoError)
-      res.status(400).send({ data: undefined, message: error.message, isSuccess: false })
+      res.status(400).send({ message: error.message })
 
-    res.status(500).send({ data: undefined, message: "Произошла неожиданнаяа ошибка!", isSuccess: false })
+    res.status(500).send({ message: "Произошла неожиданнаяа ошибка сервера!" })
   }
 }

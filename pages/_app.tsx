@@ -10,9 +10,10 @@ import { SidebarContextProvider } from "@/context/SidebarContext"
 import { setStaticCls } from "@/utils/setCls"
 
 import "@/styles/globals.scss"
-import { QueryClient, QueryClientProvider } from "react-query"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 const inter = Inter({ subsets: ["cyrillic", "latin"], weight: "400" })
+
 const queryClient = new QueryClient()
 
 export default function MyApp({ Component, pageProps }: AppProps) {

@@ -6,22 +6,22 @@ import InputElement from "../../Input"
 import { FiSearch } from "react-icons/fi"
 
 import styles from "./HeaderSearch.module.scss"
-import { useQuery } from "react-query"
+import { useQuery } from "@tanstack/react-query"
 import { useDebounce } from "@/hooks/debounce"
-import { APIResponse, ProductItemType } from "@/typescript/types"
+import { ErrorAPIResponse, ProductType } from "@/typescript/types"
 
 import HeaderSearchResult from "@/components/Header/Search/Result"
+import axi from "@/axios/instance"
+import { AxiosError, AxiosResponse } from "axios"
 
 export default function HeaderSearch() {
   const [searchValue, setSearchValue] = useState("")
   const debouncedSearchValue = useDebounce(searchValue, 300)
   const {
-    data,
+    error,
+    data: queryData,
     isFetching
-  } = useQuery<APIResponse<ProductItemType[] | undefined>>(["products", debouncedSearchValue], () => fetch("/api/search", {
-    method: "post",
-    body: debouncedSearchValue
-  }).then(data => data.json()).catch(error => error), { enabled: Boolean(debouncedSearchValue) })
+  } = useQuery<AxiosResponse<ProductType[]>, AxiosError<ErrorAPIResponse>>(["products", debouncedSearchValue], async () => await axi.post("/search", { searchValue: debouncedSearchValue }), { enabled: !!debouncedSearchValue })
 
   function changeSearchHandler(event: ChangeEvent<HTMLInputElement>) {
     setSearchValue(event.target.value)
@@ -46,8 +46,8 @@ export default function HeaderSearch() {
         type="search"
         name="search"
         id="search"
-        searchResult={<HeaderSearchResult isFetchingData={isFetching} products={data?.data}
-                                          error={data ? !data.isSuccess ? data as APIResponse : null : null}/>}
+        searchResult={<HeaderSearchResult isFetchingData={isFetching} products={queryData?.data}
+                                          error={error}/>}
         placeholder="Напишите что-нибудь..."
         title="Поиск"
         leadingIcon={<FiSearch/>}

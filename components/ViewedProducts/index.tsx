@@ -1,9 +1,9 @@
-import { ProductItemType } from "@/typescript/types"
+import { ProductType } from "@/typescript/types"
 import styles from "./ViewedProducts.module.scss"
 import { ProductItem } from "@/components/Product"
 
 interface ViewedProductsProps {
-  data: ProductItemType[]
+  data: ProductType[]
 }
 
 export default function ViewedProducts({ data }: ViewedProductsProps) {

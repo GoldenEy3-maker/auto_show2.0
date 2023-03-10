@@ -1,9 +1,9 @@
-import { ProductItemType } from "@/typescript/types"
+import { ProductType } from "@/typescript/types"
 import styles from "./PopularProducts.module.scss"
 import { ProductItem } from "@/components/Product"
 
 interface PopularProductsProps {
-  data: ProductItemType[]
+  data: ProductType[]
 }
 
 export default function PopularProducts({ data }: PopularProductsProps) {

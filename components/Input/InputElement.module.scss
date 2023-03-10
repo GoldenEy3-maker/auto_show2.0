@@ -71,5 +71,24 @@
     transform: translate3d(-50%, 0, 0);
   }
 
+  &._alternateStyle {
+    .inputElementWrapper {
+      border-radius: 0;
+      border: none;
+      border-bottom: var(--border-width) solid var(--br-color);
 
+      &:focus-within {
+        border-color: hsl(var(--br-focused-color));
+      }
+    }
+
+    .inputElementLeadingIcon {
+      border-radius: 100px;
+    }
+
+    .inputElementTrailingIcon {
+      border-radius: 100px;
+    }
+
+  }
 }

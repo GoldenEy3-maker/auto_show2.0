@@ -46,7 +46,7 @@ export default function PrimaryButtonContextMenu({
         className={setDynamicCls({
           stClasses: [styles.primaryButtonContextMenuWrapper],
           dnClasses: [[styles._open], [styles._isRightPos]],
-          conditions: [isContextMenuOpen, menuPosition === 'right']
+          conditions: [isContextMenuOpen, menuPosition === "right"]
         })}
       >
         {children}

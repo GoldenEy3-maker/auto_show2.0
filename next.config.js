@@ -1,17 +1,17 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    appDir: false,
+    appDir: false
   },
   images: {
-    domains: ["via.placeholder.com"],
+    domains: ["via.placeholder.com"]
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
     APP_URL: process.env.APP_URL,
-    NODE_ENV: process.env.NODE_ENV,
-  },
+    NODE_ENV: process.env.NODE_ENV
+  }
 }
 
 module.exports = nextConfig

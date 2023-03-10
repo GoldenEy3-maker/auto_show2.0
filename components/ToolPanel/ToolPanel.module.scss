@@ -1,4 +1,15 @@
 .toolPanel {
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &Search {
+    flex: 1;
+  }
+
   &ContextMenu {
     &Separator {
       display: block;

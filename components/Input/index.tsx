@@ -6,7 +6,7 @@ import type {
 } from "react"
 
 import { useRippleHighlight } from "@/hooks/rippleHighlight"
-import { setStaticCls } from "@/utils/setCls"
+import { setDynamicCls, setStaticCls } from "@/utils/setCls"
 import PrimaryButton from "../Button"
 
 import { IoMdClose } from "react-icons/io"
@@ -18,6 +18,7 @@ interface InputElementProps<T> extends InputHTMLAttributes<HTMLInputElement> {
   leadingIcon?: ReactNode
   trailingResetHandler?: MouseEventHandler
   searchResult?: ReactNode
+  inputStyle?: "alternate"
 }
 
 export default function InputElement<T = undefined>({
@@ -27,6 +28,7 @@ export default function InputElement<T = undefined>({
                                                       searchResult,
                                                       id, value,
                                                       onChange,
+                                                      inputStyle,
                                                       ...restAttr
                                                     }: InputElementProps<T>) {
   const [isSearchResultOpen, setIsSearchResultOpen] = useState(false)
@@ -61,7 +63,11 @@ export default function InputElement<T = undefined>({
   }, [])
 
   return (
-    <div className={setStaticCls(styles.inputElement, className)}>
+    <div className={setDynamicCls({
+      stClasses: [styles.inputElement, className],
+      dnClasses: [[styles._alternateStyle]],
+      conditions: [inputStyle === "alternate"]
+    })}>
       <div className={styles.inputElementWrapper}>
         {leadingIcon ? (
           <label

@@ -1,4 +1,4 @@
-import { ProductItemType } from "@/typescript/types"
+import { ProductType } from "@/typescript/types"
 import { formatPrice } from "@/utils/formatData"
 import Image from "next/image"
 import Link from "next/link"
@@ -8,7 +8,7 @@ import { MdFavoriteBorder } from "react-icons/md"
 import PrimaryButton from "../Button"
 import styles from "./Product.module.scss"
 
-interface ProductItemProps extends ProductItemType {
+interface ProductItemProps extends ProductType {
 }
 
 export function ProductItem({ title, _id, text, image, price }: ProductItemProps) {

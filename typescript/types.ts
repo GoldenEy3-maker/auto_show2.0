@@ -35,16 +35,14 @@ export type NewsData = {
   date: Date
 }
 
-export type ProductItemType = {
-  _id?: number
+export interface ProductType {
+  _id: string
   image: string
   title: string
   text: string
   price: number
 }
 
-export type APIResponse<T = undefined> = {
-  data: T
-  message: string
-  isSuccess: boolean
-}
+export type ErrorAPIResponse = { message: string }
+
+export type APIResponse<DataType = any> = DataType | ErrorAPIResponse
