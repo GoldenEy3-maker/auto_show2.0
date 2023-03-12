@@ -3,15 +3,12 @@ import News from "@/components/News"
 import { Slider } from "@/components/Slider"
 import MainLayout from "@/layouts/MainLayout"
 import styles from "@/styles/pages/Home.module.scss"
-import { NewsData, ProductType } from "@/typescript/types"
+import { NewsData, NewsType, ProductType } from "@/typescript/types"
 import Image from "next/image"
 import PopularProducts from "@/components/PopularProducts"
 import ViewedProducts from "@/components/ViewedProducts"
 import { NextPage } from "next"
-
-interface HomePageProps {
-  products: ProductType[]
-}
+import axi from "@/axios/instance"
 
 const mokSliderData = [
   {
@@ -144,7 +141,11 @@ const mokViewedProducts: ProductType[] = [
   }
 ]
 
-const HomePage: NextPage = () => {
+interface HomePageProps {
+  news: NewsType[]
+}
+
+const HomePage: NextPage<HomePageProps> = ({ news }) => {
   return (
     <MainLayout title="Next 12 - Home Page">
       <main className={styles.homePage}>
@@ -170,7 +171,7 @@ const HomePage: NextPage = () => {
         <section className="section">
           <h2 className="section-title _centered">Новости и статьи</h2>
           <div className="section-content">
-            <News data={mokNewsData}/>
+            <News data={news}/>
           </div>
         </section>
         {mokPopularProducts && (
@@ -193,6 +194,13 @@ const HomePage: NextPage = () => {
     </MainLayout>
   )
 }
+
+HomePage.getInitialProps = async (context) => {
+  const { data } = await axi.get("/news")
+
+  return { news: data }
+}
+
 
 export default HomePage
 

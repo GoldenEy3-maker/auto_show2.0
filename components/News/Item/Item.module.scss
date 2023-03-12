@@ -5,6 +5,11 @@
   flex-direction: column;
   height: 100%;
 
+  border-radius: var(--br-primary-radius);
+  overflow: hidden;
+
+  background-color: hsl(var(--hsl-bg-primary));
+
   &Img {
     position: relative;
     height: px-clamp(200, 250);

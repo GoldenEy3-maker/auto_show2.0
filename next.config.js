@@ -10,6 +10,7 @@ const nextConfig = {
   publicRuntimeConfig: {
     // Will be available on both server and client
     APP_URL: process.env.APP_URL,
+    VERCEL_URL: process.env.VERSEL_URL,
     NODE_ENV: process.env.NODE_ENV
   }
 }

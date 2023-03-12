@@ -8,10 +8,11 @@ import { MdFavoriteBorder } from "react-icons/md"
 import PrimaryButton from "../Button"
 import styles from "./Product.module.scss"
 
-interface ProductItemProps extends ProductType {
-}
+type ProductItemProps = ProductType
 
-export function ProductItem({ title, _id, text, image, price }: ProductItemProps) {
+export function ProductItem({ price, _id, text, image, title }: ProductItemProps) {
+
+
   return (
     <div className={styles.product}>
       <Link href="/" title={title} className={styles.productImg}>
@@ -30,10 +31,10 @@ export function ProductItem({ title, _id, text, image, price }: ProductItemProps
             {formatPrice(price)}
           </span>
           <PrimaryButton type="button" title="Поделиться">
-            <FiShare2></FiShare2>
+            <FiShare2/>
           </PrimaryButton>
           <PrimaryButton type="button" title="Добавить в избранное">
-            <MdFavoriteBorder></MdFavoriteBorder>
+            <MdFavoriteBorder/>
           </PrimaryButton>
           <PrimaryButton
             type="button"

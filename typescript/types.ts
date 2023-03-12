@@ -1,3 +1,5 @@
+import { Date as MongoDate } from "mongoose"
+
 export type InteractionElementsStyleType = "normal" | "danger" | "gray"
 
 export type CartData = {
@@ -33,6 +35,26 @@ export type NewsData = {
   title: string
   text: string
   date: Date
+}
+
+export type NewsType = {
+  _id: string
+  title: string
+  text: string
+  image: string
+  date: MongoDate
+}
+
+export type UserType = {
+  _id: string
+  name: string
+  favorites: UserFavoriteProduct[]
+}
+
+export type UserFavoriteProduct = {
+  _id: string
+  product: ProductType
+  addDate: MongoDate
 }
 
 export interface ProductType {

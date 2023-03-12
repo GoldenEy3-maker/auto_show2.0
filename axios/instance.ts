@@ -3,8 +3,10 @@ import axios from "axios"
 
 const { publicRuntimeConfig } = getConfig()
 
+const { APP_URL, VERCEL_URL } = publicRuntimeConfig
+
 const axi = axios.create({
-  baseURL: `${publicRuntimeConfig.APP_URL}/api`
+  baseURL: `${VERCEL_URL ?? APP_URL}/api`
 })
 
 export default axi

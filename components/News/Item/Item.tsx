@@ -1,16 +1,13 @@
-import { useDateDiff } from "@/hooks/dateDiff"
-import { NewsData } from "@/typescript/types"
-import { formatDate } from "@/utils/formatData"
+import { NewsType } from "@/typescript/types"
 import Image from "next/image"
-import PrimaryLink from "../Link"
+import PrimaryLink from "../../Link"
 import styles from "./Item.module.scss"
 
-interface NewsItemProps extends NewsData {
+interface NewsItemProps extends NewsType {
 }
 
 export default function NewsItem({ date, image, title, text }: NewsItemProps) {
-  const dateDiffState = useDateDiff(date)
-  const dateDiff = dateDiffState && dateDiffState / 1000 / 60 / 60 / 24
+
 
   return (
     <article className={styles.new}>
@@ -26,15 +23,11 @@ export default function NewsItem({ date, image, title, text }: NewsItemProps) {
         <h3 className={styles.newInfoTitle}>{title}</h3>
         <p className={styles.newInfoText}>{text}</p>
         <footer className={styles.newInfoFooter}>
-          {dateDiff && (
-            <time
-              className={styles.newInfoFooterTime}
-              dateTime={date.toISOString()}
-              title={formatDate(date, dateDiff).fullDate}
-            >
-              {formatDate(date, dateDiff).shortDate}
-            </time>
-          )}
+          <time
+            className={styles.newInfoFooterTime}
+          >
+            date
+          </time>
           <PrimaryLink
             href="/"
             title="Подробнее"

@@ -1,9 +1,9 @@
-import { NewsData } from "@/typescript/types"
-import NewsItem from "./Item"
+import { NewsData, NewsType } from "@/typescript/types"
+import NewsItem from "./Item/Item"
 import styles from "./News.module.scss"
 
 interface NewsProps {
-  data: NewsData[]
+  data: NewsType[]
 }
 
 export default function News({ data }: NewsProps) {
@@ -12,7 +12,7 @@ export default function News({ data }: NewsProps) {
       <ul className={styles.newsList}>
         {data.length > 0 &&
           data.map((dataNew) => (
-            <li key={dataNew.id} className={styles.newsItem}>
+            <li key={dataNew._id} className={styles.newsItem}>
               <NewsItem {...dataNew} />
             </li>
           ))}

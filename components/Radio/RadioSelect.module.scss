@@ -10,6 +10,8 @@
     justify-content: space-between;
     gap: 0.5rem;
 
+    border-radius: inherit;
+
     padding: 0.8rem 1.5rem;
 
     white-space: nowrap;
@@ -23,7 +25,7 @@
 
   &:focus-within {
     label {
-      background-color: hsla(var(--hsla-bg-primary-purple-alpha-02));
+      outline: auto;
     }
   }
 
@@ -48,9 +50,27 @@
     height: 0;
   }
 
+  &._labelIcon {
+    label {
+      padding: 0.8rem 1.2rem;
+    }
+
+    &._checked {
+      label {
+        background-color: hsla(var(--hsl-bg-primary-purple), .4);
+      }
+    }
+  }
+
   @media (hover: hover) and (pointer: fine) {
     label:hover {
       background-color: hsla(var(--hsla-bg-primary-purple-alpha-03));
+    }
+
+    &._checked._labelIcon {
+      label:hover {
+        background-color: hsla(var(--hsl-bg-primary-purple), .6);
+      }
     }
   }
 }

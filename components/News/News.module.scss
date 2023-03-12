@@ -10,12 +10,4 @@
     // justify-items: center;
     gap: 1rem;
   }
-
-  &Item {
-    // flex: 1 1 320px;
-    border-radius: var(--br-primary-radius);
-    overflow: hidden;
-
-    background-color: hsl(var(--hsl-bg-primary));
-  }
 }
