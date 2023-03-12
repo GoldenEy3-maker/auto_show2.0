@@ -8,9 +8,7 @@ const nextConfig = {
     domains: ["via.placeholder.com"]
   },
   publicRuntimeConfig: {
-    // Will be available on both server and client
     APP_URL: process.env.APP_URL,
-    VERCEL_URL: process.env.VERCEL_URL,
     NODE_ENV: process.env.NODE_ENV
   }
 }
