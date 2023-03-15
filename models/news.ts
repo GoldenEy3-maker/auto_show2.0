@@ -5,7 +5,7 @@ const newsSchema = new Schema<NewsType>({
   title: String,
   image: String,
   text: String,
-  date: Date
+  _date: Date
 })
 
 const News: Model<NewsType> = models.News || model("News", newsSchema)

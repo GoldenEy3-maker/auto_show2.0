@@ -6,7 +6,7 @@ import styles from "./Item.module.scss"
 interface NewsItemProps extends NewsType {
 }
 
-export default function NewsItem({ date, image, title, text }: NewsItemProps) {
+export default function NewsItem({ _date, image, title, text }: NewsItemProps) {
 
 
   return (

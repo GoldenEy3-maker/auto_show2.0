@@ -10,12 +10,11 @@ export default function News({ data }: NewsProps) {
   return (
     <div className={styles.news}>
       <ul className={styles.newsList}>
-        {data.length > 0 &&
-          data.map((dataNew) => (
-            <li key={dataNew._id} className={styles.newsItem}>
-              <NewsItem {...dataNew} />
-            </li>
-          ))}
+        {data.map((dataNew) => (
+          <li key={dataNew._id} className={styles.newsItem}>
+            <NewsItem {...dataNew} />
+          </li>
+        ))}
       </ul>
     </div>
   )

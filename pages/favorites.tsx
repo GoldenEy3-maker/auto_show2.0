@@ -2,16 +2,12 @@ import MainLayout from "@/layouts/MainLayout"
 import ToolPanel from "@/components/ToolPanel"
 import { UserFavoriteProduct } from "@/typescript/types"
 import { NextPage } from "next"
-import axi from "@/axios/instance"
 import { ProductItem } from "@/components/Product"
 import styles from "@/styles/pages/Favorites.module.scss"
 import { FilterNames } from "@/typescript/enums"
+import { trpc } from "@/utils/trpc"
 
-interface FavoritesPageProps {
-  favorites: UserFavoriteProduct[]
-}
-
-const FavoritesPage: NextPage<FavoritesPageProps> = ({ favorites }) => {
+const FavoritesPage: NextPage = () => {
   return (
     <MainLayout title="Next 12 - Favorites Page">
       <main className={styles.favoritePage}>
@@ -27,6 +23,7 @@ const FavoritesPage: NextPage<FavoritesPageProps> = ({ favorites }) => {
               <li className={styles.favoritePageLoadingTemplateItem}></li>
             </ul>
           }
+          query={trpc.favorites.list}
           filtersList={[
             {
               name: FilterNames.ByName,
@@ -42,9 +39,6 @@ const FavoritesPage: NextPage<FavoritesPageProps> = ({ favorites }) => {
               isDefault: true
             }
           ]}
-          prefetchedData={favorites}
-          queryKey={"favorites"}
-          apiURL="/favorites"
           searchPlaceholder="Поиск избранного">
           {(data) => (
             <ul className={styles.favoritePageList}>
@@ -59,12 +53,6 @@ const FavoritesPage: NextPage<FavoritesPageProps> = ({ favorites }) => {
       </main>
     </MainLayout>
   )
-}
-
-FavoritesPage.getInitialProps = async (context) => {
-  const { data } = await axi.get("/favorites")
-
-  return { favorites: data }
 }
 
 export default FavoritesPage

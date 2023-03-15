@@ -3,10 +3,10 @@ import { UserType } from "@/typescript/types"
 import Product from "./product"
 
 const userSchema = new Schema<UserType>({
-  name: { type: String },
+  name: String,
   favorites: [{
     product: { type: Schema.Types.ObjectId, ref: Product },
-    addDate: Date
+    _date: Date
   }]
 })
 

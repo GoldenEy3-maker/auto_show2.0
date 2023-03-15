@@ -7,8 +7,10 @@ import { NewsData, NewsType, ProductType } from "@/typescript/types"
 import Image from "next/image"
 import PopularProducts from "@/components/PopularProducts"
 import ViewedProducts from "@/components/ViewedProducts"
-import { NextPage } from "next"
+import { GetServerSideProps, GetServerSidePropsContext, GetStaticProps, NextPage } from "next"
 import axi from "@/axios/instance"
+import { trpc } from "@/utils/trpc"
+import { appRouter } from "@/server/routers/_app"
 
 const mokSliderData = [
   {
@@ -145,7 +147,16 @@ interface HomePageProps {
   news: NewsType[]
 }
 
-const HomePage: NextPage<HomePageProps> = ({ news }) => {
+const HomePage: NextPage<HomePageProps> = () => {
+  const { data: news, isFetching, isLoading, error } = trpc.news.list.useQuery({}, {
+    refetchOnMount: false,
+    refetchOnWindowFocus: false
+  })
+
+  if (isLoading || isFetching) return <p>Loading...</p>
+
+  if (error) return <p>{error.message}</p>
+
   return (
     <MainLayout title="Next 12 - Home Page">
       <main className={styles.homePage}>
@@ -195,12 +206,11 @@ const HomePage: NextPage<HomePageProps> = ({ news }) => {
   )
 }
 
-HomePage.getInitialProps = async (context) => {
-  const { data } = await axi.get("/news")
-
-  return { news: data }
-}
-
+// HomePage.getInitialProps = async (context) => {
+//   const { data } = await axi.get("/news")
+//
+//   return { news: data }
+// }
 
 export default HomePage
 

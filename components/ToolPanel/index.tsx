@@ -1,18 +1,15 @@
 import styles from "./ToolPanel.module.scss"
-import { ErrorAPIResponse } from "@/typescript/types"
 import { BiFilterAlt } from "react-icons/bi"
 import PrimaryButtonContextMenu from "@/components/Button/Context"
 import RadioSelect from "@/components/Radio"
 import { ChangeEvent, ReactNode, useState } from "react"
-import { useQuery } from "@tanstack/react-query"
-import axi from "@/axios/instance"
-import { AxiosError, AxiosResponse } from "axios"
 import InputElement from "@/components/Input"
 import { FiSearch } from "react-icons/fi"
 import { useDebounce } from "@/hooks/debounce"
 import { FilterModes, FilterNames } from "@/typescript/enums"
 import radioSelectTabs from "@/styles/components/RadioSelectTabs.module.scss"
 import { RiLayoutGridLine, RiLayoutRowLine } from "react-icons/ri"
+import { QueryLike, InferQueryLikeData } from "@trpc/react-query/shared"
 
 enum LayoutNames {
   Columns = "columns",
@@ -25,42 +22,34 @@ interface FilterList {
   isDefault?: boolean
 }
 
-interface ToolPanelProps<DataType> {
-  prefetchedData: DataType
-  queryKey: string
+interface ToolPanelProps<DataType extends InferQueryLikeData<Query>, Query extends QueryLike> {
   loadingTemplate: ReactNode
-  apiURL: string
   searchPlaceholder?: string
   filtersList?: FilterList[]
+  query: Query
 
   children(data: DataType): ReactNode
 }
 
-export default function ToolPanel<DataType = any[]>({
-                                                      prefetchedData,
-                                                      queryKey,
-                                                      loadingTemplate,
-                                                      filtersList,
-                                                      apiURL,
-                                                      searchPlaceholder,
-                                                      children
-                                                    }: ToolPanelProps<DataType>) {
+export default function ToolPanel<DataType extends InferQueryLikeData<Query>, Query extends QueryLike>({
+                                                                                                         query,
+                                                                                                         loadingTemplate,
+                                                                                                         filtersList,
+                                                                                                         searchPlaceholder,
+                                                                                                         children
+                                                                                                       }: ToolPanelProps<DataType, Query>) {
   const [filtersState, setFiltersState] = useState<FilterNames | undefined>(undefined)
   const [filtersModeState, setFiltersModeState] = useState<FilterModes | undefined>(undefined)
   const [searchValue, setSearchValue] = useState("")
   const [layoutState, setLayoutState] = useState<LayoutNames>(LayoutNames.Columns)
   const debouncedSearchValue = useDebounce(searchValue, 350)
 
-  const {
-    data: queryData,
-    isFetching,
-    error
-  } = useQuery<AxiosResponse<DataType>, AxiosError<ErrorAPIResponse>>([queryKey, filtersState, filtersModeState, debouncedSearchValue], async () => await axi.post(apiURL, {
+  const { data, error, isFetching, isLoading } = query.useQuery({
     filter: filtersState,
     filterMode: filtersModeState,
     searchValue: debouncedSearchValue
-  }), {
-    enabled: !!filtersState || !!filtersModeState || !!debouncedSearchValue,
+  }, {
+    refetchOnMount: false,
     refetchOnWindowFocus: false
   })
 
@@ -151,13 +140,11 @@ export default function ToolPanel<DataType = any[]>({
       </div>
 
       <div className={styles.toolPanelContent}>
-        {isFetching ? loadingTemplate :
-          error ? <p>{error.response?.data ? `${error.message}: ${error.response.data.message}` : error.message}</p> :
-            (queryData?.data ? (queryData.data as any[]).length > 0 ? children(queryData.data) :
-                  <p>По вашему запросу не найдено никаких
-                    данных!</p> :
-                prefetchedData ? (prefetchedData as any[]).length > 0 && children(prefetchedData) :
-                  <p>Нет данных</p>
+        {isFetching || isLoading ? loadingTemplate :
+          error ? <p>{`Произошла ошибка (${error.data.code}): ${error.message}`}</p> :
+            (data ? data.length > 0 ? children(data) :
+                  <p>По вашему запросу ничего не найдено!</p> :
+                <p>Нет данных</p>
             )}
       </div>
 

@@ -1,6 +1,6 @@
 import { Inter } from "@next/font/google"
-import type { AppProps } from "next/app"
-
+import type { AppProps, AppType } from "next/app"
+import { trpc } from "@/utils/trpc"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
@@ -10,26 +10,22 @@ import { SidebarContextProvider } from "@/context/SidebarContext"
 import { setStaticCls } from "@/utils/setCls"
 
 import "@/styles/globals.scss"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 const inter = Inter({ subsets: ["cyrillic", "latin"], weight: "400" })
 
-const queryClient = new QueryClient()
-
-export default function MyApp({ Component, pageProps }: AppProps) {
-
+const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SidebarContextProvider>
-        <div className={setStaticCls("wrapper", inter.className)}>
-          <Header/>
-          <div className="page-content">
-            <Sidebar/>
-            <Component {...pageProps} />
-          </div>
-          <Footer/>
+    <SidebarContextProvider>
+      <div className={setStaticCls("wrapper", inter.className)}>
+        <Header/>
+        <div className="page-content">
+          <Sidebar/>
+          <Component {...pageProps} />
         </div>
-      </SidebarContextProvider>
-    </QueryClientProvider>
+        <Footer/>
+      </div>
+    </SidebarContextProvider>
   )
 }
+
+export default trpc.withTRPC(MyApp)

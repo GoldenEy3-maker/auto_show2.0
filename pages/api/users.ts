@@ -11,11 +11,10 @@ export default async function usersHandler(req: NextApiRequest, res: NextApiResp
 
     if (!user) throw new Error("Такого пользователя не существует!")
 
-    const isItemInFavorite = user.favorites.some(({ product }) => {
-      return product._id === ""
-    })
+    // res.send(user.favorites)
 
-    res.send(isItemInFavorite)
+
+    res.send("Успешно обновлено")
   } catch (error: unknown) {
     if (error instanceof Error) res.send({ message: error.message })
 
