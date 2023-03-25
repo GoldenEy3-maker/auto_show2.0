@@ -1,31 +1,25 @@
-import z from "zod"
 import { FilterModes, FilterNames } from "@/typescript/enums"
+import { CustomDate } from "@/typescript/types"
 
-export function sortByFilters<DataType>(data: DataType[], filter: FilterNames | undefined, filterMode: FilterModes | undefined) {
+export function sortByFilters<DataType extends { title: string, price?: number } & CustomDate>(data: DataType[], filter: FilterNames | undefined, filterMode: FilterModes | undefined) {
   return data.sort((a, b) => {
-    let typeA = z.object({ _date: z.date().optional(), title: z.string().optional(), price: z.number().optional() })
-    let typeB = typeA
+    const dateA = new Date(a._date)
+    const dateB = new Date(b._date)
 
-    if (filter === "by-name") {
-      if (filterMode === "ascending") {
-        return +typeA.shape.title - +typeB.shape.title
-      }
+    if (filter === FilterNames.ByName) {
+      if (filterMode === FilterModes.Ascending) return +a.title - +b.title
 
-      return +typeB.shape.title - +typeA.shape.title
+      return +b.title - +a.title
     }
 
-    if (filter === "by-price") {
-      if (filterMode === "ascending") {
-        return +typeA.shape.price - +typeB.shape.price
-      }
+    if (filter === FilterNames.ByPrice && a.price && b.price) {
+      if (filterMode === FilterModes.Ascending) return a.price - b.price
 
-      return +typeB.shape.price - +typeA.shape.price
+      return b.price - a.price
     }
 
-    if (filterMode === "descending") {
-      return +typeA.shape._date - +typeB.shape._date
-    }
+    if (filterMode === FilterModes.Ascending) return dateA.getTime() - dateB.getTime()
 
-    return +typeB.shape._date - +typeA.shape._date
+    return dateB.getTime() - dateA.getTime()
   })
 }

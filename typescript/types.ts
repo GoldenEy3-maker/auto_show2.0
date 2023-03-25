@@ -1,9 +1,7 @@
-import { Date as MongoDate } from "mongoose"
-
 export type InteractionElementsStyleType = "normal" | "danger" | "gray"
 
 export type CustomDate = {
-  _date: Date
+  _date: string
 }
 
 export type CartData = {
@@ -31,14 +29,6 @@ export type FavoritesData = {
   title: string
   text: string
   price: number
-}
-
-export type NewsData = {
-  id: number
-  image: string
-  title: string
-  text: string
-  date: Date
 }
 
 export type NewsType = {

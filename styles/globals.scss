@@ -23,6 +23,10 @@
 .page-title {
   font-size: 1.7rem;
   margin-bottom: 1rem;
+
+  &._centered {
+    text-align: center;
+  }
 }
 
 ._container {
@@ -33,7 +37,6 @@
   padding-inline: var(--pg-container);
   margin-inline: auto;
 }
-
 
 .section {
   &-title {
@@ -80,19 +83,17 @@
 
   border-radius: 50%;
 
-  opacity: 0.7;
+  opacity: 0.4;
 
   background-color: hsl(var(--hsl-bg));
 
-  transform: translate(-50%, -50%) scale(0);
+  transform: scale(0);
 
   animation: ripple linear forwards;
 }
 
 @keyframes ripple {
   to {
-    transform: translate(-50%, -50%) scale(2.5);
-
-    opacity: 0;
+    transform: scale(3);
   }
 }

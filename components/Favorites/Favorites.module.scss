@@ -1,0 +1,13 @@
+.favorites {
+  &List {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+
+    &LoadingSkeletonItem {
+      border-radius: var(--br-primary-radius);
+      min-height: 430px;
+      background-color: hsl(var(--hsl-bg-primary-gray));
+    }
+  }
+}

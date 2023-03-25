@@ -1,6 +1,6 @@
 import styles from "../News.module.scss"
 
-export default function NewsLoadingTemplate() {
+export default function NewsLoadingSkeleton() {
   return (
     <ul className={styles.newsList}>
       <li className={styles.newsListLoadingSkeletonItem}></li>

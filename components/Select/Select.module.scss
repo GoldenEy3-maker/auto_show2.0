@@ -1,0 +1,106 @@
+.select {
+  position: relative;
+
+  &Button {
+    --border-width: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    width: 100%;
+
+    border: var(--border-width) solid
+      hsla(var(--hsla-bg-primary-purple-alpha-03));
+
+    padding: calc(1rem - var(--border-width) * 2) 1rem;
+
+    transition: border-color 200ms ease, background-color 200ms ease;
+
+    &:focus {
+      outline: none;
+
+      border-color: hsl(var(--hsl-bg-primary-purple));
+    }
+
+    &Icon {
+      flex-shrink: 0;
+
+      transition: transform 200ms ease;
+    }
+
+    &Content {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &Menu {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    z-index: 1;
+
+    overflow: hidden;
+
+    width: 90%;
+
+    box-shadow: var(--bxs-primary) hsla(var(--hsla-bxs-primary-alpha-025));
+
+    opacity: 0;
+    visibility: hidden;
+
+    border-radius: var(--br-primary-radius);
+
+    background-color: hsla(var(--hsla-bg-primary-alpha-09));
+
+    backdrop-filter: blur(var(--bdf-primary-blur));
+
+    transform: translateX(-50%);
+
+    transition: opacity 200ms ease, visibility 200ms ease, top 200ms ease;
+
+    &[aria-hidden="false"] {
+      top: 115%;
+
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &Wrapper {
+      max-height: 350px;
+      overflow: auto;
+    }
+
+    &Search {
+      padding: 1rem;
+    }
+
+    &List {
+      padding-bottom: 0.5rem;
+
+      &Item {
+        &Button {
+          width: 100%;
+          border-radius: 0;
+
+          padding-inline: 1.5rem;
+
+          text-align: left;
+        }
+
+        &Empty {
+          padding: 1rem 1.5rem;
+        }
+      }
+    }
+  }
+
+  &:has(&Menu[aria-hidden="false"]) {
+    .selectButtonIcon {
+      transform: rotate(180deg);
+    }
+  }
+}

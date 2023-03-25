@@ -1,5 +1,12 @@
 .checkboxElement {
   display: flex;
+  align-items: center;
+
+  // display: inline-block;
+
+  border-radius: var(--br-primary-radius);
+
+  overflow: hidden;
 
   transition: background-color 200ms ease;
 
@@ -9,8 +16,10 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     gap: 1rem;
+
+    flex: 1;
 
     padding: 0.7rem 1.5rem;
 
@@ -76,38 +85,39 @@
 
   &Check {
     --border-width: 2px;
-    --hsl-br: var(--hsl-text-main);
+    position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: calc(1.2rem + var(--border-width));
-    height: calc(1.2rem + var(--border-width));
+    border: var(--border-width) solid hsl(var(--hsl-text-main));
 
-    border: var(--border-width) solid hsl(var(--hsl-br));
+    border-radius: 6px;
 
-    border-radius: var(--br-primary-radius);
+    padding: 0.1rem;
 
     transition: border-color 200ms ease, background-color 200ms ease;
-
-    ._checked & {
-      span {
-        opacity: 1;
-        visibility: visible;
-
-        transform: translate(0, 0);
-      }
-    }
 
     span {
       opacity: 0;
       visibility: hidden;
 
-      transform: translate(-10px, 0);
+      transition: opacity 200ms ease, visibility 200ms ease;
 
-      transition: opacity 200ms ease, visibility 200ms ease,
-        transform 200ms ease;
+      svg {
+        stroke-width: 2px;
+      }
+    }
+
+    ._checked & {
+      border-color: hsl(var(--hsl-bg-primary-purple));
+      background-color: hsl(var(--hsl-bg-primary-purple));
+
+      span {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 

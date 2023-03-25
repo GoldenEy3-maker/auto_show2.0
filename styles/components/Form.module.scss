@@ -1,10 +1,22 @@
+@import "../functions.scss";
+
 .form {
   display: flex;
   flex-direction: column;
+  // padding-inline: 3rem;
+  max-width: 700px;
+  margin: 0 auto;
 
   gap: 1rem;
 
   &Inputs {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.7rem;
+  }
+
+  &Checkboxes {
     display: flex;
     flex-direction: column;
 

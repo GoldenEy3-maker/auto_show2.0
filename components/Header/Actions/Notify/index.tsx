@@ -1,23 +1,23 @@
-import HeaderActionsItem from '../HeaderActionsItem'
+import HeaderActionsItem from "../HeaderActionsItem"
 
-import { setStaticCls } from '@/utils/setCls'
+import { setStaticCls } from "@/utils/setCls"
 import {
   MdOutlineNotificationsNone,
   MdOutlineNotificationsOff
-} from 'react-icons/md'
-import { HeaderActionsMenuProps } from '../HeaderActions'
+} from "react-icons/md"
+import { HeaderActionsMenuProps } from "../HeaderActions"
 
-import PrimaryButton from '@/components/Button'
-import PrimaryButtonContextMenu from '@/components/Button/Context'
-import CheckboxElement from '@/components/Checkbox'
-import { LocalStorageNames } from '@/typescript/enums'
-import { NotifyData } from '@/typescript/types'
-import { MouseEvent, useEffect, useState } from 'react'
-import { BsCheck2 } from 'react-icons/bs'
-import { FiMoreVertical } from 'react-icons/fi'
-import headerActionsStyles from '../HeaderActions.module.scss'
-import styles from './HeaderActionsNotify.module.scss'
-import HeaderActionsNotifyItem from './Item'
+import PrimaryButton from "@/components/Button"
+import PrimaryButtonContextMenu from "@/components/Button/Context"
+import CheckboxElement from "@/components/Checkbox"
+import { LocalStorageKyes } from "@/typescript/enums"
+import { NotifyData } from "@/typescript/types"
+import { MouseEvent, useEffect, useState } from "react"
+import { BsCheck2 } from "react-icons/bs"
+import { FiMoreVertical } from "react-icons/fi"
+import headerActionsStyles from "../HeaderActions.module.scss"
+import styles from "./HeaderActionsNotify.module.scss"
+import HeaderActionsNotifyItem from "./Item"
 
 interface HeaderActionsNotify extends HeaderActionsMenuProps {}
 
@@ -29,82 +29,82 @@ export default function HeaderActionsNotify({
     [
       {
         id: 1,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test test test 2 text dwad d dw dw dw dw wd wd ',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-02-21 8:30'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test test test 2 text dwad d dw dw dw dw wd wd ",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-02-21 8:30"),
         isNew: false,
       },
       {
         id: 2,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test consectetut',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-02-20 11:22'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test consectetut",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-02-20 11:22"),
         isNew: true,
       },
       {
         id: 3,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-02-10 13:20'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-02-10 13:20"),
         isNew: true,
       },
       {
         id: 4,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-01-10 13:20'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-01-10 13:20"),
         isNew: true,
       },
       {
         id: 5,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-01-12 13:20'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-01-12 13:20"),
         isNew: true,
       },
       {
         id: 6,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-01-21 8:30'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-01-21 8:30"),
         isNew: true,
       },
       {
         id: 7,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test consectetur adipisicing elit',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-02-15 11:22'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test consectetur adipisicing elit",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-02-15 11:22"),
         isNew: true,
       },
       {
         id: 8,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-02-11 13:20'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-02-11 13:20"),
         isNew: true,
       },
       {
         id: 9,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2023-02-17 13:20'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2023-02-17 13:20"),
         isNew: false,
       },
       {
         id: 10,
-        img: 'https://via.placeholder.com/50',
-        title: 'Lorem ipsum test',
-        text: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.',
-        date: new Date('2022-12-10 13:20'),
+        img: "https://via.placeholder.com/50",
+        title: "Lorem ipsum test",
+        text: " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi sint iure repellendus atque, reprehenderit quidem dolor enim esse magni earum in nemo blanditiis error mollitia totam? Optio enim omnis pariatur.",
+        date: new Date("2022-12-10 13:20"),
         isNew: false,
       },
     ].sort((a, b) => {
@@ -116,7 +116,7 @@ export default function HeaderActionsNotify({
 
   function changeNotifyOffHandler() {
     setIsNotifyOff((prev) => {
-      localStorage.setItem(LocalStorageNames.IsNotifyOff, String(!prev))
+      localStorage.setItem(LocalStorageKyes.IsNotifyOff, String(!prev))
 
       return !prev
     })
@@ -129,18 +129,16 @@ export default function HeaderActionsNotify({
   }
 
   useEffect(() => {
-    const storedIsNotifyOff = localStorage.getItem(
-      LocalStorageNames.IsNotifyOff
-    )
+    const storedIsNotifyOff = localStorage.getItem(LocalStorageKyes.IsNotifyOff)
 
     if (storedIsNotifyOff) {
-      setIsNotifyOff(storedIsNotifyOff === 'false' ? false : true)
+      setIsNotifyOff(storedIsNotifyOff === "false" ? false : true)
     }
   }, [])
 
   return (
     <HeaderActionsItem
-      onClickHandler={toggleMenuStateHandler.bind(null, 'notify')}
+      onClickHandler={toggleMenuStateHandler.bind(null, "notify")}
       icon={
         isNotifyOff ? (
           <MdOutlineNotificationsOff />
@@ -148,7 +146,7 @@ export default function HeaderActionsNotify({
           <MdOutlineNotificationsNone />
         )
       }
-      title='Уведомления'
+      title="Уведомления"
     >
       {notifyData && notifyData.length > 0 && (
         <span className={styles.headerActionsNotifyIndicator}></span>
@@ -171,24 +169,24 @@ export default function HeaderActionsNotify({
             {notifyData && notifyData.length > 0 && (
               <div className={styles.headerActionsNotifyHeaderActionButtons}>
                 <PrimaryButton
-                  title='Отметить все как прочитанное'
-                  type='button'
+                  title="Отметить все как прочитанное"
+                  type="button"
                 >
                   <BsCheck2 />
                 </PrimaryButton>
 
                 <PrimaryButtonContextMenu
                   buttonContent={<FiMoreVertical />}
-                  title='Настройки уведомлений'
-                  type='button'
-                  menuPosition='right'
+                  title="Настройки уведомлений"
+                  type="button"
+                  menuPosition="right"
                 >
                   <ul>
                     <li>
                       <CheckboxElement
-                        label='Отключить уведомления'
-                        id='notify-off'
-                        name='notify-off'
+                        label="Отключить уведомления"
+                        id="notify-off"
+                        name="notify-off"
                         onChange={changeNotifyOffHandler}
                         checked={isNotifyOff}
                         isSwitcher={true}
@@ -196,8 +194,8 @@ export default function HeaderActionsNotify({
                     </li>
                     <li>
                       <PrimaryButton
-                        title='Удалить все уведомления'
-                        styleType='danger'
+                        title="Удалить все уведомления"
+                        styleType="danger"
                         onClick={clearNotify}
                       >
                         Удалить все уведомления
@@ -206,7 +204,7 @@ export default function HeaderActionsNotify({
                   </ul>
                 </PrimaryButtonContextMenu>
               </div>
-             )}
+            )}
           </header>
           <div className={headerActionsStyles.headerActionsMenuBody}>
             {notifyData && notifyData.length > 0 ? (

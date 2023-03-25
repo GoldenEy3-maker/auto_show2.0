@@ -1,14 +1,14 @@
 import PrimaryButton from "@/components/Button"
 import PrimaryLink from "@/components/Link"
 import { FavoritesData } from "@/typescript/types"
-import { formatPrice } from "@/utils/formatData"
+import { formatPrice } from "@/utils/formatDate"
+import { setStaticCls } from "@/utils/setCls"
 import Image from "next/image"
 import { MouseEvent } from "react"
 import { BsCart2 } from "react-icons/bs"
 import { MdFavorite } from "react-icons/md"
 import listProductItemStyles from "../../HeaderActionsListProductItem.module.scss"
 import styles from "./HeaderActionsFavoriteProductItem.module.scss"
-import { setStaticCls } from "@/utils/setCls"
 
 interface HeaderActionsFavoriteProductItemProps extends FavoritesData {
   deleteFavoriteHandler: (id: number, event: MouseEvent) => void

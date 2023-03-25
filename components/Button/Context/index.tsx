@@ -11,11 +11,11 @@ interface PrimaryButtonContextMenu extends PrimaryButtonProps {
 }
 
 export default function PrimaryButtonContextMenu({
-                                                   children,
-                                                   buttonContent,
-                                                   menuPosition = "left",
-                                                   ...restAttr
-                                                 }: PrimaryButtonContextMenu) {
+  children,
+  buttonContent,
+  menuPosition = "left",
+  ...restAttr
+}: PrimaryButtonContextMenu) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
 
   function toggleButtonClickHandler() {
@@ -46,7 +46,7 @@ export default function PrimaryButtonContextMenu({
         className={setDynamicCls({
           stClasses: [styles.primaryButtonContextMenuWrapper],
           dnClasses: [[styles._open], [styles._isRightPos]],
-          conditions: [isContextMenuOpen, menuPosition === "right"]
+          conditions: [isContextMenuOpen, menuPosition === "right"],
         })}
       >
         {children}

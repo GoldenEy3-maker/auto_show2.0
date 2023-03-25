@@ -1,0 +1,11 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: hsl(var(--hsl-bg-primary));
+
+  border-radius: var(--br-primary-radius);
+
+  overflow: hidden;
+}

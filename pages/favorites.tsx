@@ -1,11 +1,9 @@
-import MainLayout from "@/layouts/MainLayout"
+import Favorites from "@/components/Favorites"
 import ToolPanel from "@/components/ToolPanel"
-import { UserFavoriteProduct } from "@/typescript/types"
-import { NextPage } from "next"
-import { ProductItem } from "@/components/Product"
+import MainLayout from "@/layouts/MainLayout"
 import styles from "@/styles/pages/Favorites.module.scss"
 import { FilterNames } from "@/typescript/enums"
-import { trpc } from "@/utils/trpc"
+import { NextPage } from "next"
 
 const FavoritesPage: NextPage = () => {
   return (
@@ -13,41 +11,30 @@ const FavoritesPage: NextPage = () => {
       <main className={styles.favoritePage}>
         <h1 className="page-title">Избранное</h1>
         <ToolPanel
-          loadingTemplate={
-            <ul className={styles.favoritePageList}>
-              <li className={styles.favoritePageLoadingTemplateItem}></li>
-              <li className={styles.favoritePageLoadingTemplateItem}></li>
-              <li className={styles.favoritePageLoadingTemplateItem}></li>
-              <li className={styles.favoritePageLoadingTemplateItem}></li>
-              <li className={styles.favoritePageLoadingTemplateItem}></li>
-              <li className={styles.favoritePageLoadingTemplateItem}></li>
-            </ul>
-          }
-          query={trpc.favorites.list}
           filtersList={[
             {
               name: FilterNames.ByName,
-              label: "По имени"
+              label: "По имени",
             },
             {
               name: FilterNames.ByPrice,
-              label: "По цене"
+              label: "По цене",
             },
             {
               name: FilterNames.ByDate,
-              label: "По дате",
-              isDefault: true
-            }
+              label: "По дате добавления",
+              isDefault: true,
+            },
           ]}
-          searchPlaceholder="Поиск избранного">
-          {(data) => (
-            <ul className={styles.favoritePageList}>
-              {data.map(({ product }) => (
-                <li key={product._id}>
-                  <ProductItem {...product} />
-                </li>
-              ))}
-            </ul>
+          searchPlaceholder="Поиск по избранным товарам"
+        >
+          {(filter, filterMode, searchValue, layout) => (
+            <Favorites
+              filter={filter}
+              filterMode={filterMode}
+              searchValue={searchValue}
+              layout={layout}
+            />
           )}
         </ToolPanel>
       </main>

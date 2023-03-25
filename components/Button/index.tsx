@@ -1,8 +1,8 @@
-import { useRippleHighlight } from '@/hooks/rippleHighlight'
-import { InteractionElementsStyleType } from '@/typescript/types'
-import { setDynamicCls } from '@/utils/setCls'
-import { ButtonHTMLAttributes, ReactNode } from 'react'
-import styles from './PrimaryButton.module.scss'
+import { useRippleHighlight } from "@/hooks/rippleHighlight"
+import { InteractionElementsStyleType } from "@/typescript/types"
+import { setDynamicCls } from "@/utils/setCls"
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react"
+import styles from "./PrimaryButton.module.scss"
 
 export interface PrimaryButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,62 +12,82 @@ export interface PrimaryButtonProps
   isBackgroundColor?: boolean
 }
 
-// const PrimaryButton = forwardRef<HTMLButtonElement, IPrimaryButtonProps>(
-//   ({ className, children, isHovering = true, ...attr }, ref) => {
-//     const ripplesPointerClickHandler = useRipplesHighlight()
+const PrimaryButton = forwardRef<HTMLButtonElement, PrimaryButtonProps>(
+  (
+    {
+      className,
+      children,
+      isHovering = true,
+      isBackgroundColor = false,
+      styleType = "normal",
+      ...attr
+    },
+    ref
+  ) => {
+    const handleRippleEffectPointerDownEvent = useRippleHighlight()
 
-//     return (
-//       <button
-//         className={setDynamicCls({
-//           stClasses: [primaryButton, className],
-//           dnClasses: [[_isHovering]],
-//           conditions: [!!isHovering],
-//         })}
-//         onPointerDown={ripplesPointerClickHandler}
-//         {...attr}
-//         ref={ref}
-//       >
-//         {children}
-//       </button>
-//     )
-//   }
-// )
+    return (
+      <button
+        className={setDynamicCls({
+          stClasses: [styles.primaryButton, className],
+          dnClasses: [
+            [styles._grayType],
+            [styles._dangerType],
+            [styles._isHovering],
+            [styles._isBackgroundColor],
+          ],
+          conditions: [
+            styleType === "gray",
+            styleType === "danger",
+            !!isHovering,
+            isBackgroundColor,
+          ],
+        })}
+        onPointerDown={handleRippleEffectPointerDownEvent}
+        ref={ref}
+        {...attr}
+      >
+        {children}
+      </button>
+    )
+  }
+)
 
-// PrimaryButton.displayName = 'Test'
+PrimaryButton.displayName = "PrimaryButton"
 
-// export default PrimaryButton
+export default PrimaryButton
 
-export default function PrimaryButton({
-  className,
-  children,
-  isHovering = true,
-  isBackgroundColor = false,
-  styleType = 'normal',
-  ...attr
-}: PrimaryButtonProps) {
-  const handleRippleEffectPointerDownEvent = useRippleHighlight()
+// export default function PrimaryButton({
+//   className,
+//   children,
+//   isHovering = true,
+//   isBackgroundColor = false,
+//   styleType = "normal",
+//   ...attr
+// }: PrimaryButtonProps) {
+//   const handleRippleEffectPointerDownEvent = useRippleHighlight()
 
-  return (
-    <button
-      className={setDynamicCls({
-        stClasses: [styles.primaryButton, className],
-        dnClasses: [
-          [styles._grayType],
-          [styles._dangerType],
-          [styles._isHovering],
-          [styles._isBackgroundColor],
-        ],
-        conditions: [
-          styleType === 'gray',
-          styleType === 'danger',
-          !!isHovering,
-          isBackgroundColor,
-        ],
-      })}
-      onPointerDown={handleRippleEffectPointerDownEvent}
-      {...attr}
-    >
-      {children}
-    </button>
-  )
-}
+//   return (
+//     <button
+//       className={setDynamicCls({
+//         stClasses: [styles.primaryButton, className],
+//         dnClasses: [
+//           [styles._grayType],
+//           [styles._dangerType],
+//           [styles._isHovering],
+//           [styles._isBackgroundColor],
+//         ],
+//         conditions: [
+//           styleType === "gray",
+//           styleType === "danger",
+//           !!isHovering,
+//           isBackgroundColor,
+//         ],
+//       })}
+//       onPointerDown={handleRippleEffectPointerDownEvent}
+//       {...attr}
+//     >
+//       {children}
+//     </button>
+//   )
+// }

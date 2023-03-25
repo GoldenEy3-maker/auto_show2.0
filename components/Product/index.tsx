@@ -1,5 +1,5 @@
 import { ProductType } from "@/typescript/types"
-import { formatPrice } from "@/utils/formatData"
+import { formatPrice } from "@/utils/formatDate"
 import Image from "next/image"
 import Link from "next/link"
 import { BsCartPlus } from "react-icons/bs"
@@ -11,8 +11,6 @@ import styles from "./Product.module.scss"
 type ProductItemProps = ProductType
 
 export function ProductItem({ price, _id, text, image, title }: ProductItemProps) {
-
-
   return (
     <div className={styles.product}>
       <Link href="/" title={title} className={styles.productImg}>

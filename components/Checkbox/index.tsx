@@ -1,12 +1,13 @@
-import { useRippleHighlight } from '@/hooks/rippleHighlight'
-import { setDynamicCls } from '@/utils/setCls'
-import { InputHTMLAttributes } from 'react'
-import { BsCheck2 } from 'react-icons/bs'
-import styles from './CheckboxElement.module.scss'
+import { useRippleHighlight } from "@/hooks/rippleHighlight"
+import { setDynamicCls } from "@/utils/setCls"
+import { InputHTMLAttributes } from "react"
+import { BsCheck2 } from "react-icons/bs"
+import styles from "./CheckboxElement.module.scss"
 
 interface CheckboxElementProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   isSwitcher?: boolean
+  isReversedLabel?: boolean
 }
 
 export default function CheckboxElement({
@@ -14,6 +15,7 @@ export default function CheckboxElement({
   isSwitcher,
   id,
   checked,
+  isReversedLabel,
   ...restAttr
 }: CheckboxElementProps) {
   const ripplesEffectPointerDownHandler = useRippleHighlight()
@@ -31,21 +33,40 @@ export default function CheckboxElement({
         title={label}
         onPointerDown={ripplesEffectPointerDownHandler}
       >
-        <p>{label}</p>
-        {isSwitcher ? (
-          <div className={styles.checkboxElementSwitcher}>
-            <span></span>
-          </div>
+        {isReversedLabel ? (
+          <>
+            {isSwitcher ? (
+              <div className={styles.checkboxElementSwitcher}>
+                <span></span>
+              </div>
+            ) : (
+              <div className={styles.checkboxElementCheck}>
+                <span>
+                  <BsCheck2 />
+                </span>
+              </div>
+            )}
+            <p>{label}</p>
+          </>
         ) : (
-          <div className={styles.checkboxElementCheck}>
-            <span>
-              <BsCheck2 />
-            </span>
-          </div>
+          <>
+            <p>{label}</p>
+
+            {isSwitcher ? (
+              <div className={styles.checkboxElementSwitcher}>
+                <span></span>
+              </div>
+            ) : (
+              <div className={styles.checkboxElementCheck}>
+                <span>
+                  <BsCheck2 />
+                </span>
+              </div>
+            )}
+          </>
         )}
       </label>
-
-      <input type='checkbox' id={id} checked={checked} {...restAttr} />
+      <input type="checkbox" id={id} checked={checked} {...restAttr} />
     </div>
   )
 }

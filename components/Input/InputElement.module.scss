@@ -8,6 +8,11 @@
 
   flex: 1;
 
+  &:has(label) {
+    input {
+      padding-inline: 0.3rem;
+    }
+  }
 
   &Wrapper {
     display: flex;
@@ -34,13 +39,15 @@
     padding: var(--padding);
 
     -webkit-tap-highlight-color: transparent;
+
+    transition: background-color 200ms ease;
   }
 
   input {
     width: 100%;
     flex: 1;
 
-    padding: calc(var(--padding) - var(--border-width) * 2) 0.5rem;
+    padding: calc(var(--padding) - var(--border-width) * 2) 1rem;
 
     &:focus {
       outline: none;
@@ -59,6 +66,7 @@
     position: absolute;
     top: 115%;
     left: 50%;
+    z-index: 100;
     width: 140%;
 
     border-radius: var(--br-primary-radius);
@@ -89,6 +97,13 @@
     .inputElementTrailingIcon {
       border-radius: 100px;
     }
+  }
 
+  @media (hover: hover) and (pointer: fine) {
+    &LeadingIcon {
+      &:hover {
+        background-color: hsla(var(--hsla-bg-primary-purple-alpha-03));
+      }
+    }
   }
 }

@@ -1,79 +1,32 @@
 import Dilers from "@/components/Dilers"
 import News from "@/components/News"
+import PopularProducts from "@/components/PopularProducts"
 import { Slider } from "@/components/Slider"
+import ViewedProducts from "@/components/ViewedProducts"
 import MainLayout from "@/layouts/MainLayout"
 import styles from "@/styles/pages/Home.module.scss"
-import { NewsData, NewsType, ProductType } from "@/typescript/types"
+import { NewsType, ProductType } from "@/typescript/types"
+import { NextPage } from "next"
 import Image from "next/image"
-import PopularProducts from "@/components/PopularProducts"
-import ViewedProducts from "@/components/ViewedProducts"
-import { GetServerSideProps, GetServerSidePropsContext, GetStaticProps, NextPage } from "next"
-import axi from "@/axios/instance"
-import { trpc } from "@/utils/trpc"
-import { appRouter } from "@/server/routers/_app"
+import { useRouter } from "next/router"
 
 const mokSliderData = [
   {
     id: 1,
-    image: "https://via.placeholder.com/1024x500"
+    image: "https://via.placeholder.com/1024x500",
   },
   {
     id: 2,
-    image: "https://via.placeholder.com/1024x500"
+    image: "https://via.placeholder.com/1024x500",
   },
   {
     id: 3,
-    image: "https://via.placeholder.com/900x300"
+    image: "https://via.placeholder.com/900x300",
   },
   {
     id: 4,
-    image: "https://via.placeholder.com/600x400"
-  }
-]
-
-const mokNewsData: NewsData[] = [
-  {
-    id: 1,
-    image: "https://via.placeholder.com/1000x500",
-    title: "Lorem ipsum dolor sit amet consectetur",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    date: new Date("2023-02-20T20:30")
+    image: "https://via.placeholder.com/600x400",
   },
-  {
-    id: 2,
-    image: "https://via.placeholder.com/700x500",
-    title: "Lorem ipsum dolor sit amet consectetur",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    date: new Date("2023-02-20T20:30")
-  },
-  {
-    id: 3,
-    image: "https://via.placeholder.com/700x500",
-    title: "Lorem ipsum dolor sit amet consectetur",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    date: new Date("2023-02-20T20:30")
-  },
-  {
-    id: 4,
-    image: "https://via.placeholder.com/700x500",
-    title: "Lorem ipsum dolor sit amet consectetur",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    date: new Date("2023-02-20T20:30")
-  },
-  {
-    id: 5,
-    image: "https://via.placeholder.com/700x500",
-    title: "Lorem ipsum dolor sit amet consectetur",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    date: new Date("2023-02-20T20:30")
-  },
-  {
-    id: 6,
-    image: "https://via.placeholder.com/700x500",
-    title: "Lorem ipsum dolor sit amet consectetur",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    date: new Date("2023-02-20T20:30")
-  }
 ]
 
 const mokPopularProducts: ProductType[] = [
@@ -82,43 +35,43 @@ const mokPopularProducts: ProductType[] = [
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
+    price: 50000000,
   },
   {
     _id: "2",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
+    price: 50000000,
   },
   {
     _id: "3",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
+    price: 50000000,
   },
   {
     _id: "4",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
+    price: 50000000,
   },
   {
     _id: "5",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
+    price: 50000000,
   },
   {
     _id: "6",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
-  }
+    price: 50000000,
+  },
 ]
 
 const mokViewedProducts: ProductType[] = [
@@ -127,20 +80,22 @@ const mokViewedProducts: ProductType[] = [
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
-  }, {
+    price: 50000000,
+  },
+  {
     _id: "2",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
-  }, {
+    price: 50000000,
+  },
+  {
     _id: "3",
     image: "https://via.placeholder.com/700x500",
     title: "Lorem ipsum dolor sit amet consectetur",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo laudantium vel nobis voluptates nemo excepturi, veniam accusamus totam itaque doloribus in modi! Accusantium magni dignissimos mollitia tempora, aut enim rem.",
-    price: 50000000
-  }
+    price: 50000000,
+  },
 ]
 
 interface HomePageProps {
@@ -148,15 +103,6 @@ interface HomePageProps {
 }
 
 const HomePage: NextPage<HomePageProps> = () => {
-  const { data: news, isFetching, isLoading, error } = trpc.news.list.useQuery({}, {
-    refetchOnMount: false,
-    refetchOnWindowFocus: false
-  })
-
-  if (isLoading || isFetching) return <p>Loading...</p>
-
-  if (error) return <p>{error.message}</p>
-
   return (
     <MainLayout title="Next 12 - Home Page">
       <main className={styles.homePage}>
@@ -178,18 +124,18 @@ const HomePage: NextPage<HomePageProps> = () => {
             </Slider>
           </div>
         </section>
-        <Dilers/>
+        <Dilers />
         <section className="section">
           <h2 className="section-title _centered">Новости и статьи</h2>
           <div className="section-content">
-            <News data={news}/>
+            <News />
           </div>
         </section>
         {mokPopularProducts && (
           <section className="section">
             <h2 className="section-title _centered">Популярные автомобили</h2>
             <div className={"section-content" + " " + styles.homePagePopular}>
-              <PopularProducts data={mokPopularProducts}/>
+              <PopularProducts data={mokPopularProducts} />
             </div>
           </section>
         )}
@@ -197,7 +143,7 @@ const HomePage: NextPage<HomePageProps> = () => {
           <section className="section">
             <h2 className="section-title _centered">Вы смотрели</h2>
             <div className="section-content">
-              <ViewedProducts data={mokViewedProducts}/>
+              <ViewedProducts data={mokViewedProducts} />
             </div>
           </section>
         )}
@@ -213,5 +159,3 @@ const HomePage: NextPage<HomePageProps> = () => {
 // }
 
 export default HomePage
-
-

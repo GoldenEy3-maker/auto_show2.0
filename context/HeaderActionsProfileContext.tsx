@@ -1,8 +1,5 @@
-import { UserCityState } from '@/components/Header/Actions/Profile/City'
-import { DocumentLangState } from '@/components/Header/Actions/Profile/Lang'
-import { SiteThemeState } from '@/components/Header/Actions/Profile/Theme'
-import { LocalStorageNames } from '@/typescript/enums'
-import { generateContextError } from '@/utils/contextError'
+import { Cities, Langs, Themes } from "@/typescript/enums"
+import { generateContextError } from "@/utils/contextError"
 import {
   createContext,
   Dispatch,
@@ -11,16 +8,16 @@ import {
   useContext,
   useEffect,
   useState
-} from 'react'
+} from "react"
 
 interface HeaderActionsProfileContextProviderProps {
   children: ReactNode
 }
 
 interface HeaderActionsProfileMenusState {
-  siteTheme: SiteThemeState
-  documentLang: DocumentLangState
-  userCity: UserCityState
+  theme: Themes
+  lang: Langs
+  city: Cities
 }
 
 type HeaderActionsProfileContextType =
@@ -38,38 +35,10 @@ export function HeaderActionsProfileContextProvider({
 }: HeaderActionsProfileContextProviderProps) {
   const [headerActionsProfileMenusState, setHeaderActionsProfileMenusState] =
     useState<HeaderActionsProfileMenusState>({
-      siteTheme: 'system-theme',
-      documentLang: 'ru',
-      userCity: 'Москва',
+      theme: Themes.System,
+      lang: Langs.En,
+      city: Cities.Moscow,
     })
-
-  useEffect(() => {
-    const storedSiteTheme = localStorage.getItem(
-      LocalStorageNames.SiteTheme
-    ) as SiteThemeState
-    const storedDocumentLang = localStorage.getItem(
-      LocalStorageNames.DocumentLang
-    ) as DocumentLangState
-    const storedUserCity = localStorage.getItem(
-      LocalStorageNames.UserCity
-    ) as UserCityState
-
-    setHeaderActionsProfileMenusState((prev) => {
-      let state = prev
-
-      if (storedSiteTheme) state = { ...state, siteTheme: storedSiteTheme }
-
-      if (storedDocumentLang) {
-        document.documentElement.lang = storedDocumentLang
-
-        state = { ...state, documentLang: storedDocumentLang }
-      }
-
-      if (storedUserCity) state = { ...state, userCity: storedUserCity }
-
-      return state
-    })
-  }, [])
 
   return (
     <HeaderActionsProfileContext.Provider
@@ -88,8 +57,8 @@ export function useHeaderActionsProfileContext() {
 
   if (!context)
     throw generateContextError(
-      'useHeaderActionsProfileContext',
-      'HeaderActionsProfileContextProvider'
+      "useHeaderActionsProfileContext",
+      "HeaderActionsProfileContextProvider"
     )
 
   return context

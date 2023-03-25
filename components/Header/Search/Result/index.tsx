@@ -1,10 +1,10 @@
-import { APIResponse, ErrorAPIResponse, ProductType } from "@/typescript/types"
-import styles from "./HeaderSearchReslt.module.scss"
 import PrimaryLink from "@/components/Link"
-import Image from "next/image"
-import { formatPrice } from "@/utils/formatData"
+import { APIResponse, ErrorAPIResponse, ProductType } from "@/typescript/types"
+import { formatPrice } from "@/utils/formatDate"
 import { setDynamicCls } from "@/utils/setCls"
 import { AxiosError } from "axios"
+import Image from "next/image"
+import styles from "./HeaderSearchReslt.module.scss"
 
 interface HeaderSearchResultProps {
   isFetchingData: boolean

@@ -6,31 +6,32 @@ import type {
 } from "react"
 
 import { useRippleHighlight } from "@/hooks/rippleHighlight"
-import { setDynamicCls, setStaticCls } from "@/utils/setCls"
+import { setDynamicCls } from "@/utils/setCls"
 import PrimaryButton from "../Button"
 
 import { IoMdClose } from "react-icons/io"
 
-import styles from "./InputElement.module.scss"
 import React, { useEffect, useState } from "react"
+import styles from "./InputElement.module.scss"
 
-interface InputElementProps<T> extends InputHTMLAttributes<HTMLInputElement> {
+interface InputElementProps extends InputHTMLAttributes<HTMLInputElement> {
   leadingIcon?: ReactNode
   trailingResetHandler?: MouseEventHandler
   searchResult?: ReactNode
   inputStyle?: "alternate"
 }
 
-export default function InputElement<T = undefined>({
-                                                      className,
-                                                      leadingIcon,
-                                                      trailingResetHandler,
-                                                      searchResult,
-                                                      id, value,
-                                                      onChange,
-                                                      inputStyle,
-                                                      ...restAttr
-                                                    }: InputElementProps<T>) {
+export default function InputElement({
+  className,
+  leadingIcon,
+  trailingResetHandler,
+  searchResult,
+  id,
+  value,
+  onChange,
+  inputStyle,
+  ...restAttr
+}: InputElementProps) {
   const [isSearchResultOpen, setIsSearchResultOpen] = useState(false)
 
   const handleRippleEffectPointerDownEvent = useRippleHighlight()
@@ -63,11 +64,13 @@ export default function InputElement<T = undefined>({
   }, [])
 
   return (
-    <div className={setDynamicCls({
-      stClasses: [styles.inputElement, className],
-      dnClasses: [[styles._alternateStyle]],
-      conditions: [inputStyle === "alternate"]
-    })}>
+    <div
+      className={setDynamicCls({
+        stClasses: [styles.inputElement, className],
+        dnClasses: [[styles._alternateStyle]],
+        conditions: [inputStyle === "alternate"],
+      })}
+    >
       <div className={styles.inputElementWrapper}>
         {leadingIcon ? (
           <label
@@ -79,8 +82,14 @@ export default function InputElement<T = undefined>({
             {leadingIcon}
           </label>
         ) : null}
-        <input value={value} id={id} onChange={changeHandler} onFocus={focusHandler}
-               onBlur={blurHandler} {...restAttr} />
+        <input
+          value={value}
+          id={id}
+          onChange={changeHandler}
+          onFocus={focusHandler}
+          onBlur={blurHandler}
+          {...restAttr}
+        />
         {trailingResetHandler && !!value ? (
           <PrimaryButton
             type="reset"
@@ -88,14 +97,12 @@ export default function InputElement<T = undefined>({
             title="Отчистить поле ввода"
             onClick={trailingResetHandler}
           >
-            <IoMdClose/>
+            <IoMdClose />
           </PrimaryButton>
         ) : null}
       </div>
       {isSearchResultOpen && searchResult && (
-        <div className={styles.inputElementSearchResult}>
-          {searchResult}
-        </div>
+        <div className={styles.inputElementSearchResult}>{searchResult}</div>
       )}
     </div>
   )

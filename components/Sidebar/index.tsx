@@ -66,7 +66,7 @@ export default function Sidebar() {
           </li>
           <li className={styles.sidebarNavListItem}>
             <PrimaryLink
-              href={RouterPaths.SupportPage}
+              href={RouterPaths.FeedbackPage}
               className={styles.sidebarNavListItemLink}
               title="Обратная связь"
             >

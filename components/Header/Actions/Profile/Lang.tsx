@@ -1,73 +1,66 @@
-import RadioSelect from '@/components/Radio'
-import { useHeaderActionsProfileContext } from '@/context/HeaderActionsProfileContext'
-import { LocalStorageNames } from '@/typescript/enums'
-import { ChangeEvent, useState } from 'react'
-import { HeaderActionsProfileMenuProps } from './index'
-import HeaderActionsProfileMenuWrapper from './Wrapper'
-
-export type DocumentLangState = 'ru' | 'de' | 'en' | 'en-us'
+import RadioSelect from "@/components/Radio"
+import { useHeaderActionsProfileContext } from "@/context/HeaderActionsProfileContext"
+import { Langs } from "@/typescript/enums"
+import { ChangeEvent, useState } from "react"
+import { HeaderActionsProfileMenuProps } from "./index"
+import HeaderActionsProfileMenuWrapper from "./Wrapper"
 
 export default function HeaderActionsProfileLang({
   backButtonClickHandler,
 }: HeaderActionsProfileMenuProps) {
-  const [{ documentLang }, setHeaderActionsProfileContext] =
+  const [{ lang }, setHeaderActionsProfileContext] =
     useHeaderActionsProfileContext()
 
   function changeHandler(event: ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value as DocumentLangState
-
-    setHeaderActionsProfileContext((prev) => {
-      document.documentElement.lang = value
-
-      localStorage.setItem(LocalStorageNames.DocumentLang, value)
-
-      return { ...prev, documentLang: value }
-    })
+    setHeaderActionsProfileContext((prev) => ({
+      ...prev,
+      lang: event.target.value as Langs,
+    }))
   }
 
   return (
     <HeaderActionsProfileMenuWrapper
-      title='Выберите язык'
+      title="Выберите язык"
       backButtonClickHandler={backButtonClickHandler}
     >
       <ul>
         <li>
           <RadioSelect
-            label='Русский'
-            value='ru'
-            id='ru'
-            name='lang'
-            checked={documentLang === 'ru'}
+            label="Русский"
+            value={Langs.Ru}
+            id={Langs.Ru}
+            name="lang"
+            checked={lang === Langs.Ru}
             onChange={changeHandler}
           />
         </li>
         <li>
           <RadioSelect
-            label='German'
-            value='de'
-            id='de'
-            name='lang'
-            checked={documentLang === 'de'}
+            label="German"
+            value={Langs.De}
+            id={Langs.De}
+            name="lang"
+            checked={lang === Langs.De}
             onChange={changeHandler}
           />
         </li>
         <li>
           <RadioSelect
-            label='English (UK)'
-            value='en'
-            id='en'
-            name='lang'
-            checked={documentLang === 'en'}
+            label="English (UK)"
+            value={Langs.EnGB}
+            id={Langs.EnGB}
+            name="lang"
+            checked={lang === Langs.EnGB}
             onChange={changeHandler}
           />
         </li>
         <li>
           <RadioSelect
-            label='English (US)'
-            value='en-us'
-            id='en-us'
-            name='lang'
-            checked={documentLang === 'en-us'}
+            label="English (US)"
+            value={Langs.En}
+            id={Langs.En}
+            name="lang"
+            checked={lang === Langs.En}
             onChange={changeHandler}
           />
         </li>

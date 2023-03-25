@@ -10,13 +10,13 @@ interface RadioSelectProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function RadioSelect({
-                                      label,
-                                      labelIcon,
-                                      id,
-                                      className,
-                                      checked,
-                                      ...restAttrs
-                                    }: RadioSelectProps) {
+  label,
+  labelIcon,
+  id,
+  className,
+  checked,
+  ...restAttrs
+}: RadioSelectProps) {
   const rippleEffectPointerDownHandler = useRippleHighlight()
 
   return (
@@ -24,7 +24,7 @@ export default function RadioSelect({
       className={setDynamicCls({
         stClasses: [styles.radioSelectElement, className],
         dnClasses: [[styles._checked], [styles._labelIcon]],
-        conditions: [!!checked, !!labelIcon]
+        conditions: [!!checked, !!labelIcon],
       })}
     >
       <label
@@ -32,15 +32,14 @@ export default function RadioSelect({
         onPointerDown={rippleEffectPointerDownHandler}
         title={label}
       >
-        {labelIcon ? labelIcon : (
+        {labelIcon ?? (
           <>
             <p>{label}</p>
             <span className={styles.radioSelectElementIcon}>
-              <BsCheck/>
+              <BsCheck />
             </span>
           </>
         )}
-
       </label>
       <input type="radio" id={id} checked={checked} {...restAttrs} />
     </div>

@@ -1,13 +1,14 @@
 .news {
   &List {
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    // place-items: center;
-    // align-content: center;
-    // justify-items: center;
     gap: 1rem;
+
+    &LoadingSkeletonItem {
+      border-radius: var(--br-primary-radius);
+      min-height: 430px;
+      background-color: hsl(var(--hsl-bg-primary-gray));
+    }
   }
+
 }
