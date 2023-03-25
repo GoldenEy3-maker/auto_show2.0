@@ -1,14 +1,12 @@
 import { NewsType } from "@/typescript/types"
 import Image from "next/image"
 import PrimaryLink from "../../Link"
-import styles from "./Item.module.scss"
+import styles from "./NewsItem.module.scss"
 
 interface NewsItemProps extends NewsType {
 }
 
 export default function NewsItem({ _date, image, title, text }: NewsItemProps) {
-
-
   return (
     <article className={styles.new}>
       <div className={styles.newImg}>
