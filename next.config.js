@@ -8,7 +8,7 @@ const nextConfig = {
     domains: ["via.placeholder.com"],
   },
   publicRuntimeConfig: {
-    APP_URL: process.env.APP_URL,
+    APP_URL: process.env.VERCEL_URL ?? process.env.APP_URL,
     NODE_ENV: process.env.NODE_ENV,
   },
   i18n: {
