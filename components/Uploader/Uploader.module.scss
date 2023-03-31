@@ -1,0 +1,72 @@
+.uploader {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    width: 0;
+    height: 0;
+  }
+
+  label {
+    --border-width: 2px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 100px;
+
+    border: var(--border-width) solid
+      hsla(var(--hsla-bg-primary-purple-alpha-02));
+
+    padding: calc(1rem - var(--border-width) * 2) 1rem;
+
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  &Previews {
+    margin-top: 0.5rem;
+
+    &List {
+      display: flex;
+      justify-content: space-between;
+      gap: calc(1rem - 0.5rem);
+
+      padding: 0 0.5rem 0.5rem;
+
+      overflow: auto;
+
+      &Item {
+        position: relative;
+        flex: 0 0 210px;
+        height: 250px;
+        overflow: hidden;
+        background-color: hsl(var(--hsl-bg-primary-gray-lightness-40));
+
+        border-radius: var(--br-primary-radius);
+
+        img {
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+  }
+
+  &:focus-within {
+    label {
+      border-color: hsla(var(--hsl-bg-primary-purple));
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    label:hover {
+      background-color: hsla(var(--hsla-bg-primary-purple-alpha-03));
+    }
+  }
+}
